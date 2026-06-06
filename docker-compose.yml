@@ -1,5 +1,3 @@
-version: "3.8"
-
 networks:
   customer360:
     driver: bridge
@@ -208,9 +206,26 @@ services:
     command: scheduler
 
   # ─── Apache Spark ─────────────────────────────────────────────
-  # Spark temporarily disabled - images not available
-  # You can run Spark locally using: pip install pyspark
-  # Or use official apache/spark-py:v3.5.0 image
+  spark-master:
+    image: apache/spark:3.5.0
+    container_name: spark-master
+    networks: [customer360]
+    ports:
+      - "8082:8080"
+      - "7077:7077"
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master -h 0.0.0.0
+    volumes:
+      - ./spark_jobs:/opt/spark-apps
+
+  spark-worker:
+    image: apache/spark:3.5.0
+    container_name: spark-worker
+    networks: [customer360]
+    depends_on:
+      - spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    volumes:
+      - ./spark_jobs:/opt/spark-apps
 
   # ─── Prometheus ──────────────────────────────────────────────
   prometheus:
@@ -267,4 +282,32 @@ services:
       superset fab create-admin --username admin --firstname Admin --lastname User --email admin@superset.com --password admin &&
       superset init &&
       superset run -p 8088 --with-threads --reload --debugger
+      "
+
+  # ─── Admin Control Panel ─────────────────────────────────────
+  admin-panel:
+    image: python:3.11-slim
+    container_name: admin-panel
+    networks: [customer360]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./admin_panel:/app/admin_panel
+      - ./requirements.txt:/app/requirements.txt
+      - ./data:/app/data
+      - ./producer:/app/producer
+    working_dir: /app/admin_panel
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: customer360
+      POSTGRES_PASSWORD: customer360secret
+      POSTGRES_DB: customer360_warehouse
+    command: >
+      /bin/sh -c "
+      pip install -r /app/requirements.txt && 
+      pip install flask psycopg2-binary && 
+      flask run --host=0.0.0.0 --port=5000
       "
