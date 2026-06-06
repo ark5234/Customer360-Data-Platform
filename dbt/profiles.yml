@@ -1,0 +1,23 @@
+customer360:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: customer360
+      password: customer360secret
+      port: 5432
+      dbname: customer360_warehouse
+      schema: dbt_dev
+      threads: 4
+      keepalives_idle: 0
+    prod:
+      type: postgres
+      host: postgres
+      user: customer360
+      password: customer360secret
+      port: 5432
+      dbname: customer360_warehouse
+      schema: dbt_prod
+      threads: 8
+      keepalives_idle: 0

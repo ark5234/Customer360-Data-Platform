@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: public
+    tables:
+      - name: raw_events
+        description: "Raw events landed from Kafka via consumer"
+        columns:
+          - name: event_id
+            tests: [not_null]
+          - name: customer_id
+            tests: [not_null]
+          - name: event_type
+            tests: [not_null]
+
+  - name: warehouse
+    schema: public
+    tables:
+      - name: fact_orders
+        description: "Purchase orders fact table"
+      - name: dim_customer
+        description: "Customer dimension table"
+      - name: dim_product
+        description: "Product dimension table"
+      - name: feature_store
+        description: "ML feature store"
+
+models:
+  - name: stg_events
+    description: "Staged events with type normalization"
+  - name: stg_orders
+    description: "Staged orders with derived fields"
+  - name: stg_customers
+    description: "Staged customers with activity status"

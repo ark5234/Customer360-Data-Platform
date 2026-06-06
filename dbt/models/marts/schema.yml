@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: customer_lifetime_value
+    description: >
+      Customer LTV model calculating historical spend, predicted 12-month value,
+      and LTV segment (platinum/gold/silver/bronze).
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier"
+        tests: [unique, not_null]
+      - name: ltv_segment
+        description: "LTV segment based on 12-month spend"
+        tests:
+          - accepted_values:
+              values: ['platinum', 'gold', 'silver', 'bronze']
+      - name: ltv_score
+        tests: [not_null]
+
+  - name: monthly_revenue
+    description: >
+      Monthly revenue aggregation by region, device, and payment method.
+      Includes MoM growth rate and YTD revenue.
+    columns:
+      - name: gross_revenue
+        tests: [not_null]
+
+  - name: customer_retention
+    description: >
+      Cohort-based customer retention analysis.
+      Shows % of customers retained month-over-month since first purchase.
+    columns:
+      - name: retention_rate_pct
+        description: "Percentage of cohort retained in this period"
+
+  - name: product_analytics
+    description: >
+      Product funnel analytics: views -> cart -> purchase conversion rates.

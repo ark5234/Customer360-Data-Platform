@@ -1,0 +1,40 @@
+name: 'customer360'
+version: '1.0.0'
+config-version: 2
+
+profile: 'customer360'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  customer360:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: table
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts
+      revenue:
+        +materialized: table
+      customers:
+        +materialized: table
+      products:
+        +materialized: table
+
+vars:
+  start_date: '2025-01-01'
+  end_date: '2026-12-31'
+  churn_threshold_days: 90

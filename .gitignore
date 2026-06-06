@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data files
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.json
+data/synthetic/*.csv
+data/synthetic/*.parquet
+data/synthetic/*.json
+*.parquet
+*.csv
+
+# Secrets
+.env.local
+*.pem
+*.key
+secrets/
+
+# Logs
+*.log
+logs/
+airflow/logs/
+
+# Docker
+.docker/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# ML models
+ml/models/*.pkl
+ml/models/*.joblib
+ml/models/*.h5
