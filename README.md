@@ -142,6 +142,7 @@ Services start on:
 | Grafana | http://localhost:3000 | admin / admin |
 | Superset | http://localhost:8088 | admin / admin |
 | Prometheus | http://localhost:9090 | — |
+| **Admin Control Panel** | **http://localhost:5000** | **—** |
 
 ### 3. Generate Synthetic Data
 

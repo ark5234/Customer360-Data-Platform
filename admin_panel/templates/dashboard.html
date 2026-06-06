@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer360 - Admin Control Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; }
+        .stat-card { border-left: 4px solid; transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .stat-card.revenue { border-color: #28a745; }
+        .stat-card.orders { border-color: #007bff; }
+        .stat-card.customers { border-color: #17a2b8; }
+        .stat-card.churn { border-color: #dc3545; }
+        .navbar-brand { font-weight: 700; font-size: 1.5rem; }
+        .section-title { border-bottom: 3px solid #007bff; padding-bottom: 10px; margin-bottom: 20px; }
+        .badge-active { background-color: #28a745; }
+        .badge-stopped { background-color: #dc3545; }
+        .table-hover tbody tr:hover { background-color: #e9ecef; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                <i class="fas fa-database"></i> Customer360 Admin Control Panel
+            </span>
+            <span class="text-white"><i class="fas fa-circle text-success"></i> All Systems Operational</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Quick Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stat-card revenue">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Total Revenue</h6>
+                                <h3 id="total-revenue" class="mb-0">₹0</h3>
+                            </div>
+                            <i class="fas fa-rupee-sign fa-3x text-success opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card orders">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Total Orders</h6>
+                                <h3 id="total-orders" class="mb-0">0</h3>
+                            </div>
+                            <i class="fas fa-shopping-cart fa-3x text-primary opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card customers">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">Active Customers (30d)</h6>
+                                <h3 id="active-customers" class="mb-0">0</h3>
+                            </div>
+                            <i class="fas fa-users fa-3x text-info opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card churn">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">High-Risk Churn</h6>
+                                <h3 id="high-risk-churn" class="mb-0">0</h3>
+                            </div>
+                            <i class="fas fa-exclamation-triangle fa-3x text-danger opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <!-- Pipeline Controls -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-play-circle"></i> Pipeline Controls</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="fw-bold">Kafka Producer Status:</label>
+                            <span id="producer-status" class="badge bg-secondary ms-2">Unknown</span>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-success" onclick="controlProducer('start')">
+                                <i class="fas fa-play"></i> Start Producer
+                            </button>
+                            <button class="btn btn-danger" onclick="controlProducer('stop')">
+                                <i class="fas fa-stop"></i> Stop Producer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kafka Metrics -->
+                <div class="card mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="fas fa-stream"></i> Kafka Metrics</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Messages</th>
+                                    <th>Lag</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kafka-metrics">
+                                <tr><td colspan="3" class="text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Warehouse Tables -->
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-database"></i> Warehouse Tables</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Table</th>
+                                    <th>Row Count</th>
+                                </tr>
+                            </thead>
+                            <tbody id="warehouse-tables">
+                                <tr><td colspan="2" class="text-center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <!-- Customer Search -->
+                <div class="card mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0"><i class="fas fa-search"></i> Customer 360° Search</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <input type="text" id="customer-search" class="form-control" placeholder="Enter Customer ID (e.g., C0000001)">
+                            <button class="btn btn-primary" onclick="searchCustomer()">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                        <div id="customer-result" class="mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Airflow DAGs -->
+                <div class="card mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0"><i class="fas fa-sitemap"></i> Airflow DAGs</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="airflow-dags">Loading...</div>
+                    </div>
+                </div>
+
+                <!-- ML Model Info -->
+                <div class="card mb-4">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0"><i class="fas fa-brain"></i> ML Model Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="ml-model-info">
+                            <p class="text-muted">Model not trained yet</p>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="triggerModelTraining()">
+                            <i class="fas fa-cogs"></i> Trigger Model Retraining
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fetch stats
+        function fetchStats() {
+            fetch('/api/stats')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('total-revenue').textContent = '₹' + data.total_revenue.toLocaleString('en-IN');
+                    document.getElementById('total-orders').textContent = data.total_orders.toLocaleString();
+                    document.getElementById('active-customers').textContent = data.active_customers.toLocaleString();
+                    document.getElementById('high-risk-churn').textContent = data.high_risk_churn.toLocaleString();
+                })
+                .catch(err => console.error('Error fetching stats:', err));
+        }
+
+        // Fetch Kafka metrics
+        function fetchKafkaMetrics() {
+            fetch('/api/kafka/metrics')
+                .then(res => res.json())
+                .then(data => {
+                    let html = '';
+                    data.topics.forEach(topic => {
+                        html += `<tr>
+                            <td><span class="badge bg-info">${topic.name}</span></td>
+                            <td>${topic.messages.toLocaleString()}</td>
+                            <td><span class="badge ${topic.lag > 1000 ? 'bg-danger' : 'bg-success'}">${topic.lag}</span></td>
+                        </tr>`;
+                    });
+                    document.getElementById('kafka-metrics').innerHTML = html;
+                })
+                .catch(err => console.error('Error fetching Kafka metrics:', err));
+        }
+
+        // Fetch warehouse tables
+        function fetchWarehouseTables() {
+            fetch('/api/warehouse/tables')
+                .then(res => res.json())
+                .then(data => {
+                    let html = '';
+                    data.forEach(table => {
+                        html += `<tr>
+                            <td><code>${table.table}</code></td>
+                            <td>${table.rows.toLocaleString()}</td>
+                        </tr>`;
+                    });
+                    document.getElementById('warehouse-tables').innerHTML = html;
+                })
+                .catch(err => console.error('Error fetching warehouse tables:', err));
+        }
+
+        // Search customer
+        function searchCustomer() {
+            const customerId = document.getElementById('customer-search').value;
+            if (!customerId) return;
+
+            fetch(`/api/customer/${customerId}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('customer-result').innerHTML = `
+                            <div class="alert alert-danger">${data.error}</div>`;
+                        return;
+                    }
+
+                    let html = `
+                        <div class="alert alert-success">
+                            <h6>Customer Profile</h6>
+                            <p><strong>ID:</strong> ${data.customer.customer_id}<br>
+                            <strong>Region:</strong> ${data.customer.region}<br>
+                            <strong>Total Spend:</strong> ₹${data.customer.total_spend.toLocaleString('en-IN')}<br>
+                            <strong>Total Purchases:</strong> ${data.customer.total_purchases}</p>
+                            ${data.churn ? `
+                                <div class="mt-2">
+                                    <strong>Churn Risk:</strong>
+                                    <span class="badge ${data.churn.segment === 'high_risk' ? 'bg-danger' : data.churn.segment === 'medium_risk' ? 'bg-warning' : 'bg-success'}">
+                                        ${data.churn.segment.toUpperCase()} (${(data.churn.probability * 100).toFixed(1)}%)
+                                    </span>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    document.getElementById('customer-result').innerHTML = html;
+                })
+                .catch(err => {
+                    document.getElementById('customer-result').innerHTML = `
+                        <div class="alert alert-danger">Error: ${err.message}</div>`;
+                });
+        }
+
+        // Fetch Airflow DAGs
+        function fetchAirflowDAGs() {
+            fetch('/api/airflow/dags')
+                .then(res => res.json())
+                .then(dags => {
+                    let html = '<div class="list-group">';
+                    dags.forEach(dag => {
+                        html += `
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0">${dag.dag_id}</h6>
+                                        <small class="text-muted">${dag.schedule}</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary" onclick="triggerDAG('${dag.dag_id}')">
+                                        <i class="fas fa-play"></i> Trigger
+                                    </button>
+                                </div>
+                            </div>`;
+                    });
+                    html += '</div>';
+                    document.getElementById('airflow-dags').innerHTML = html;
+                })
+                .catch(err => console.error('Error fetching DAGs:', err));
+        }
+
+        // Trigger DAG
+        function triggerDAG(dagId) {
+            fetch(`/api/airflow/trigger/${dagId}`, {method: 'POST'})
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                })
+                .catch(err => alert('Error: ' + err.message));
+        }
+
+        // Control producer
+        function controlProducer(action) {
+            fetch('/api/producer/control', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({action: action})
+            })
+                .then(res => res.json())
+                .then(data => alert(data.message))
+                .catch(err => alert('Error: ' + err.message));
+        }
+
+        // Trigger model training
+        function triggerModelTraining() {
+            fetch('/api/ml/train', {method: 'POST'})
+                .then(res => res.json())
+                .then(data => alert(data.message))
+                .catch(err => alert('Error: ' + err.message));
+        }
+
+        // Fetch ML model info
+        function fetchModelInfo() {
+            fetch('/api/ml/model-info')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error) return;
+                    document.getElementById('ml-model-info').innerHTML = `
+                        <p><strong>AUC-ROC:</strong> ${data.auc_roc.toFixed(4)}<br>
+                        <strong>Avg Precision:</strong> ${data.avg_precision.toFixed(4)}<br>
+                        <strong>Trained:</strong> ${new Date(data.trained_at).toLocaleString()}</p>
+                    `;
+                })
+                .catch(err => console.error('Error fetching model info:', err));
+        }
+
+        // Initialize dashboard
+        fetchStats();
+        fetchKafkaMetrics();
+        fetchWarehouseTables();
+        fetchAirflowDAGs();
+        fetchModelInfo();
+
+        // Auto-refresh every 30 seconds
+        setInterval(() => {
+            fetchStats();
+            fetchKafkaMetrics();
+            fetchWarehouseTables();
+        }, 30000);
+    </script>
+</body>
+</html>
