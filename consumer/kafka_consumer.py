@@ -11,7 +11,6 @@ import json
 import os
 from datetime import datetime
 from io import BytesIO
-from pathlib import Path
 
 import click
 import pandas as pd

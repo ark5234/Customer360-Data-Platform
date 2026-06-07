@@ -4,11 +4,12 @@ Runs daily at midnight.
 Computes ML-ready features from the warehouse and stores in feature_store table.
 """
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
-from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
+
+from airflow import DAG
 
 default_args = {
     "owner": "customer360",

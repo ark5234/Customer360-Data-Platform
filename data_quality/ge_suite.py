@@ -10,7 +10,6 @@ Results are stored as GE Data Docs (HTML reports) in MinIO.
 from __future__ import annotations
 
 import json
-import os
 from datetime import datetime
 from pathlib import Path
 
@@ -18,9 +17,9 @@ import pandas as pd
 
 # ── Great Expectations imports ────────────────────────────────────────────────
 try:
-    import great_expectations as gx
-    from great_expectations.core.batch import RuntimeBatchRequest
-    from great_expectations.data_context.types.base import (
+    import great_expectations as gx  # noqa: F401
+    from great_expectations.core.batch import RuntimeBatchRequest  # noqa: F401
+    from great_expectations.data_context.types.base import (  # noqa: F401
         DataContextConfig,
         InMemoryStoreBackendDefaults,
     )
@@ -205,7 +204,7 @@ class GESuiteResult:
 
     def print_report(self) -> None:
         print(f"\n{'='*60}")
-        print(f"  Great Expectations Validation Report")
+        print("  Great Expectations Validation Report")
         print(f"  Suite: {self.suite_name}")
         print(f"{'='*60}")
         for r in self.results:

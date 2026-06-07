@@ -17,7 +17,7 @@ from pathlib import Path
 
 import click
 import pandas as pd
-from confluent_kafka import KafkaError, KafkaException, Producer
+from confluent_kafka import KafkaException, Producer
 from dotenv import load_dotenv
 from loguru import logger
 from prometheus_client import Counter, Gauge, Histogram, start_http_server

@@ -4,7 +4,6 @@ Run once before starting the producer.
 """
 
 import subprocess
-import sys
 
 TOPICS = [
     ("customer-login", 3, 1),

@@ -4,13 +4,12 @@ Runs every 5 minutes.
 Triggers the Kafka consumer to flush buffered events to MinIO bronze layer.
 """
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
-from airflow import DAG
-from airflow.models import Variable
-from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
+
+from airflow import DAG
 
 default_args = {
     "owner": "customer360",

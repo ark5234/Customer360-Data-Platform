@@ -4,12 +4,12 @@ Runs every 2 hours.
 Loads gold-layer aggregates into the PostgreSQL star schema.
 """
 
-from datetime import datetime, timedelta
+from datetime import timedelta
+
+from airflow.operators.python import PythonOperator
+from airflow.utils.dates import days_ago
 
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.providers.postgres.operators.postgres import PostgresOperator
-from airflow.utils.dates import days_ago
 
 default_args = {
     "owner": "customer360",

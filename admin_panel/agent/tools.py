@@ -1,6 +1,8 @@
 import os
-from langchain_core.tools import tool
+
 from langchain_community.utilities.sql_database import SQLDatabase
+from langchain_core.tools import tool
+
 
 @tool
 def search_customer_tickets(query: str, k: int = 3) -> str:
@@ -23,7 +25,7 @@ def search_customer_tickets(query: str, k: int = 3) -> str:
         docs = qdrant.similarity_search(query, k=k)
         if not docs:
             return "No matching support tickets found."
-        
+
         results = []
         for d in docs:
             results.append(f"Ticket ID: {d.metadata.get('ticket_id')} | Status: {d.metadata.get('status')} | Issue: {d.page_content}")

@@ -10,14 +10,11 @@ Usage:
 from __future__ import annotations
 
 import json
-import os
 import random
-import sys
 import time
 import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any
 
 import click
 import numpy as np

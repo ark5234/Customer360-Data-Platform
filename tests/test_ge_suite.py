@@ -1,13 +1,13 @@
-import pytest
-import pandas as pd
-import numpy as np
 import sys
 from pathlib import Path
+
+import pandas as pd
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from data_quality.ge_suite import run_ge_validation, build_expectation_suite
+from data_quality.ge_suite import build_expectation_suite, run_ge_validation
+
 
 def test_build_expectation_suite():
     """Test that the GE suite definition is built correctly."""
@@ -28,7 +28,7 @@ def test_ge_validation_success():
         "total_amount": [0, 100, 0],
         "dq_passed": [True, True, True]
     })
-    
+
     result = run_ge_validation(df)
     summary = result.summary()
     assert summary["success"] is True
@@ -46,7 +46,7 @@ def test_ge_validation_failure():
         "total_amount": [-100, 100],  # Negative amount
         "dq_passed": [True, True]
     })
-    
+
     result = run_ge_validation(df)
     summary = result.summary()
     assert summary["success"] is False

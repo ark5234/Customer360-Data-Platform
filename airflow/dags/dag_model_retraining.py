@@ -4,11 +4,12 @@ Runs weekly on Sunday at 2 AM.
 Retrains the churn prediction model using latest feature store data.
 """
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
-from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
+
+from airflow import DAG
 
 default_args = {
     "owner": "customer360",
@@ -82,12 +83,10 @@ with DAG(
         from datetime import datetime
 
         import joblib
-        import numpy as np
         import pandas as pd
         import xgboost as xgb
         from sklearn.metrics import classification_report, roc_auc_score
         from sklearn.model_selection import train_test_split
-        from sklearn.preprocessing import StandardScaler
 
         training_size = (
             context["task_instance"].xcom_pull(

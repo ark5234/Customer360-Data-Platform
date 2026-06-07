@@ -55,8 +55,8 @@ def load_features():
     df = pd.read_sql(
         """SELECT customer_id, MAX(recency_days) AS recency_days, MAX(frequency) AS frequency,
         MAX(monetary) AS monetary, MAX(avg_purchase_value) AS avg_purchase_value, MAX(max_purchase_value) AS max_purchase_value,
-        MAX(min_purchase_value) AS min_purchase_value, MAX(cart_abandonment_rate) AS cart_abandonment_rate, 
-        MAX(product_view_count) AS product_view_count, MAX(search_count) AS search_count, MAX(cart_add_count) AS cart_add_count, 
+        MAX(min_purchase_value) AS min_purchase_value, MAX(cart_abandonment_rate) AS cart_abandonment_rate,
+        MAX(product_view_count) AS product_view_count, MAX(search_count) AS search_count, MAX(cart_add_count) AS cart_add_count,
         MAX(purchase_count) AS purchase_count, MAX(login_count) AS login_count, MAX(monthly_orders) AS monthly_orders,
         MAX(days_since_last_login) AS days_since_last_login, MAX(avg_session_duration) AS avg_session_duration
         FROM feature_store

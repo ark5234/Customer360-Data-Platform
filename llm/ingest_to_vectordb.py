@@ -5,17 +5,19 @@ Embeds and ingests support tickets into Qdrant for RAG.
 
 import json
 import os
-from langchain_qdrant import QdrantVectorStore
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
 from langchain_core.documents import Document
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
+
 
 def ingest_tickets(file_path: str = "data/tickets.json"):
     if not os.path.exists(file_path):
         print(f"File {file_path} not found. Run ticket_generator.py first.")
         return
 
-    with open(file_path, "r") as f:
+    with open(file_path) as f:
         tickets = json.load(f)
 
     documents = []

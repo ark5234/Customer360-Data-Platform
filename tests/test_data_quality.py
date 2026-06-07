@@ -1,7 +1,6 @@
 import pytest
 from pyspark.sql import SparkSession
-from pyspark.sql import Row
-from data_quality.ge_suite import run_ge_validation
+
 
 @pytest.fixture(scope="session")
 def spark():

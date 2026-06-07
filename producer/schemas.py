@@ -7,17 +7,16 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime
-from enum import Enum
-from typing import Optional
+from enum import StrEnum
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field
 
 # ─────────────────────────────────────────────
 # Enumerations
 # ─────────────────────────────────────────────
 
 
-class EventType(str, Enum):
+class EventType(StrEnum):
     LOGIN = "LOGIN"
     LOGOUT = "LOGOUT"
     PRODUCT_VIEW = "PRODUCT_VIEW"
@@ -29,14 +28,14 @@ class EventType(str, Enum):
     PAYMENT_FAILURE = "PAYMENT_FAILURE"
 
 
-class DeviceType(str, Enum):
+class DeviceType(StrEnum):
     MOBILE = "Mobile"
     DESKTOP = "Desktop"
     TABLET = "Tablet"
     APP = "App"
 
 
-class PaymentMethod(str, Enum):
+class PaymentMethod(StrEnum):
     CREDIT_CARD = "credit_card"
     DEBIT_CARD = "debit_card"
     UPI = "upi"
@@ -45,7 +44,7 @@ class PaymentMethod(str, Enum):
     COD = "cod"
 
 
-class SubscriptionPlan(str, Enum):
+class SubscriptionPlan(StrEnum):
     FREE = "free"
     BASIC = "basic"
     PRO = "pro"
@@ -85,7 +84,7 @@ class LoginEvent(BaseEvent):
     kafka_topic: str = "customer-login"
     login_method: str  # password, google, facebook, otp
     success: bool
-    failure_reason: Optional[str] = None
+    failure_reason: str | None = None
 
 
 class LogoutEvent(BaseEvent):
@@ -103,7 +102,7 @@ class ProductViewEvent(BaseEvent):
     subcategory: str
     price: float
     view_duration_seconds: int
-    referrer: Optional[str] = None
+    referrer: str | None = None
 
 
 class SearchEvent(BaseEvent):
@@ -111,8 +110,8 @@ class SearchEvent(BaseEvent):
     kafka_topic: str = "product-events"
     search_query: str
     results_count: int
-    clicked_position: Optional[int] = None
-    clicked_product_id: Optional[str] = None
+    clicked_position: int | None = None
+    clicked_product_id: str | None = None
 
 
 class AddToCartEvent(BaseEvent):
@@ -138,7 +137,7 @@ class PurchaseEvent(BaseEvent):
     tax_amount: float
     payment_method: PaymentMethod
     items_count: int
-    coupon_code: Optional[str] = None
+    coupon_code: str | None = None
 
 
 class RefundEvent(BaseEvent):

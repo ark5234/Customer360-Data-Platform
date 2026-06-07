@@ -6,7 +6,7 @@ Flask web application for monitoring and controlling the data platform
 import json
 import os
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import psycopg2
 from flask import Flask, jsonify, render_template, request
@@ -78,7 +78,7 @@ def get_stats():
                 "total_revenue": round(total_revenue, 2),
                 "active_customers": active_customers,
                 "high_risk_churn": high_risk,
-                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "timestamp": datetime.now(UTC).isoformat(),
             }
         )
     except Exception as e:
@@ -317,7 +317,7 @@ def score_customer(customer_id):
                 "customer_id": customer_id,
                 "churn_probability": 0.42,
                 "churn_segment": "medium_risk",
-                "scored_at": datetime.now(timezone.utc).isoformat(),
+                "scored_at": datetime.now(UTC).isoformat(),
             }
         )
     except Exception as e:
@@ -366,7 +366,7 @@ def trigger_dag(dag_id):
                 "status": "success",
                 "message": f"DAG {dag_id} triggered successfully",
                 "dag_id": dag_id,
-                "triggered_at": datetime.now(timezone.utc).isoformat(),
+                "triggered_at": datetime.now(UTC).isoformat(),
             }
         )
     except Exception as e:
@@ -391,7 +391,7 @@ def producer_status():
         return jsonify(
             {
                 "status": "running" if is_running else "stopped",
-                "checked_at": datetime.now(timezone.utc).isoformat(),
+                "checked_at": datetime.now(UTC).isoformat(),
             }
         )
     except Exception:
@@ -444,7 +444,7 @@ def chat():
         # Invoke the LangGraph agent
         final_state = agent.invoke({"messages": [HumanMessage(content=query)]})
         response_msg = final_state["messages"][-1].content
-        
+
         return jsonify({"response": response_msg})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

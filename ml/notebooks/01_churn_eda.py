@@ -1,3 +1,4 @@
+# ruff: noqa: E402
 """
 Customer360 — Churn Prediction EDA & Model Analysis
 =====================================================
@@ -18,10 +19,12 @@ Usage:
 
 # ── 1. Imports ────────────────────────────────────────────────────────────────
 import warnings
+
 warnings.filterwarnings("ignore")
 
 import os
 import sys
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
 import joblib

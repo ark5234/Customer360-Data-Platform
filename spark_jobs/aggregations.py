@@ -9,7 +9,7 @@ Calculates real-time business metrics:
 - Active users
 """
 
-from pyspark.sql import SparkSession, Window
+from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 
 

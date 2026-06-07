@@ -33,9 +33,10 @@ DataHub endpoint: http://localhost:8080 (when running with --profile lineage)
 from __future__ import annotations
 
 import os
-import requests
 from datetime import datetime
-from typing import Optional, TypedDict
+from typing import TypedDict
+
+import requests
 
 # ── DataHub GMS endpoint ──────────────────────────────────────────────────────
 DATAHUB_GMS_URL = os.getenv("DATAHUB_GMS_URL", "http://datahub-gms:8080")

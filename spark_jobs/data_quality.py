@@ -8,9 +8,9 @@ Results are written to PostgreSQL for Grafana dashboards.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Callable
 
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
@@ -57,7 +57,7 @@ class DataQualityEngine:
         self.rules: list[DQRule] = []
         self.results: list[DQResult] = []
 
-    def add_rule(self, rule: DQRule) -> "DataQualityEngine":
+    def add_rule(self, rule: DQRule) -> DataQualityEngine:
         self.rules.append(rule)
         return self
 

@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from producer.schemas import LoginEvent, PurchaseEvent
 
+
 def test_valid_login_event():
     """Test valid login event schema."""
     event = LoginEvent(

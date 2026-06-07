@@ -1,6 +1,9 @@
 import os
+
 from langgraph.prebuilt import create_react_agent
+
 from .tools import TOOLS
+
 
 def get_agent():
     """Returns a compiled LangGraph agent, or None if no API key is configured."""

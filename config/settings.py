@@ -5,7 +5,6 @@ All tunable parameters in one place. Override via environment variables or .env.
 
 import os
 from dataclasses import dataclass, field
-from typing import List
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -14,7 +13,7 @@ from typing import List
 @dataclass
 class KafkaConfig:
     bootstrap_servers: str = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
-    topics: List[str] = field(default_factory=lambda: [
+    topics: list[str] = field(default_factory=lambda: [
         "customer-login",
         "product-events",
         "cart-events",
@@ -111,7 +110,7 @@ class GeneratorConfig:
     num_events: int = int(os.getenv("NUM_EVENTS", "10_000_000"))
     events_per_second: int = int(os.getenv("EVENTS_PER_SECOND", "5000"))
     batch_size: int = 1_000
-    regions: List[str] = field(default_factory=lambda: [
+    regions: list[str] = field(default_factory=lambda: [
         "Maharashtra", "Karnataka", "Delhi", "Tamil Nadu", "West Bengal",
         "Telangana", "Gujarat", "Rajasthan", "Uttar Pradesh", "Kerala",
     ])
