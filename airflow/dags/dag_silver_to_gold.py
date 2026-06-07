@@ -268,5 +268,3 @@ with DAG(
     t_product = PythonOperator(
         task_id="build_product_performance", python_callable=build_product_performance
     )
-
-    [t_revenue, t_customer, t_product]

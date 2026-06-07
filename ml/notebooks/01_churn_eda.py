@@ -24,18 +24,19 @@ import os
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "../.."))
 
+import joblib
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-import seaborn as sns
-import sqlalchemy
-import joblib
+import seaborn as sns  # type: ignore
 import shap
+import sqlalchemy
 from sklearn.metrics import (
-    roc_auc_score, average_precision_score,
-    roc_curve, precision_recall_curve,
-    ConfusionMatrixDisplay, classification_report,
+    average_precision_score,
+    classification_report,
+    precision_recall_curve,
+    roc_auc_score,
+    roc_curve,
 )
 from sklearn.model_selection import train_test_split
 
@@ -57,28 +58,29 @@ POSTGRES_DSN = os.getenv(
 )
 engine = sqlalchemy.create_engine(POSTGRES_DSN)
 
-df = pd.read_sql("""
-    SELECT
-        customer_id,
-        MAX(recency_days)           AS recency_days,
-        MAX(frequency)              AS frequency,
-        MAX(monetary)               AS monetary,
-        MAX(avg_purchase_value)     AS avg_purchase_value,
-        MAX(max_purchase_value)     AS max_purchase_value,
-        MAX(min_purchase_value)     AS min_purchase_value,
-        MAX(cart_abandonment_rate)  AS cart_abandonment_rate,
-        MAX(product_view_count)     AS product_view_count,
-        MAX(search_count)           AS search_count,
-        MAX(cart_add_count)         AS cart_add_count,
-        MAX(purchase_count)         AS purchase_count,
-        MAX(login_count)            AS login_count,
-        MAX(monthly_orders)         AS monthly_orders,
-        MAX(days_since_last_login)  AS days_since_last_login,
-        MAX(avg_session_duration)   AS avg_session_duration
-    FROM feature_store
-    WHERE snapshot_date = (SELECT MAX(snapshot_date) FROM feature_store)
-    GROUP BY customer_id
-""", engine)
+with engine.connect() as conn:
+    df = pd.read_sql("""
+        SELECT
+            customer_id,
+            MAX(recency_days)           AS recency_days,
+            MAX(frequency)              AS frequency,
+            MAX(monetary)               AS monetary,
+            MAX(avg_purchase_value)     AS avg_purchase_value,
+            MAX(max_purchase_value)     AS max_purchase_value,
+            MAX(min_purchase_value)     AS min_purchase_value,
+            MAX(cart_abandonment_rate)  AS cart_abandonment_rate,
+            MAX(product_view_count)     AS product_view_count,
+            MAX(search_count)           AS search_count,
+            MAX(cart_add_count)         AS cart_add_count,
+            MAX(purchase_count)         AS purchase_count,
+            MAX(login_count)            AS login_count,
+            MAX(monthly_orders)         AS monthly_orders,
+            MAX(days_since_last_login)  AS days_since_last_login,
+            MAX(avg_session_duration)   AS avg_session_duration
+        FROM feature_store
+        WHERE snapshot_date = (SELECT MAX(snapshot_date) FROM feature_store)
+        GROUP BY customer_id
+    """, conn)  # type: ignore
 
 engine.dispose()
 df = df.fillna(0)
@@ -101,7 +103,7 @@ FEATURES = [
 fig, axes = plt.subplots(3, 3, figsize=(18, 14))
 fig.suptitle("Customer Feature Distributions (Churn vs. Retained)", fontsize=16, y=1.01)
 
-for ax, feat in zip(axes.flatten(), FEATURES):
+for ax, feat in zip(axes.flatten(), FEATURES, strict=False):
     for label, color, name in [(0, "#10b981", "Retained"), (1, "#ef4444", "Churned")]:
         subset = df[df["is_churned"] == label][feat].clip(upper=df[feat].quantile(0.99))
         ax.hist(subset, bins=40, alpha=0.6, color=color, label=name, density=True)
@@ -120,7 +122,7 @@ plt.figure(figsize=(14, 10))
 corr = df[FEATURES + ["is_churned"]].corr()
 mask = np.triu(np.ones_like(corr, dtype=bool))
 sns.heatmap(
-    corr, mask=mask, annot=True, fmt=".2f",
+    corr, mask=mask, annot=True, fmt=".2f",  # type: ignore
     cmap="RdYlGn", center=0, square=True,
     linewidths=0.5, cbar_kws={"shrink": 0.8}
 )

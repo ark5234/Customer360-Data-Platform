@@ -49,8 +49,8 @@ def ingest_tickets(file_path: str = "data/tickets.json"):
     qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
     print(f"Connecting to Qdrant at {qdrant_url}")
 
-    client = QdrantClient(url=qdrant_url)
-    qdrant = QdrantVectorStore.from_documents(
+    _ = QdrantClient(url=qdrant_url)
+    _ = QdrantVectorStore.from_documents(
         documents,
         embeddings,
         url=qdrant_url,

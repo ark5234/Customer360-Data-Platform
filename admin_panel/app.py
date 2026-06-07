@@ -6,7 +6,7 @@ Flask web application for monitoring and controlling the data platform
 import json
 import os
 import subprocess
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 
 import psycopg2
 from flask import Flask, jsonify, render_template, request
@@ -45,25 +45,29 @@ def get_stats():
 
         # Total orders
         cursor.execute("SELECT COUNT(*) FROM fact_orders")
-        total_orders = cursor.fetchone()[0]
+        row = cursor.fetchone()
+        total_orders = row[0] if row else 0
 
         # Total revenue
         cursor.execute("SELECT COALESCE(SUM(total_amount), 0) FROM fact_orders")
-        total_revenue = float(cursor.fetchone()[0])
+        row = cursor.fetchone()
+        total_revenue = float(row[0]) if row and row[0] else 0.0
 
         # Active customers (last 30 days)
         cursor.execute("""
             SELECT COUNT(DISTINCT customer_id) FROM fact_orders
             WHERE event_timestamp >= NOW() - INTERVAL '30 days'
         """)
-        active_customers = cursor.fetchone()[0]
+        row = cursor.fetchone()
+        active_customers = row[0] if row else 0
 
         # High-risk churn customers
         cursor.execute("""
             SELECT COUNT(*) FROM customer_churn_scores
             WHERE churn_segment = 'high_risk'
         """)
-        high_risk = cursor.fetchone()[0] or 0
+        row = cursor.fetchone()
+        high_risk = row[0] if row and row[0] else 0
 
         cursor.close()
         conn.close()
@@ -74,7 +78,7 @@ def get_stats():
                 "total_revenue": round(total_revenue, 2),
                 "active_customers": active_customers,
                 "high_risk_churn": high_risk,
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
             }
         )
     except Exception as e:
@@ -125,9 +129,10 @@ def warehouse_tables():
         for table in tables:
             try:
                 cursor.execute(f"SELECT COUNT(*) FROM {table}")
-                count = cursor.fetchone()[0]
+                row = cursor.fetchone()
+                count = row[0] if row else 0
                 result.append({"table": table, "rows": count})
-            except:
+            except Exception:
                 result.append({"table": table, "rows": 0})
 
         cursor.close()
@@ -277,7 +282,7 @@ def model_info():
         )
 
         if os.path.exists(model_metrics_path):
-            with open(model_metrics_path, "r") as f:
+            with open(model_metrics_path) as f:
                 metrics = json.load(f)
             return jsonify(metrics)
         else:
@@ -312,7 +317,7 @@ def score_customer(customer_id):
                 "customer_id": customer_id,
                 "churn_probability": 0.42,
                 "churn_segment": "medium_risk",
-                "scored_at": datetime.utcnow().isoformat(),
+                "scored_at": datetime.now(timezone.utc).isoformat(),
             }
         )
     except Exception as e:
@@ -361,7 +366,7 @@ def trigger_dag(dag_id):
                 "status": "success",
                 "message": f"DAG {dag_id} triggered successfully",
                 "dag_id": dag_id,
-                "triggered_at": datetime.utcnow().isoformat(),
+                "triggered_at": datetime.now(timezone.utc).isoformat(),
             }
         )
     except Exception as e:
@@ -386,10 +391,10 @@ def producer_status():
         return jsonify(
             {
                 "status": "running" if is_running else "stopped",
-                "checked_at": datetime.utcnow().isoformat(),
+                "checked_at": datetime.now(timezone.utc).isoformat(),
             }
         )
-    except:
+    except Exception:
         return jsonify({"status": "unknown"})
 
 

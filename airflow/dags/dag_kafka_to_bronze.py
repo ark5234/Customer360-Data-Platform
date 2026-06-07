@@ -43,7 +43,7 @@ with DAG(
             print("Kafka is reachable.")
             return True
         except OSError as e:
-            raise RuntimeError(f"Kafka not reachable: {e}")
+            raise RuntimeError(f"Kafka not reachable: {e}") from e
 
     def check_minio_health(**context):
         """Verify MinIO is reachable."""

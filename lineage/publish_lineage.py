@@ -32,11 +32,10 @@ DataHub endpoint: http://localhost:8080 (when running with --profile lineage)
 
 from __future__ import annotations
 
-import json
 import os
-from datetime import datetime
-from typing import Optional
 import requests
+from datetime import datetime
+from typing import Optional, TypedDict
 
 # ── DataHub GMS endpoint ──────────────────────────────────────────────────────
 DATAHUB_GMS_URL = os.getenv("DATAHUB_GMS_URL", "http://datahub-gms:8080")
@@ -87,7 +86,14 @@ DATASETS = {
 }
 
 # ── Pipeline stage definitions ────────────────────────────────────────────────
-PIPELINE_STAGES = {
+
+class StageConfig(TypedDict):
+    inputs: list[str]
+    outputs: list[str]
+    job_name: str
+    description: str
+
+PIPELINE_STAGES: dict[str, StageConfig] = {
     "event_generation": {
         "inputs":  [],
         "outputs": [DATASETS["event_generator"]],
@@ -214,11 +220,12 @@ def _build_lineage_mce(
     inputs: list[str],
     outputs: list[str],
     description: str,
-    run_id: Optional[str] = None,
+    run_id: str | None = None,
 ) -> dict:
     """Build a DataHub MetadataChangeEvent for data process lineage."""
-    now_ms = int(datetime.utcnow().timestamp() * 1000)
-    run_id = run_id or f"{job_name}_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}"
+    now = datetime.now()  # timezone aware/naive is fine since we just get timestamp
+    now_ms = int(now.timestamp() * 1000)
+    run_id = run_id or f"{job_name}_{now.strftime('%Y%m%d_%H%M%S')}"
 
     return {
         "entityType": "dataProcessInstance",
@@ -252,8 +259,8 @@ def _build_dataset_lineage_mce(
                         "dataset": urn,
                         "type": "TRANSFORMED",
                         "auditStamp": {
-                            "time": int(datetime.utcnow().timestamp() * 1000),
-                            "actor": f"urn:li:corpuser:customer360-pipeline",
+                            "time": int(datetime.now().timestamp() * 1000),
+                            "actor": "urn:li:corpuser:customer360-pipeline",
                         },
                     }
                     for urn in input_urns
@@ -270,7 +277,7 @@ def _build_dataset_lineage_mce(
 def publish_stage_lineage(
     stage: str,
     gms_url: str = DATAHUB_GMS_URL,
-    run_id: Optional[str] = None,
+    run_id: str | None = None,
 ) -> bool:
     """
     Publish lineage for a named pipeline stage to DataHub.
