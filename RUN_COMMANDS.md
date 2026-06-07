@@ -11,6 +11,10 @@ Complete list of commands to run the entire platform.
 git clone https://github.com/ark5234/Customer360-Data-Platform.git
 cd Customer360-Data-Platform
 
+# Copy and configure environment variables
+cp .env.example .env
+# Edit .env: set GOOGLE_API_KEY and any other values
+
 # Start all Docker services
 docker-compose up -d
 
@@ -152,6 +156,28 @@ python churn_predictor.py --evaluate
 # Train with specific version
 python churn_predictor.py --train --version v1.0
 ```
+
+---
+
+## LLM / RAG Pipeline
+
+```bash
+# Ingest warehouse data into Qdrant vector store
+python llm/ingest_to_vectordb.py
+
+# Check Qdrant collection status
+curl http://localhost:6333/collections/customer360
+
+# Launch AI Admin Control Panel
+python admin_panel/app.py
+# Visit http://localhost:5000
+```
+
+The Admin Panel provides a chat interface powered by a LangGraph ReAct agent.
+You can ask natural-language questions like:
+- "Show me the top 10 customers by lifetime value"
+- "What is the current pipeline health?"
+- "How many high-risk churn customers are there this week?"
 
 ---
 
@@ -400,6 +426,8 @@ docker exec postgres psql -U customer360 -d customer360_warehouse -c "SELECT COU
 | Grafana | http://localhost:3000 | admin / admin |
 | Superset | http://localhost:8088 | admin / admin |
 | Prometheus | http://localhost:9090 | — |
+| Qdrant UI | http://localhost:6333/dashboard | — |
+| Admin AI Panel | http://localhost:5000 | — |
 | Producer Metrics | http://localhost:8000/metrics | — |
 
 ---

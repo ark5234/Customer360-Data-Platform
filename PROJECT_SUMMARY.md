@@ -16,6 +16,9 @@ A **flagship data engineering project** that processes **10M+ streaming customer
 | **Transformations** | dbt-core |
 | **Analytics** | Apache Superset / Power BI |
 | **ML** | XGBoost, scikit-learn, MLflow |
+| **LLM / RAG** | Google Gemini Flash, LangChain, Qdrant |
+| **AI Agent** | LangGraph ReAct Agent |
+| **Admin Panel** | Flask (AI-powered Control Panel) |
 | **Monitoring** | Prometheus + Grafana |
 | **Containerization** | Docker + Docker Compose |
 | **Language** | Python 3.11 |
@@ -39,6 +42,13 @@ A **flagship data engineering project** that processes **10M+ streaming customer
 4. Gold → Warehouse (every 2 hrs)
 5. Feature Engineering (daily)
 6. Model Retraining (weekly)
+7. LLM Ingestion → Qdrant (scheduled)
+
+### LLM / RAG Pipeline
+- **LLM**: Google Gemini Flash via LangChain
+- **Vector Store**: Qdrant (local Docker container)
+- **Agent**: LangGraph ReAct Agent with SQL + RAG tools
+- **Interface**: AI Admin Panel (Flask, port 5000)
 
 ### ML Pipeline
 - **Feature Store**: RFM + behavioral features (13 features)
@@ -49,7 +59,7 @@ A **flagship data engineering project** that processes **10M+ streaming customer
 ## 📁 Project Structure
 
 ```
-customer360-data-platform/
+Customer360-Data-Platform/
 ├── producer/               # Kafka event producers
 │   ├── event_generator.py  # 10M+ synthetic event generation
 │   ├── kafka_producer.py   # Kafka publisher
@@ -60,7 +70,7 @@ customer360-data-platform/
 │   ├── streaming_processor.py
 │   ├── aggregations.py
 │   └── data_quality.py
-├── airflow/dags/           # 6 orchestration DAGs
+├── airflow/dags/           # 7 orchestration DAGs
 ├── dbt/                    # Transformation models
 │   ├── models/staging/     # stg_* models
 │   └── models/marts/       # LTV, retention, revenue, product analytics
@@ -68,10 +78,15 @@ customer360-data-platform/
 ├── ml/
 │   ├── features/          # Feature engineering
 │   └── models/            # Churn prediction
+├── llm/                   # LLM / RAG pipeline (NEW)
+│   └── ingest_to_vectordb.py
+├── admin_panel/           # AI-powered Admin Panel (NEW)
+│   ├── app.py             # Flask app
+│   └── agent/             # LangGraph agent + tools
 ├── monitoring/
 │   ├── prometheus/
 │   └── grafana/
-├── docker-compose.yml      # 15-service infrastructure
+├── docker-compose.yml      # 15+ service infrastructure
 └── README.md
 ```
 
@@ -103,9 +118,15 @@ customer360-data-platform/
 
 ### 5. Machine Learning
 - Automated feature engineering (RFM, behavioral, engagement)
-- XGBoost churn prediction
+- XGBoost churn prediction (AUC-ROC 0.85+)
 - Weekly model retraining
 - Customer risk segmentation (low/medium/high)
+
+### 6. LLM / RAG & AI Agent
+- Google Gemini Flash LLM integrated via LangChain
+- Warehouse data ingested into Qdrant vector store
+- LangGraph ReAct agent with SQL query + RAG retrieval tools
+- AI Admin Control Panel (Flask) for natural-language data queries
 
 ## 📈 Data Pipeline Flow
 
@@ -131,6 +152,10 @@ Airflow Gold→Warehouse DAG (PostgreSQL upserts)
 dbt Transformations (marts)
     ↓
 Dashboards (Superset + Grafana)
+    ↓
+Airflow LLM Ingestion DAG → Qdrant VectorDB
+    ↓
+LangGraph AI Agent → Admin Panel (http://localhost:5000)
 ```
 
 ## 💼 Resume Bullets
@@ -147,8 +172,11 @@ Use these on your resume:
 • Designed dimensional warehouse models and dbt transformation workflows powering
   customer retention, revenue, and product analytics dashboards
 
+• Implemented a RAG-based AI agent using Google Gemini Flash, LangChain, LangGraph,
+  and Qdrant VectorDB enabling natural-language querying of 10M+ customer events
+
 • Implemented observability using Prometheus and Grafana while generating ML-ready
-  feature stores for downstream churn prediction models
+  feature stores for downstream XGBoost churn prediction models (AUC-ROC 0.85+)
 ```
 
 ## 🎓 Skills Demonstrated
@@ -169,6 +197,9 @@ Use these on your resume:
 - ✅ PostgreSQL (OLAP warehouse)
 - ✅ MinIO / S3 (object storage)
 - ✅ Docker / Docker Compose
+- ✅ Google Gemini Flash (LLM)
+- ✅ LangChain / LangGraph (AI agent)
+- ✅ Qdrant (vector database)
 
 ### Data Science / ML
 - ✅ Feature engineering
@@ -196,11 +227,13 @@ Use these on your resume:
 
 ## 📦 Deliverables
 
-- ✅ 49+ source files (Python, SQL, YAML, Markdown)
-- ✅ Complete Docker infrastructure (15 services)
-- ✅ 6 production Airflow DAGs
+- ✅ 55+ source files (Python, SQL, YAML, Markdown)
+- ✅ Complete Docker infrastructure (15+ services)
+- ✅ 7 production Airflow DAGs
 - ✅ 4 dbt mart models
 - ✅ XGBoost ML model
+- ✅ LangGraph AI Agent + RAG pipeline
+- ✅ AI Admin Control Panel (Flask)
 - ✅ Monitoring dashboards
 - ✅ Comprehensive documentation
 
@@ -230,13 +263,13 @@ Use these on your resume:
 
 ## 📊 Project Stats
 
-- **Total Files**: 49+
-- **Lines of Code**: ~5,000+
-- **Docker Services**: 15
-- **Airflow DAGs**: 6
+- **Total Files**: 55+
+- **Lines of Code**: ~6,000+
+- **Docker Services**: 15+
+- **Airflow DAGs**: 7
 - **dbt Models**: 7 (3 staging + 4 marts)
 - **Data Volumes**: 10M+ events
-- **Documentation Pages**: 4
+- **Documentation Pages**: 4+
 
 ---
 

@@ -22,9 +22,11 @@ data/synthetic/*.json
 *.parquet
 *.csv
 
-# Secrets
+# Secrets — keep .env.example tracked but ignore everything else
 .env
-.env.*
+.env.local
+.env.*.local
+!.env.example
 *.pem
 *.key
 secrets/
@@ -59,3 +61,7 @@ dbt/logs/
 ml/models/*.pkl
 ml/models/*.joblib
 ml/models/*.h5
+
+# Local / dev-only files
+requirements-local.txt
+pyrightconfig.json

@@ -10,11 +10,17 @@ Get the platform running in 30 minutes.
 
 ## 5-Step Setup
 
-### Step 1: Clone and Start Infrastructure (5 min)
+### Step 1: Clone and Configure Environment (5 min)
 
 ```bash
 git clone https://github.com/ark5234/Customer360-Data-Platform.git
 cd Customer360-Data-Platform
+
+# Copy and configure your environment variables
+cp .env.example .env
+# Edit .env and set your GOOGLE_API_KEY
+
+# Start all Docker services
 docker-compose up -d
 ```
 
@@ -68,13 +74,17 @@ docker exec spark-master spark-submit \
 | **MinIO** | http://localhost:9001 | customer360 / customer360secret |
 | **Grafana** | http://localhost:3000 | admin / admin |
 | **Superset** | http://localhost:8088 | admin / admin |
+| **Qdrant UI** | http://localhost:6333/dashboard | — |
+| **Admin AI Panel** | http://localhost:5000 | — |
 
 ## Next Steps
 
-1. Enable Airflow DAGs in the UI
+1. Enable Airflow DAGs in the UI (including `dag_llm_ingestion`)
 2. Run dbt transformations: `cd dbt && dbt run`
-3. Train ML model: `python ml/models/churn_predictor.py --train`
-4. View Grafana dashboards at http://localhost:3000
+3. Ingest warehouse data into Qdrant: `python llm/ingest_to_vectordb.py`
+4. Launch the AI Admin Panel: `python admin_panel/app.py`
+5. Train ML model: `python ml/models/churn_predictor.py --train`
+6. View Grafana dashboards at http://localhost:3000
 
 ## Troubleshooting
 

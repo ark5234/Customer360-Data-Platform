@@ -1,57 +1,64 @@
 # Customer360 Data Platform
 
-> A production-grade, real-time customer intelligence platform processing **10M+ streaming events** using Kafka, Spark Streaming, Airflow, PostgreSQL, dbt, and Docker.
+> A production-grade, real-time customer intelligence platform processing **10M+ streaming events** using Kafka, Spark Streaming, Airflow, PostgreSQL, dbt, Docker — with an integrated **LLM-powered AI Agent** for natural language data querying.
 
 ---
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     Customer360 Data Platform                        │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                       │
-│  ┌──────────────┐     ┌──────────────┐     ┌──────────────────────┐ │
-│  │   Synthetic  │     │    Olist     │     │   IBM Telco Churn    │ │
-│  │ Event Stream │     │  E-Commerce  │     │     (ML Dataset)     │ │
-│  │  (10M+ rows) │     │  (100k rows) │     │     (7k rows)        │ │
-│  └──────┬───────┘     └──────┬───────┘     └──────────┬───────────┘ │
-│         │                    │                          │             │
-│         ▼                    ▼                          ▼             │
-│  ┌──────────────┐     ┌──────────────┐     ┌──────────────────────┐ │
-│  │    Kafka     │     │  Batch ETL   │     │   Feature Store      │ │
-│  │   Cluster    │     │   (Airflow)  │     │   + ML Pipeline      │ │
-│  └──────┬───────┘     └──────┬───────┘     └──────────┬───────────┘ │
-│         │                    │                          │             │
-│         ▼                    │                          │             │
-│  ┌──────────────┐            │                          │             │
-│  │    Spark     │            │                          │             │
-│  │  Streaming   │            │                          │             │
-│  └──────┬───────┘            │                          │             │
-│         │                    │                          │             │
-│         ▼                    ▼                          │             │
-│  ┌─────────────────────────────────────────────────┐   │             │
-│  │              MinIO Data Lake                     │   │             │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────────┐  │   │             │
-│  │  │  Bronze  │→ │  Silver  │→ │     Gold     │  │   │             │
-│  │  │  (Raw)   │  │(Cleaned) │  │  (Business)  │  │   │             │
-│  │  └──────────┘  └──────────┘  └──────────────┘  │   │             │
-│  └───────────────────────────┬─────────────────────┘   │             │
-│                               │                          │             │
-│                               ▼                          ▼             │
-│                    ┌──────────────────────────────────────────────┐   │
-│                    │          PostgreSQL Warehouse                  │   │
-│                    │  fact_orders │ fact_sessions │ fact_txns      │   │
-│                    │  dim_customer │ dim_product │ dim_region      │   │
-│                    └───────────────────┬──────────────────────────┘   │
-│                                        │                               │
-│                          ┌─────────────┼─────────────┐                │
-│                          ▼             ▼              ▼                │
-│                    ┌──────────┐ ┌──────────┐ ┌──────────────┐        │
-│                    │   dbt    │ │ Superset │ │  Prometheus  │        │
-│                    │ Models   │ │Dashboard │ │  + Grafana   │        │
-│                    └──────────┘ └──────────┘ └──────────────┘        │
-└─────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────┐
+│                      Customer360 Data Platform                            │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  ┌──────────────┐     ┌──────────────┐     ┌──────────────────────────┐ │
+│  │   Synthetic  │     │    Olist     │     │   IBM Telco Churn        │ │
+│  │ Event Stream │     │  E-Commerce  │     │     (ML Dataset)         │ │
+│  │  (10M+ rows) │     │  (100k rows) │     │     (7k rows)            │ │
+│  └──────┬───────┘     └──────┬───────┘     └──────────┬───────────────┘ │
+│         │                    │                          │                  │
+│         ▼                    ▼                          ▼                  │
+│  ┌──────────────┐     ┌──────────────┐     ┌──────────────────────────┐ │
+│  │    Kafka     │     │  Batch ETL   │     │   Feature Store          │ │
+│  │   Cluster    │     │   (Airflow)  │     │   + ML Pipeline          │ │
+│  └──────┬───────┘     └──────┬───────┘     └──────────┬───────────────┘ │
+│         │                    │                          │                  │
+│         ▼                    │                          │                  │
+│  ┌──────────────┐            │                          │                  │
+│  │    Spark     │            │                          │                  │
+│  │  Streaming   │            │                          │                  │
+│  └──────┬───────┘            │                          │                  │
+│         │                    │                          │                  │
+│         ▼                    ▼                          │                  │
+│  ┌─────────────────────────────────────────────────┐   │                  │
+│  │              MinIO Data Lake                     │   │                  │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────────┐  │   │                  │
+│  │  │  Bronze  │→ │  Silver  │→ │     Gold     │  │   │                  │
+│  │  │  (Raw)   │  │(Cleaned) │  │  (Business)  │  │   │                  │
+│  │  └──────────┘  └──────────┘  └──────────────┘  │   │                  │
+│  └───────────────────────────┬─────────────────────┘   │                  │
+│                               │                          │                  │
+│                               ▼                          ▼                  │
+│                    ┌──────────────────────────────────────────────────┐   │
+│                    │          PostgreSQL Warehouse                      │   │
+│                    │  fact_orders │ fact_sessions │ fact_txns          │   │
+│                    │  dim_customer │ dim_product │ dim_region          │   │
+│                    └───────────────────┬──────────────────────────────┘   │
+│                                        │                                    │
+│                          ┌─────────────┼─────────────┐                    │
+│                          ▼             ▼              ▼                    │
+│                    ┌──────────┐ ┌──────────┐ ┌──────────────┐            │
+│                    │   dbt    │ │ Superset │ │  Prometheus  │            │
+│                    │ Models   │ │Dashboard │ │  + Grafana   │            │
+│                    └──────────┘ └──────────┘ └──────────────┘            │
+│                                        │                                    │
+│                                        ▼                                    │
+│                    ┌──────────────────────────────────────────────────┐   │
+│                    │          LLM / RAG Layer (NEW)                    │   │
+│                    │  Gemini Flash → LangChain → Qdrant VectorDB       │   │
+│                    │  AI Agent + Admin Control Panel (Flask)            │   │
+│                    └──────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -68,6 +75,9 @@
 | Transformations | dbt-core |
 | Analytics | Apache Superset / Power BI |
 | ML | XGBoost, scikit-learn, MLflow |
+| LLM / RAG | Google Gemini Flash, LangChain, Qdrant |
+| AI Agent | LangGraph ReAct Agent |
+| Admin Panel | Flask (Admin Control Panel) |
 | Monitoring | Prometheus + Grafana |
 | Containerization | Docker + Docker Compose |
 | Language | Python 3.11 |
@@ -77,32 +87,39 @@
 ## Project Structure
 
 ```
-customer360-data-platform/
+Customer360-Data-Platform/
 ├── producer/               # Kafka event producers
 │   ├── event_generator.py  # 10M+ synthetic event generation
 │   ├── kafka_producer.py   # Kafka publisher
 │   └── schemas.py          # Pydantic event schemas
 ├── consumer/               # Kafka consumers
+│   └── kafka_consumer.py   # Bronze layer writer
 ├── spark_jobs/             # Spark Streaming jobs
 │   ├── streaming_processor.py
 │   ├── aggregations.py
 │   └── data_quality.py
 ├── airflow/
-│   └── dags/              # 6 orchestration DAGs
-├── dbt/                   # Transformation models
+│   └── dags/               # 7 orchestration DAGs (incl. LLM ingestion)
+├── dbt/                    # Transformation models
 │   ├── models/
-│   │   ├── staging/       # Raw → Staging
-│   │   ├── intermediate/  # Business logic
-│   │   └── marts/         # Analytics-ready
+│   │   ├── staging/        # Raw → Staging
+│   │   ├── intermediate/   # Business logic
+│   │   └── marts/          # Analytics-ready
 ├── warehouse/
-│   └── migrations/        # PostgreSQL DDL scripts
+│   └── migrations/         # PostgreSQL DDL scripts
 ├── ml/
-│   ├── features/          # Feature engineering
-│   └── models/            # Churn prediction
+│   ├── features/           # Feature engineering
+│   └── models/             # Churn prediction
+├── llm/                    # LLM / RAG pipeline (NEW)
+│   └── ingest_to_vectordb.py  # Ingests warehouse data → Qdrant
+├── admin_panel/            # AI-powered Admin Control Panel (NEW)
+│   ├── app.py              # Flask application
+│   └── agent/              # LangGraph ReAct agent + tools
 ├── monitoring/
 │   ├── prometheus/
 │   └── grafana/
 ├── docker-compose.yml
+├── .env.example            # Environment variable template
 ├── requirements.txt
 └── README.md
 ```
@@ -116,13 +133,15 @@ customer360-data-platform/
 - Docker Desktop (16GB RAM recommended)
 - Python 3.11+
 - Git
+- Google AI Studio API Key (free at [aistudio.google.com](https://aistudio.google.com/apikey))
 
 ### 1. Clone & Configure
 
 ```bash
-git clone https://github.com/yourusername/customer360-data-platform
-cd customer360-data-platform
+git clone https://github.com/ark5234/Customer360-Data-Platform.git
+cd Customer360-Data-Platform
 cp .env.example .env
+# Edit .env and add your GOOGLE_API_KEY
 ```
 
 ### 2. Start Infrastructure
@@ -142,7 +161,8 @@ Services start on:
 | Grafana | http://localhost:3000 | admin / admin |
 | Superset | http://localhost:8088 | admin / admin |
 | Prometheus | http://localhost:9090 | — |
-| **Admin Control Panel** | **http://localhost:5000** | **—** |
+| Qdrant UI | http://localhost:6333/dashboard | — |
+| **Admin AI Panel** | **http://localhost:5000** | **—** |
 
 ### 3. Generate Synthetic Data
 
@@ -175,6 +195,7 @@ Navigate to http://localhost:8081 and enable:
 - `dag_gold_to_warehouse`
 - `dag_feature_engineering`
 - `dag_model_retraining`
+- `dag_llm_ingestion` *(ingests warehouse data into Qdrant for RAG)*
 
 ### 7. Run dbt Transformations
 
@@ -183,6 +204,19 @@ cd dbt
 dbt deps
 dbt run
 dbt test
+```
+
+### 8. Ingest Data into Qdrant (RAG)
+
+```bash
+python llm/ingest_to_vectordb.py
+```
+
+### 9. Launch AI Admin Panel
+
+```bash
+python admin_panel/app.py
+# Visit http://localhost:5000
 ```
 
 ---
@@ -206,6 +240,22 @@ fact_orders ──── dim_customer
      │       ──── dim_time
 fact_sessions
 fact_transactions
+```
+
+### LLM / RAG Pipeline
+
+```
+PostgreSQL Warehouse
+    ↓  (ingest_to_vectordb.py / Airflow DAG)
+Qdrant VectorDB (customer docs, metrics, KPIs)
+    ↓
+LangChain Retriever
+    ↓
+Google Gemini Flash LLM
+    ↓
+LangGraph ReAct Agent (tools: SQL query, Qdrant search, metrics)
+    ↓
+Admin Panel Chat UI (http://localhost:5000)
 ```
 
 ---
@@ -232,12 +282,42 @@ fact_transactions
 • Designed dimensional warehouse models and dbt transformation workflows powering
   customer retention, revenue, and product analytics dashboards
 
+• Implemented a RAG-based AI agent using Google Gemini Flash, LangChain, LangGraph,
+  and Qdrant VectorDB enabling natural-language querying of 10M+ customer events
+
 • Implemented observability using Prometheus and Grafana while generating ML-ready
-  feature stores for downstream churn prediction models
+  feature stores for downstream XGBoost churn prediction models (AUC-ROC 0.85+)
 ```
+
+---
+
+## Environment Variables
+
+Copy `.env.example` to `.env` and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+> ⚠️ **Never commit `.env` to git.** It is listed in `.gitignore`. Only `.env.example` (with placeholder values) should be tracked.
+
+Key variables to set:
+
+| Variable | Description |
+|----------|-------------|
+| `GOOGLE_API_KEY` | Google AI Studio API key for Gemini LLM |
+| `POSTGRES_PASSWORD` | PostgreSQL password (default: `customer360secret`) |
+| `MINIO_SECRET_KEY` | MinIO secret key (default: `customer360secret`) |
+| `QDRANT_URL` | Qdrant endpoint (default: `http://localhost:6333`) |
 
 ---
 
 ## License
 
 MIT
+
+---
+
+**GitHub**: https://github.com/ark5234/Customer360-Data-Platform
+
+**Built with 💙 by [ark5234](https://github.com/ark5234)**

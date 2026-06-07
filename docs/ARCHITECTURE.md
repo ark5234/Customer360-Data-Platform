@@ -250,19 +250,50 @@ dag_kafka_to_bronze → dag_bronze_to_silver → dag_silver_to_gold → dag_gold
 
 ---
 
+### 10. LLM / RAG Layer
+
+#### Google Gemini Flash (LLM)
+- **Model**: `gemini-2.0-flash` via Google AI Studio API
+- **Integration**: LangChain `ChatGoogleGenerativeAI`
+- **Purpose**: Natural-language question answering over warehouse data
+
+#### Qdrant Vector Database
+- **Endpoint**: `http://localhost:6333`
+- **Collection**: `customer360` (customer profiles, metrics, KPIs)
+- **Embeddings**: Google `text-embedding-004` model
+- **Ingestion**: `llm/ingest_to_vectordb.py` + Airflow `dag_llm_ingestion`
+
+#### LangGraph ReAct Agent
+- **Framework**: LangGraph (stateful agent graph)
+- **Tools**:
+  - `query_postgres` — executes SQL against the warehouse
+  - `search_qdrant` — semantic search over customer vectors
+  - `get_pipeline_metrics` — Airflow DAG status, Kafka lag
+- **Reasoning**: ReAct loop (Reason → Act → Observe → Respond)
+
+#### Admin Control Panel (Flask)
+- **URL**: http://localhost:5000
+- **Interface**: Chat UI for natural-language data queries
+- **Backend**: Flask + LangGraph agent
+- **Use Cases**: "Show top 10 customers by LTV", "What is the churn rate this month?"
+
+---
+
 ## Data Flow
 
 ```
-1. Event Generator → data/synthetic/*.parquet (10M events)
-2. Kafka Producer → Kafka Topics (6 topics, 3-6 partitions each)
-3. Spark Streaming → MinIO Bronze (raw Parquet, partitioned by topic/date/hour)
-4. Airflow Bronze→Silver DAG → MinIO Silver (cleaned Parquet, partitioned by event_type/date)
-5. Airflow Silver→Gold DAG → MinIO Gold (aggregated: revenue_by_region, customer_360, product_performance)
-6. Airflow Gold→Warehouse DAG → PostgreSQL (upserts to dim_customer, fact_orders, revenue_metrics)
-7. dbt → PostgreSQL marts (LTV, retention, monthly_revenue, product_analytics)
-8. Airflow Feature Engineering DAG → PostgreSQL feature_store
-9. Airflow Model Retraining DAG → XGBoost → PostgreSQL customer_churn_scores
+1.  Event Generator → data/synthetic/*.parquet (10M events)
+2.  Kafka Producer → Kafka Topics (6 topics, 3-6 partitions each)
+3.  Spark Streaming → MinIO Bronze (raw Parquet, partitioned by topic/date/hour)
+4.  Airflow Bronze→Silver DAG → MinIO Silver (cleaned Parquet, partitioned by event_type/date)
+5.  Airflow Silver→Gold DAG → MinIO Gold (aggregated: revenue_by_region, customer_360, product_performance)
+6.  Airflow Gold→Warehouse DAG → PostgreSQL (upserts to dim_customer, fact_orders, revenue_metrics)
+7.  dbt → PostgreSQL marts (LTV, retention, monthly_revenue, product_analytics)
+8.  Airflow Feature Engineering DAG → PostgreSQL feature_store
+9.  Airflow Model Retraining DAG → XGBoost → PostgreSQL customer_churn_scores
 10. Superset/Grafana → Dashboards (consume from PostgreSQL + Prometheus)
+11. Airflow LLM Ingestion DAG → Qdrant VectorDB (customer profiles + KPIs embedded)
+12. LangGraph ReAct Agent → Admin Panel (http://localhost:5000) → Natural-language query responses
 ```
 
 ---
