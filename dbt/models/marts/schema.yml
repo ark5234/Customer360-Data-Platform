@@ -13,7 +13,8 @@ models:
         description: "LTV segment based on 12-month spend"
         tests:
           - accepted_values:
-              values: ['platinum', 'gold', 'silver', 'bronze']
+              arguments:
+                values: ['platinum', 'gold', 'silver', 'bronze']
       - name: ltv_score
         tests: [not_null]
 

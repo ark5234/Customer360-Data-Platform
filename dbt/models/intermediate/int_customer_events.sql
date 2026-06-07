@@ -10,7 +10,7 @@ WITH base_events AS (
         event_type,
         event_timestamp::DATE       AS event_date,
         event_timestamp::TIMESTAMP  AS event_ts
-    FROM {{ source('warehouse', 'raw_events') }}
+    FROM {{ source('raw', 'raw_events') }}
     WHERE customer_id IS NOT NULL
 ),
 

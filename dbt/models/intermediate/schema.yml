@@ -34,12 +34,14 @@ models:
         description: "Recency classification: active | at_risk | lapsed | churned"
         tests:
           - accepted_values:
-              values: ['active', 'at_risk', 'lapsed', 'churned']
+              arguments:
+                values: ['active', 'at_risk', 'lapsed', 'churned']
       - name: value_tier
         description: "LTV tier: platinum | gold | silver | bronze"
         tests:
           - accepted_values:
-              values: ['platinum', 'gold', 'silver', 'bronze']
+              arguments:
+                values: ['platinum', 'gold', 'silver', 'bronze']
 
   - name: int_customer_events
     description: >
