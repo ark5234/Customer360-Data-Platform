@@ -1,0 +1,94 @@
+{
+  "expectation_suite_name": "customer360_silver_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "customer_id" },
+      "meta": { "rule": "null_check", "severity": "critical", "description": "customer_id must never be null" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "event_type" },
+      "meta": { "rule": "null_check", "severity": "critical", "description": "event_type must never be null" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "event_timestamp" },
+      "meta": { "rule": "null_check", "severity": "critical", "description": "event_timestamp must never be null" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "event_id" },
+      "meta": { "rule": "null_check", "severity": "critical", "description": "event_id must never be null" }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": { "column": "customer_id" },
+      "meta": { "rule": "schema_check", "severity": "critical" }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": { "column": "event_type" },
+      "meta": { "rule": "schema_check", "severity": "critical" }
+    },
+    {
+      "expectation_type": "expect_table_columns_to_match_set",
+      "kwargs": {
+        "column_set": [
+          "event_id", "customer_id", "event_type",
+          "event_timestamp", "session_id", "device",
+          "region", "total_amount", "dq_passed"
+        ],
+        "exact_match": false
+      },
+      "meta": { "rule": "schema_check", "severity": "warning", "description": "Silver layer must contain all required columns" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": { "column": "event_id" },
+      "meta": { "rule": "duplicate_detection", "severity": "warning", "description": "event_id must be unique — detects duplicate events" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "event_type",
+        "value_set": [
+          "LOGIN", "LOGOUT", "PRODUCT_VIEW", "SEARCH",
+          "ADD_TO_CART", "PURCHASE", "REFUND",
+          "SUBSCRIPTION", "PAYMENT_FAILURE"
+        ]
+      },
+      "meta": { "rule": "domain_check", "severity": "critical", "description": "event_type must be one of 9 known types" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "device",
+        "value_set": ["Mobile", "Desktop", "Tablet"]
+      },
+      "meta": { "rule": "domain_check", "severity": "warning", "description": "device must be Mobile, Desktop, or Tablet" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "total_amount",
+        "min_value": 0,
+        "max_value": 1000000,
+        "mostly": 0.999
+      },
+      "meta": { "rule": "range_check", "severity": "warning", "description": "total_amount must be between 0 and 1,000,000 (99.9% of rows)" }
+    },
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": { "min_value": 1, "max_value": 50000000 },
+      "meta": { "rule": "volume_check", "severity": "info", "description": "Batch row count sanity check" }
+    }
+  ],
+  "meta": {
+    "great_expectations_version": "0.18.x",
+    "description": "Customer360 Silver-layer validation suite — 12 expectations covering null checks, schema validation, duplicate detection, and domain/range checks",
+    "layer": "silver",
+    "dataset": "customer_events",
+    "owner": "data-engineering"
+  }
+}

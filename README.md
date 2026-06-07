@@ -74,6 +74,9 @@
 | Data Warehouse | PostgreSQL 15 |
 | Transformations | dbt-core |
 | Analytics | Apache Superset / Power BI |
+| Data Quality | **Great Expectations** + Custom Spark DQ Engine |
+| Data Lineage | **DataHub** (OpenMetadata-compatible) |
+| CI/CD | **GitHub Actions** (pytest, ruff, dbt, docker) |
 | ML | XGBoost, scikit-learn, MLflow |
 | LLM / RAG | Google Gemini Flash, LangChain, Qdrant |
 | AI Agent | LangGraph ReAct Agent |
@@ -102,11 +105,20 @@ Customer360-Data-Platform/
 │   └── dags/               # 7 orchestration DAGs (incl. LLM ingestion)
 ├── dbt/                    # Transformation models
 │   ├── models/
-│   │   ├── staging/        # Raw → Staging
+│   │   ├── staging/        # Raw → Staging (3 models)
 │   │   ├── intermediate/   # Business logic
-│   │   └── marts/          # Analytics-ready
+│   │   └── marts/          # Analytics-ready (4 models)
 ├── warehouse/
 │   └── migrations/         # PostgreSQL DDL scripts
+├── data_quality/           # Great Expectations suite (NEW)
+│   ├── ge_suite.py         # GE checkpoint runner
+│   └── expectations/       # 12-rule expectation suite JSON
+├── lineage/                # DataHub lineage publisher (NEW)
+│   └── publish_lineage.py  # Emits pipeline lineage
+├── tests/                  # Pytest unit tests (NEW)
+│   ├── test_data_quality.py
+│   ├── test_event_schemas.py
+│   └── test_ge_suite.py
 ├── ml/
 │   ├── features/           # Feature engineering
 │   └── models/             # Churn prediction
@@ -162,6 +174,7 @@ Services start on:
 | Superset | http://localhost:8088 | admin / admin |
 | Prometheus | http://localhost:9090 | — |
 | Qdrant UI | http://localhost:6333/dashboard | — |
+| DataHub (Lineage)| http://localhost:9002 | datahub / datahub |
 | **Admin AI Panel** | **http://localhost:5000** | **—** |
 
 ### 3. Generate Synthetic Data
@@ -226,8 +239,8 @@ python admin_panel/app.py
 ### Medallion Architecture (Data Lake)
 
 ```
-Bronze  →  Raw Kafka events (JSON, partitioned by date/hour)
-Silver  →  Cleaned, deduplicated, schema-validated Parquet
+Bronze  →  Raw Kafka events (JSON, partitioned by topic/date/hour)
+Silver  →  Cleaned, GE-validated Parquet (12-rule Great Expectations suite)
 Gold    →  Business aggregates, customer 360 views, KPIs
 ```
 
@@ -279,14 +292,22 @@ Admin Panel Chat UI (http://localhost:5000)
 • Built distributed ETL pipelines with automated orchestration, schema validation, and
   medallion architecture (Bronze/Silver/Gold) data lake design
 
-• Designed dimensional warehouse models and dbt transformation workflows powering
-  customer retention, revenue, and product analytics dashboards
+• Implemented dual-layer data quality: Great Expectations for batch validation (12 rules)
+  + custom Spark DQ engine for streaming — achieving 99.8%+ pass rate
+
+• Integrated DataHub to emit end-to-end data lineage across 10 pipeline stages, providing
+  full traceability from synthetic event generation to dbt marts
+
+• Automated testing and deployment with GitHub Actions CI/CD pipelines (pytest, ruff, dbt, docker)
+
+• Designed dimensional warehouse models (100k+ records) and dbt transformation workflows
+  powering customer retention, revenue, and product analytics dashboards
 
 • Implemented a RAG-based AI agent using Google Gemini Flash, LangChain, LangGraph,
   and Qdrant VectorDB enabling natural-language querying of 10M+ customer events
 
-• Implemented observability using Prometheus and Grafana while generating ML-ready
-  feature stores for downstream XGBoost churn prediction models (AUC-ROC 0.85+)
+• Implemented observability using Prometheus and Grafana (50+ metrics) while generating ML-ready
+  feature stores for downstream XGBoost churn prediction models (AUC-ROC 0.87)
 ```
 
 ---

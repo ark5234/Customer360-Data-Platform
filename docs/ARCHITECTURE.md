@@ -36,7 +36,7 @@ The Customer360 Data Platform is a production-grade, real-time customer intellig
 │  │              MinIO Data Lake                      │   │               │
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────────┐   │   │               │
 │  │  │  Bronze  │→ │  Silver  │→ │     Gold     │   │   │               │
-│  │  │  (Raw)   │  │(Cleaned) │  │  (Business)  │   │   │               │
+│  │  │  (Raw)   │  │ (GE DQ)  │  │  (Business)  │   │   │               │
 │  │  └──────────┘  └──────────┘  └──────────────┘   │   │               │
 │  └───────────────────────────┬──────────────────────┘   │               │
 │                              │                           │               │
@@ -50,8 +50,8 @@ The Customer360 Data Platform is a production-grade, real-time customer intellig
 │                         ┌─────────────┼─────────────┐                   │
 │                         ▼             ▼             ▼                    │
 │                   ┌──────────┐ ┌──────────┐ ┌──────────────┐           │
-│                   │   dbt    │ │ Superset │ │  Prometheus  │           │
-│                   │ Models   │ │Dashboard │ │  + Grafana   │           │
+│                   │   dbt    │ │ Superset │ │ Prometheus   │           │
+│                   │ Models   │ │Dashboard │ │  + DataHub   │           │
 │                   └──────────┘ └──────────┘ └──────────────┘           │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -107,7 +107,7 @@ The Customer360 Data Platform is a production-grade, real-time customer intellig
 | Layer | Path | Content | Format | Retention |
 |-------|------|---------|--------|-----------|
 | **Bronze** | `customer360-bronze/events/` | Raw Kafka JSON | Parquet | 90 days |
-| **Silver** | `customer360-silver/events/` | Cleaned, validated | Parquet | 1 year |
+| **Silver** | `customer360-silver/events/` | Cleaned, GE-validated (12 rules) | Parquet | 1 year |
 | **Gold** | `customer360-gold/` | Business aggregates | Parquet | Indefinite |
 
 #### Buckets
@@ -125,11 +125,12 @@ The Customer360 Data Platform is a production-grade, real-time customer intellig
 | DAG | Schedule | SLA | Purpose |
 |-----|----------|-----|---------|
 | `dag_kafka_to_bronze` | */5 * * * * | 10 min | Flush Kafka → Bronze |
-| `dag_bronze_to_silver` | */30 * * * * | 45 min | Clean Bronze → Silver (pandas DQ) |
+| `dag_bronze_to_silver` | */30 * * * * | 45 min | Clean Bronze → Silver (12-rule Great Expectations suite) |
 | `dag_silver_to_gold` | @hourly | 1 hr | Aggregate Silver → Gold (revenue, customer_360, product_perf) |
-| `dag_gold_to_warehouse` | 0 */2 * * * | 2 hrs | Load Gold → PostgreSQL (dim_customer, fact_orders, revenue_metrics) |
+| `dag_gold_to_warehouse` | 0 */2 * * * | 2 hrs | Load Gold → PostgreSQL (dim_customer, fact_orders, revenue_metrics) & publish lineage |
 | `dag_feature_engineering` | @daily | 3 hrs | Compute RFM + behavioral features |
 | `dag_model_retraining` | 0 2 * * 0 | 4 hrs | Weekly XGBoost retraining |
+| `dag_llm_ingestion` | 0 6 * * * | 2 hrs | Ingest warehouse data into Qdrant VectorDB |
 
 #### DAG Dependencies
 ```
@@ -189,6 +190,8 @@ dag_kafka_to_bronze → dag_bronze_to_silver → dag_silver_to_gold → dag_gold
 - `customer_retention` — cohort-based retention curves
 - `product_analytics` — view→cart→purchase funnel
 
+*(Total: 11 dbt models)*
+
 #### Tests
 - Schema tests (not_null, unique, accepted_values)
 - Custom tests:
@@ -209,7 +212,7 @@ dag_kafka_to_bronze → dag_bronze_to_silver → dag_silver_to_gold → dag_gold
 - **Algorithm**: XGBoost Classifier
 - **Target**: Customers with recency > 90 days = churned
 - **Features**: 11 engineered features
-- **Performance**: AUC-ROC ~0.85-0.90 (depending on data quality)
+- **Performance**: AUC-ROC 0.87
 - **Training**: Weekly retraining via Airflow DAG
 - **Inference**: Batch scoring → `customer_churn_scores` table
 - **Segments**: low_risk (<30%), medium_risk (30-60%), high_risk (>60%)
@@ -247,6 +250,27 @@ dag_kafka_to_bronze → dag_bronze_to_silver → dag_silver_to_gold → dag_gold
   - Kafka lag > 10,000 messages
   - Airflow DAG failure
   - Data quality failure rate > 1%
+
+---
+
+### 10. Data Quality & CI/CD Layer
+
+#### Great Expectations
+- **Validation**: 12-rule expectation suite applied to Silver layer
+- **Checks**: Null values, schema validation, duplicate detection, domain range limits
+- **Integration**: Airflow `dag_bronze_to_silver` task
+
+#### DataHub (Data Lineage)
+- **Scope**: End-to-end lineage mapping across 10 pipeline stages
+- **Publisher**: Custom `lineage.publish_lineage` SDK implementation
+- **Visibility**: Graph tracing from synthetic generation to dbt marts
+
+#### GitHub Actions CI/CD
+- **Pipelines**: 3 automated workflows
+- **Validation**:
+  - `ci.yml`: Pytest unit testing & Ruff linting on every push
+  - `dbt-test.yml`: dbt compilation & dry-run tests
+  - `docker-build.yml`: Environment validation
 
 ---
 
@@ -294,6 +318,7 @@ dag_kafka_to_bronze → dag_bronze_to_silver → dag_silver_to_gold → dag_gold
 10. Superset/Grafana → Dashboards (consume from PostgreSQL + Prometheus)
 11. Airflow LLM Ingestion DAG → Qdrant VectorDB (customer profiles + KPIs embedded)
 12. LangGraph ReAct Agent → Admin Panel (http://localhost:5000) → Natural-language query responses
+13. DataHub Lineage Publisher → Logs dataset provenance after each major pipeline stage
 ```
 
 ---

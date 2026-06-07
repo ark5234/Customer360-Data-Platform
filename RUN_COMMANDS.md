@@ -15,8 +15,11 @@ cd Customer360-Data-Platform
 cp .env.example .env
 # Edit .env: set GOOGLE_API_KEY and any other values
 
-# Start all Docker services
+# Start all Docker services (default)
 docker-compose up -d
+
+# OR Start with DataHub lineage tracking enabled (requires ~6GB RAM)
+docker-compose --profile lineage up -d
 
 # Wait for services to be healthy (2-3 minutes)
 docker-compose ps
@@ -132,6 +135,35 @@ dbt test
 # Generate and serve documentation
 dbt docs generate
 dbt docs serve
+```
+
+---
+
+## Testing & Data Quality
+
+```bash
+# Run pytest unit tests (Event Schemas, GE Suite configuration)
+pytest tests/ -v
+
+# Run Python linter (ruff)
+ruff check .
+
+# Manually execute Great Expectations suite locally (pandas-based validation)
+python data_quality/ge_suite.py
+```
+
+---
+
+## Data Lineage (DataHub)
+
+*(Requires starting docker-compose with `--profile lineage`)*
+
+```bash
+# Publish end-to-end lineage mapping to DataHub
+python lineage/publish_lineage.py --stage all
+
+# Preview lineage mapping (dry-run without DataHub connection)
+python lineage/publish_lineage.py --dry-run
 ```
 
 ---
@@ -427,6 +459,7 @@ docker exec postgres psql -U customer360 -d customer360_warehouse -c "SELECT COU
 | Superset | http://localhost:8088 | admin / admin |
 | Prometheus | http://localhost:9090 | — |
 | Qdrant UI | http://localhost:6333/dashboard | — |
+| DataHub (Lineage) | http://localhost:9002 | datahub / datahub |
 | Admin AI Panel | http://localhost:5000 | — |
 | Producer Metrics | http://localhost:8000/metrics | — |
 

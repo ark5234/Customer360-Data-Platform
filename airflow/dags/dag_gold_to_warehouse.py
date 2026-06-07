@@ -257,6 +257,27 @@ with DAG(
         conn.close()
         print(f"Revenue metrics loaded: {len(df)} region-month rows")
 
+    def publish_lineage(**context):
+        """
+        Publish pipeline lineage to DataHub after warehouse load completes.
+        Non-critical: failures are logged but do not block the pipeline.
+        DataHub must be running (docker compose --profile lineage up -d).
+        """
+        import os
+        import sys
+        sys.path.insert(0, "/opt/airflow")
+
+        try:
+            from lineage.publish_lineage import publish_stage_lineage
+            datahub_url = os.getenv("DATAHUB_GMS_URL", "http://datahub-gms:8085")
+            ok = publish_stage_lineage("gold_to_warehouse", gms_url=datahub_url)
+            if ok:
+                print("✓ DataHub lineage published for gold_to_warehouse")
+            else:
+                print("⚠ DataHub lineage skipped (DataHub not running — start with --profile lineage)")
+        except Exception as e:
+            print(f"⚠ Lineage publication skipped: {e}")
+
     t_dim_customer = PythonOperator(
         task_id="load_dim_customer", python_callable=load_dim_customer
     )
@@ -266,5 +287,10 @@ with DAG(
     t_revenue = PythonOperator(
         task_id="load_revenue_metrics", python_callable=load_revenue_metrics
     )
+    t_lineage = PythonOperator(
+        task_id="publish_datahub_lineage",
+        python_callable=publish_lineage,
+    )
 
-    t_dim_customer >> t_fact_orders >> t_revenue
+    t_dim_customer >> t_fact_orders >> t_revenue >> t_lineage
+
