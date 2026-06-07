@@ -24,10 +24,11 @@ def test_valid_login_event():
         ip_address="192.168.1.1",
         user_agent="Mozilla/5.0",
         login_method="password",
-        success=True
+        success=True,
     )
     assert event.event_type == "LOGIN"
     assert event.device == "Mobile"
+
 
 def test_valid_purchase_event():
     """Test valid purchase event schema."""
@@ -48,10 +49,11 @@ def test_valid_purchase_event():
         discount_amount=10.0,
         tax_amount=5.50,
         items_count=2,
-        payment_method="upi"
+        payment_method="upi",
     )
     assert event.event_type == "PURCHASE"
     assert event.total_amount == 100.50
+
 
 def test_invalid_event():
     """Test invalid event schema raises error."""

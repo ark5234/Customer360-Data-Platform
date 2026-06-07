@@ -179,7 +179,9 @@ with DAG(
         try:
             from data_quality.ge_suite import run_ge_validation
         except ImportError:
-            print("WARNING: data_quality.ge_suite not available — skipping GE validation")
+            print(
+                "WARNING: data_quality.ge_suite not available — skipping GE validation"
+            )
             return
 
         # Pull silver path from upstream task
@@ -192,6 +194,7 @@ with DAG(
             return
 
         from minio import Minio
+
         client = Minio(
             "minio:9000",
             access_key="customer360",
@@ -218,7 +221,9 @@ with DAG(
         # Push to XCom for monitoring
         context["task_instance"].xcom_push(key="ge_passed", value=summary["passed"])
         context["task_instance"].xcom_push(key="ge_failed", value=summary["failed"])
-        context["task_instance"].xcom_push(key="ge_pass_rate", value=summary["pass_rate"])
+        context["task_instance"].xcom_push(
+            key="ge_pass_rate", value=summary["pass_rate"]
+        )
         context["task_instance"].xcom_push(key="ge_success", value=summary["success"])
 
         # Raise if critical expectations failed
@@ -237,9 +242,12 @@ with DAG(
             )
             or 0
         )
-        ge_pass_rate = context["task_instance"].xcom_pull(
-            task_ids="run_great_expectations", key="ge_pass_rate"
-        ) or 0.0
+        ge_pass_rate = (
+            context["task_instance"].xcom_pull(
+                task_ids="run_great_expectations", key="ge_pass_rate"
+            )
+            or 0.0
+        )
 
         print(f"DQ Summary: {records:,} records written to silver")
         print(f"GE Suite pass rate: {ge_pass_rate:.1%}")
@@ -261,4 +269,3 @@ with DAG(
     t_dq = PythonOperator(task_id="run_dq_checks", python_callable=run_dq_checks)
 
     t_read >> t_clean >> t_ge >> t_dq
-

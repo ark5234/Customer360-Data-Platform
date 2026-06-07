@@ -19,8 +19,9 @@ ISSUES = [
     "Why was my credit card charged twice for order ORD-{order_id}?",
     "I did not receive the OTP for login.",
     "Can you suggest a good laptop under $1000?",
-    "I want to return the running shoes, they don't fit well."
+    "I want to return the running shoes, they don't fit well.",
 ]
+
 
 def generate_tickets(num_tickets: int = 500, output_file: str = "data/tickets.json"):
     tickets = []
@@ -29,14 +30,18 @@ def generate_tickets(num_tickets: int = 500, output_file: str = "data/tickets.js
         product_id = f"{random.randint(1, 50000):07d}"
         order_id = str(uuid.uuid4())[:8].upper()
 
-        issue_text = issue_template.replace("{product_id}", product_id).replace("{order_id}", order_id)
+        issue_text = issue_template.replace("{product_id}", product_id).replace(
+            "{order_id}", order_id
+        )
 
         ticket = {
             "ticket_id": f"TKT-{str(uuid.uuid4())[:8].upper()}",
             "customer_id": f"C{random.randint(1, 1000):07d}",
             "issue_text": issue_text,
             "status": random.choice(["open", "closed", "in_progress"]),
-            "created_at": (datetime.now() - timedelta(days=random.randint(0, 30))).isoformat()
+            "created_at": (
+                datetime.now() - timedelta(days=random.randint(0, 30))
+            ).isoformat(),
         }
         tickets.append(ticket)
 
@@ -44,6 +49,7 @@ def generate_tickets(num_tickets: int = 500, output_file: str = "data/tickets.js
     with open(output_file, "w") as f:
         json.dump(tickets, f, indent=2)
     print(f"Generated {num_tickets} support tickets in {output_file}")
+
 
 if __name__ == "__main__":
     generate_tickets()

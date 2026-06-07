@@ -12,26 +12,34 @@ def search_customer_tickets(query: str, k: int = 3) -> str:
     api_key = os.getenv("GOOGLE_API_KEY", "")
     if api_key:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
         embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
     else:
         from langchain_huggingface import HuggingFaceEmbeddings
+
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
     try:
         from qdrant_client import QdrantClient
+
         client = QdrantClient(url=qdrant_url)
-        qdrant = QdrantVectorStore(client=client, collection_name="support_tickets", embedding=embeddings)
+        qdrant = QdrantVectorStore(
+            client=client, collection_name="support_tickets", embedding=embeddings
+        )
         docs = qdrant.similarity_search(query, k=k)
         if not docs:
             return "No matching support tickets found."
 
         results = []
         for d in docs:
-            results.append(f"Ticket ID: {d.metadata.get('ticket_id')} | Status: {d.metadata.get('status')} | Issue: {d.page_content}")
+            results.append(
+                f"Ticket ID: {d.metadata.get('ticket_id')} | Status: {d.metadata.get('status')} | Issue: {d.page_content}"
+            )
         return "\n".join(results)
     except Exception as e:
         return f"Error connecting to VectorDB: {str(e)}"
+
 
 @tool
 def query_warehouse(sql_query: str) -> str:
@@ -54,5 +62,6 @@ def query_warehouse(sql_query: str) -> str:
         return result
     except Exception as e:
         return f"Error executing query: {str(e)}"
+
 
 TOOLS = [search_customer_tickets, query_warehouse]

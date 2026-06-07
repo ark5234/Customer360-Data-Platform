@@ -48,6 +48,7 @@ ENV = "PROD"
 # Dataset URN helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 def _urn(platform: str, name: str, env: str = ENV) -> str:
     """Build a DataHub dataset URN."""
     return f"urn:li:dataset:(urn:li:dataPlatform:{platform},{name},{env})"
@@ -56,37 +57,38 @@ def _urn(platform: str, name: str, env: str = ENV) -> str:
 # ── Dataset URNs for the Customer360 pipeline ────────────────────────────────
 DATASETS = {
     # Source data
-    "kafka_events":        _urn("kafka",    "customer360.events"),
-    "event_generator":     _urn("custom",   "customer360.synthetic_events"),
-
+    "kafka_events": _urn("kafka", "customer360.events"),
+    "event_generator": _urn("custom", "customer360.synthetic_events"),
     # Data Lake layers
-    "bronze_events":       _urn("minio",    "customer360-bronze/events"),
-    "silver_events":       _urn("minio",    "customer360-silver/events"),
-    "gold_customer_360":   _urn("minio",    "customer360-gold/customer_360"),
-    "gold_revenue":        _urn("minio",    "customer360-gold/revenue_by_region"),
-    "gold_products":       _urn("minio",    "customer360-gold/product_performance"),
-
+    "bronze_events": _urn("minio", "customer360-bronze/events"),
+    "silver_events": _urn("minio", "customer360-silver/events"),
+    "gold_customer_360": _urn("minio", "customer360-gold/customer_360"),
+    "gold_revenue": _urn("minio", "customer360-gold/revenue_by_region"),
+    "gold_products": _urn("minio", "customer360-gold/product_performance"),
     # Warehouse tables
-    "dim_customer":        _urn("postgres", "customer360_warehouse.public.dim_customer"),
-    "dim_product":         _urn("postgres", "customer360_warehouse.public.dim_product"),
-    "fact_orders":         _urn("postgres", "customer360_warehouse.public.fact_orders"),
-    "fact_transactions":   _urn("postgres", "customer360_warehouse.public.fact_transactions"),
-    "fact_sessions":       _urn("postgres", "customer360_warehouse.public.fact_sessions"),
-    "revenue_metrics":     _urn("postgres", "customer360_warehouse.public.revenue_metrics"),
-    "feature_store":       _urn("postgres", "customer360_warehouse.public.feature_store"),
-    "churn_scores":        _urn("postgres", "customer360_warehouse.public.customer_churn_scores"),
-
+    "dim_customer": _urn("postgres", "customer360_warehouse.public.dim_customer"),
+    "dim_product": _urn("postgres", "customer360_warehouse.public.dim_product"),
+    "fact_orders": _urn("postgres", "customer360_warehouse.public.fact_orders"),
+    "fact_transactions": _urn(
+        "postgres", "customer360_warehouse.public.fact_transactions"
+    ),
+    "fact_sessions": _urn("postgres", "customer360_warehouse.public.fact_sessions"),
+    "revenue_metrics": _urn("postgres", "customer360_warehouse.public.revenue_metrics"),
+    "feature_store": _urn("postgres", "customer360_warehouse.public.feature_store"),
+    "churn_scores": _urn(
+        "postgres", "customer360_warehouse.public.customer_churn_scores"
+    ),
     # dbt Marts
-    "mart_ltv":            _urn("dbt",      "customer360.marts.customer_lifetime_value"),
-    "mart_retention":      _urn("dbt",      "customer360.marts.customer_retention"),
-    "mart_revenue":        _urn("dbt",      "customer360.marts.monthly_revenue"),
-    "mart_products":       _urn("dbt",      "customer360.marts.product_analytics"),
-
+    "mart_ltv": _urn("dbt", "customer360.marts.customer_lifetime_value"),
+    "mart_retention": _urn("dbt", "customer360.marts.customer_retention"),
+    "mart_revenue": _urn("dbt", "customer360.marts.monthly_revenue"),
+    "mart_products": _urn("dbt", "customer360.marts.product_analytics"),
     # Qdrant (RAG)
-    "qdrant_customer360":  _urn("custom",   "qdrant.customer360"),
+    "qdrant_customer360": _urn("custom", "qdrant.customer360"),
 }
 
 # ── Pipeline stage definitions ────────────────────────────────────────────────
+
 
 class StageConfig(TypedDict):
     inputs: list[str]
@@ -94,27 +96,28 @@ class StageConfig(TypedDict):
     job_name: str
     description: str
 
+
 PIPELINE_STAGES: dict[str, StageConfig] = {
     "event_generation": {
-        "inputs":  [],
+        "inputs": [],
         "outputs": [DATASETS["event_generator"]],
         "job_name": "event_generator",
         "description": "Generates 10M+ synthetic customer events (Python + Faker)",
     },
     "kafka_ingest": {
-        "inputs":  [DATASETS["event_generator"]],
+        "inputs": [DATASETS["event_generator"]],
         "outputs": [DATASETS["kafka_events"]],
         "job_name": "kafka_producer",
         "description": "Publishes events to 6 Kafka topics at 5K events/sec",
     },
     "spark_bronze": {
-        "inputs":  [DATASETS["kafka_events"]],
+        "inputs": [DATASETS["kafka_events"]],
         "outputs": [DATASETS["bronze_events"]],
         "job_name": "spark_streaming_processor",
         "description": "Spark Structured Streaming: Kafka → MinIO Bronze (30s micro-batches)",
     },
     "bronze_to_silver": {
-        "inputs":  [DATASETS["bronze_events"]],
+        "inputs": [DATASETS["bronze_events"]],
         "outputs": [DATASETS["silver_events"]],
         "job_name": "dag_bronze_to_silver",
         "description": (
@@ -124,7 +127,7 @@ PIPELINE_STAGES: dict[str, StageConfig] = {
         ),
     },
     "silver_to_gold": {
-        "inputs":  [DATASETS["silver_events"]],
+        "inputs": [DATASETS["silver_events"]],
         "outputs": [
             DATASETS["gold_customer_360"],
             DATASETS["gold_revenue"],
@@ -134,7 +137,7 @@ PIPELINE_STAGES: dict[str, StageConfig] = {
         "description": "Airflow DAG: Aggregates Silver events → Gold business datasets. Hourly.",
     },
     "gold_to_warehouse": {
-        "inputs":  [
+        "inputs": [
             DATASETS["gold_customer_360"],
             DATASETS["gold_revenue"],
             DATASETS["gold_products"],
@@ -150,7 +153,7 @@ PIPELINE_STAGES: dict[str, StageConfig] = {
         "description": "Airflow DAG: Loads Gold → PostgreSQL star schema via upserts. Every 2hrs.",
     },
     "dbt_transforms": {
-        "inputs":  [
+        "inputs": [
             DATASETS["dim_customer"],
             DATASETS["fact_orders"],
             DATASETS["fact_transactions"],
@@ -166,19 +169,23 @@ PIPELINE_STAGES: dict[str, StageConfig] = {
         "description": "dbt transformations: 3 staging + 4 mart models (LTV, retention, revenue, products)",
     },
     "feature_engineering": {
-        "inputs":  [DATASETS["dim_customer"], DATASETS["fact_orders"]],
+        "inputs": [DATASETS["dim_customer"], DATASETS["fact_orders"]],
         "outputs": [DATASETS["feature_store"]],
         "job_name": "dag_feature_engineering",
         "description": "Airflow DAG: Computes 13 RFM + behavioral features daily → feature_store",
     },
     "model_retraining": {
-        "inputs":  [DATASETS["feature_store"]],
+        "inputs": [DATASETS["feature_store"]],
         "outputs": [DATASETS["churn_scores"]],
         "job_name": "dag_model_retraining",
         "description": "Airflow DAG: Weekly XGBoost churn model retraining → customer_churn_scores",
     },
     "llm_ingestion": {
-        "inputs":  [DATASETS["dim_customer"], DATASETS["mart_ltv"], DATASETS["revenue_metrics"]],
+        "inputs": [
+            DATASETS["dim_customer"],
+            DATASETS["mart_ltv"],
+            DATASETS["revenue_metrics"],
+        ],
         "outputs": [DATASETS["qdrant_customer360"]],
         "job_name": "dag_llm_ingestion",
         "description": "Airflow DAG: Embeds warehouse data into Qdrant VectorDB for RAG queries",
@@ -189,6 +196,7 @@ PIPELINE_STAGES: dict[str, StageConfig] = {
 # ─────────────────────────────────────────────────────────────────────────────
 # DataHub REST emitter
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def _emit_lineage_event(payload: dict, gms_url: str = DATAHUB_GMS_URL) -> bool:
     """
@@ -274,6 +282,7 @@ def _build_dataset_lineage_mce(
 # ─────────────────────────────────────────────────────────────────────────────
 # Public API
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def publish_stage_lineage(
     stage: str,
@@ -366,7 +375,9 @@ def print_lineage_map() -> None:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Customer360 DataHub Lineage Publisher")
+    parser = argparse.ArgumentParser(
+        description="Customer360 DataHub Lineage Publisher"
+    )
     parser.add_argument(
         "--stage",
         default="all",

@@ -6,4 +6,5 @@ from langgraph.graph.message import add_messages
 
 class AgentState(TypedDict):
     """The state of the agent."""
+
     messages: Annotated[list[BaseMessage], add_messages]

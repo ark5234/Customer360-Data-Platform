@@ -265,16 +265,20 @@ with DAG(
         """
         import os
         import sys
+
         sys.path.insert(0, "/opt/airflow")
 
         try:
             from lineage.publish_lineage import publish_stage_lineage
+
             datahub_url = os.getenv("DATAHUB_GMS_URL", "http://datahub-gms:8085")
             ok = publish_stage_lineage("gold_to_warehouse", gms_url=datahub_url)
             if ok:
                 print("✓ DataHub lineage published for gold_to_warehouse")
             else:
-                print("⚠ DataHub lineage skipped (DataHub not running — start with --profile lineage)")
+                print(
+                    "⚠ DataHub lineage skipped (DataHub not running — start with --profile lineage)"
+                )
         except Exception as e:
             print(f"⚠ Lineage publication skipped: {e}")
 
@@ -293,4 +297,3 @@ with DAG(
     )
 
     t_dim_customer >> t_fact_orders >> t_revenue >> t_lineage
-

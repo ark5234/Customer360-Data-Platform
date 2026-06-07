@@ -417,6 +417,7 @@ def control_producer():
 # LLM AI ASSISTANT (RAG & SQL)
 # ============================================
 
+
 @app.route("/api/chat", methods=["POST"])
 def chat():
     """AI Assistant Chat Endpoint"""
@@ -436,10 +437,12 @@ def chat():
         agent = get_agent()
         if not agent:
             # Mock response if GOOGLE_API_KEY is not configured
-            return jsonify({
-                "response": "The AI assistant is currently in demo mode. "
-                            "Please configure GOOGLE_API_KEY in the environment to enable LangChain/LangGraph capabilities."
-            })
+            return jsonify(
+                {
+                    "response": "The AI assistant is currently in demo mode. "
+                    "Please configure GOOGLE_API_KEY in the environment to enable LangChain/LangGraph capabilities."
+                }
+            )
 
         # Invoke the LangGraph agent
         final_state = agent.invoke({"messages": [HumanMessage(content=query)]})

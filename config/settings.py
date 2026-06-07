@@ -13,14 +13,16 @@ from dataclasses import dataclass, field
 @dataclass
 class KafkaConfig:
     bootstrap_servers: str = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
-    topics: list[str] = field(default_factory=lambda: [
-        "customer-login",
-        "product-events",
-        "cart-events",
-        "purchase-events",
-        "payment-events",
-        "refund-events",
-    ])
+    topics: list[str] = field(
+        default_factory=lambda: [
+            "customer-login",
+            "product-events",
+            "cart-events",
+            "purchase-events",
+            "payment-events",
+            "refund-events",
+        ]
+    )
     group_id: str = os.getenv("KAFKA_GROUP_ID", "customer360-consumer")
     auto_offset_reset: str = "earliest"
     enable_auto_commit: bool = False
@@ -83,22 +85,24 @@ class SparkConfig:
 class MLConfig:
     churn_threshold_days: int = int(os.getenv("CHURN_THRESHOLD_DAYS", "90"))
     model_version: str = "latest"
-    feature_snapshot_days: int = 1      # How far back to look for features
-    min_training_samples: int = 1_000   # Minimum samples required to train
+    feature_snapshot_days: int = 1  # How far back to look for features
+    min_training_samples: int = 1_000  # Minimum samples required to train
     cv_folds: int = 5
 
-    xgb_params: dict = field(default_factory=lambda: {
-        "n_estimators": 300,
-        "max_depth": 6,
-        "learning_rate": 0.05,
-        "subsample": 0.8,
-        "colsample_bytree": 0.8,
-        "min_child_weight": 5,
-        "scale_pos_weight": 3,
-        "eval_metric": "auc",
-        "random_state": 42,
-        "n_jobs": -1,
-    })
+    xgb_params: dict = field(
+        default_factory=lambda: {
+            "n_estimators": 300,
+            "max_depth": 6,
+            "learning_rate": 0.05,
+            "subsample": 0.8,
+            "colsample_bytree": 0.8,
+            "min_child_weight": 5,
+            "scale_pos_weight": 3,
+            "eval_metric": "auc",
+            "random_state": 42,
+            "n_jobs": -1,
+        }
+    )
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -110,10 +114,20 @@ class GeneratorConfig:
     num_events: int = int(os.getenv("NUM_EVENTS", "10_000_000"))
     events_per_second: int = int(os.getenv("EVENTS_PER_SECOND", "5000"))
     batch_size: int = 1_000
-    regions: list[str] = field(default_factory=lambda: [
-        "Maharashtra", "Karnataka", "Delhi", "Tamil Nadu", "West Bengal",
-        "Telangana", "Gujarat", "Rajasthan", "Uttar Pradesh", "Kerala",
-    ])
+    regions: list[str] = field(
+        default_factory=lambda: [
+            "Maharashtra",
+            "Karnataka",
+            "Delhi",
+            "Tamil Nadu",
+            "West Bengal",
+            "Telangana",
+            "Gujarat",
+            "Rajasthan",
+            "Uttar Pradesh",
+            "Kerala",
+        ]
+    )
 
 
 # ──────────────────────────────────────────────────────────────────────────────

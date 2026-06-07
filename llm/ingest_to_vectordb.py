@@ -28,8 +28,8 @@ def ingest_tickets(file_path: str = "data/tickets.json"):
                 "ticket_id": tkt["ticket_id"],
                 "customer_id": tkt["customer_id"],
                 "status": tkt["status"],
-                "created_at": tkt["created_at"]
-            }
+                "created_at": tkt["created_at"],
+            },
         )
         documents.append(doc)
 
@@ -42,11 +42,14 @@ def ingest_tickets(file_path: str = "data/tickets.json"):
     else:
         print("GOOGLE_API_KEY not found. Using HuggingFace embeddings as fallback.")
         from langchain_huggingface import HuggingFaceEmbeddings
+
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     # Take a subset of documents to avoid hitting the free tier rate limits (100 per minute)
     documents = documents[:80]
-    print(f"Subsampled to {len(documents)} documents to avoid Google Gemini free-tier rate limits.")
+    print(
+        f"Subsampled to {len(documents)} documents to avoid Google Gemini free-tier rate limits."
+    )
 
     qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
     print(f"Connecting to Qdrant at {qdrant_url}")
@@ -62,6 +65,7 @@ def ingest_tickets(file_path: str = "data/tickets.json"):
     )
 
     print("Ingestion completed successfully.")
+
 
 if __name__ == "__main__":
     ingest_tickets()

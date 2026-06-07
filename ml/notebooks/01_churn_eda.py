@@ -45,24 +45,27 @@ from sklearn.model_selection import train_test_split
 
 # Set plotting style
 sns.set_theme(style="darkgrid", palette="husl")
-plt.rcParams.update({
-    "figure.figsize": (14, 6),
-    "axes.titlesize": 14,
-    "axes.labelsize": 12,
-    "font.family": "DejaVu Sans",
-})
+plt.rcParams.update(
+    {
+        "figure.figsize": (14, 6),
+        "axes.titlesize": 14,
+        "axes.labelsize": 12,
+        "font.family": "DejaVu Sans",
+    }
+)
 
 print("✓ Libraries loaded")
 
 # ── 2. Load Feature Data ──────────────────────────────────────────────────────
 POSTGRES_DSN = os.getenv(
     "POSTGRES_DSN",
-    "postgresql+psycopg2://customer360:customer360secret@localhost:5432/customer360_warehouse"
+    "postgresql+psycopg2://customer360:customer360secret@localhost:5432/customer360_warehouse",
 )
 engine = sqlalchemy.create_engine(POSTGRES_DSN)
 
 with engine.connect() as conn:
-    df = pd.read_sql("""
+    df = pd.read_sql(
+        """
         SELECT
             customer_id,
             MAX(recency_days)           AS recency_days,
@@ -83,7 +86,9 @@ with engine.connect() as conn:
         FROM feature_store
         WHERE snapshot_date = (SELECT MAX(snapshot_date) FROM feature_store)
         GROUP BY customer_id
-    """, conn)  # type: ignore
+    """,
+        conn,
+    )  # type: ignore
 
 engine.dispose()
 df = df.fillna(0)
@@ -98,9 +103,15 @@ print(f"\nChurn rate ({CHURN_THRESHOLD}d threshold): {churn_rate:.1%}")
 
 # ── 4. Feature Distributions ─────────────────────────────────────────────────
 FEATURES = [
-    "recency_days", "frequency", "monetary", "avg_purchase_value",
-    "cart_abandonment_rate", "product_view_count", "login_count",
-    "monthly_orders", "days_since_last_login",
+    "recency_days",
+    "frequency",
+    "monetary",
+    "avg_purchase_value",
+    "cart_abandonment_rate",
+    "product_view_count",
+    "login_count",
+    "monthly_orders",
+    "days_since_last_login",
 ]
 
 fig, axes = plt.subplots(3, 3, figsize=(18, 14))
@@ -125,9 +136,15 @@ plt.figure(figsize=(14, 10))
 corr = df[FEATURES + ["is_churned"]].corr()
 mask = np.triu(np.ones_like(corr, dtype=bool))
 sns.heatmap(
-    corr, mask=mask, annot=True, fmt=".2f",  # type: ignore
-    cmap="RdYlGn", center=0, square=True,
-    linewidths=0.5, cbar_kws={"shrink": 0.8}
+    corr,
+    mask=mask,
+    annot=True,
+    fmt=".2f",  # type: ignore
+    cmap="RdYlGn",
+    center=0,
+    square=True,
+    linewidths=0.5,
+    cbar_kws={"shrink": 0.8},
 )
 plt.title("Feature Correlation Matrix (incl. Churn Label)", fontsize=14)
 plt.tight_layout()
@@ -137,32 +154,46 @@ print("✓ Correlation heatmap saved")
 
 # ── 6. RFM Segment Profiles ───────────────────────────────────────────────────
 # Quick segment by recency + frequency + monetary quintiles
-df["r_score"] = pd.qcut(df["recency_days"].rank(ascending=False), 5, labels=[5, 4, 3, 2, 1]).astype(int)
-df["f_score"] = pd.qcut(df["frequency"].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]).astype(int)
-df["m_score"] = pd.qcut(df["monetary"].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]).astype(int)
+df["r_score"] = pd.qcut(
+    df["recency_days"].rank(ascending=False), 5, labels=[5, 4, 3, 2, 1]
+).astype(int)
+df["f_score"] = pd.qcut(
+    df["frequency"].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]
+).astype(int)
+df["m_score"] = pd.qcut(
+    df["monetary"].rank(method="first"), 5, labels=[1, 2, 3, 4, 5]
+).astype(int)
 df["rfm_score"] = df["r_score"] + df["f_score"] + df["m_score"]
 
 rfm_bins = [0, 6, 9, 12, 15]
 rfm_labels = ["Bronze", "Silver", "Gold", "Platinum"]
 df["rfm_segment"] = pd.cut(df["rfm_score"], bins=rfm_bins, labels=rfm_labels)
 
-seg_summary = df.groupby("rfm_segment", observed=True).agg(
-    count=("customer_id", "count"),
-    churn_rate=("is_churned", "mean"),
-    avg_spend=("monetary", "mean"),
-    avg_recency=("recency_days", "mean"),
-).round(2)
+seg_summary = (
+    df.groupby("rfm_segment", observed=True)
+    .agg(
+        count=("customer_id", "count"),
+        churn_rate=("is_churned", "mean"),
+        avg_spend=("monetary", "mean"),
+        avg_recency=("recency_days", "mean"),
+    )
+    .round(2)
+)
 
 print("\nRFM Segment Summary:")
 print(seg_summary.to_string())
 
 fig, axes = plt.subplots(1, 2, figsize=(16, 6))
-seg_summary["count"].plot(kind="bar", ax=axes[0], color=["#cd7f32", "#c0c0c0", "#ffd700", "#e5e4e2"])
+seg_summary["count"].plot(
+    kind="bar", ax=axes[0], color=["#cd7f32", "#c0c0c0", "#ffd700", "#e5e4e2"]
+)
 axes[0].set_title("Customer Count by RFM Segment")
 axes[0].set_ylabel("# Customers")
 axes[0].tick_params(axis="x", rotation=0)
 
-seg_summary["churn_rate"].plot(kind="bar", ax=axes[1], color=["#10b981", "#3b82f6", "#f59e0b", "#ef4444"])
+seg_summary["churn_rate"].plot(
+    kind="bar", ax=axes[1], color=["#10b981", "#3b82f6", "#f59e0b", "#ef4444"]
+)
 axes[1].set_title("Churn Rate by RFM Segment")
 axes[1].set_ylabel("Churn Rate")
 axes[1].tick_params(axis="x", rotation=0)
@@ -173,19 +204,23 @@ plt.show()
 print("✓ RFM segment plot saved")
 
 # ── 7. Model Performance (if model exists) ───────────────────────────────────
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "../models/churn_model_latest.joblib")
+MODEL_PATH = os.path.join(
+    os.path.dirname(__file__), "../models/churn_model_latest.joblib"
+)
 
 if os.path.exists(MODEL_PATH):
     model = joblib.load(MODEL_PATH)
     X = df[FEATURES]
     y = df["is_churned"]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
 
     y_prob = model.predict_proba(X_test)[:, 1]
     y_pred = model.predict(X_test)
 
-    auc    = roc_auc_score(y_test, y_prob)
-    ap     = average_precision_score(y_test, y_prob)
+    auc = roc_auc_score(y_test, y_prob)
+    ap = average_precision_score(y_test, y_prob)
     print(f"\n✓ Model loaded  |  AUC-ROC: {auc:.4f}  |  Avg Precision: {ap:.4f}")
     print(classification_report(y_test, y_pred, target_names=["Retained", "Churned"]))
 
@@ -195,13 +230,17 @@ if os.path.exists(MODEL_PATH):
     fpr, tpr, _ = roc_curve(y_test, y_prob)
     axes[0].plot(fpr, tpr, lw=2, color="#3b82f6", label=f"AUC = {auc:.3f}")
     axes[0].plot([0, 1], [0, 1], "--", color="gray")
-    axes[0].set(title="ROC Curve", xlabel="False Positive Rate", ylabel="True Positive Rate")
+    axes[0].set(
+        title="ROC Curve", xlabel="False Positive Rate", ylabel="True Positive Rate"
+    )
     axes[0].legend(loc="lower right")
 
     # Precision-Recall Curve
     prec, rec, _ = precision_recall_curve(y_test, y_prob)
     axes[1].plot(rec, prec, lw=2, color="#10b981", label=f"AP = {ap:.3f}")
-    axes[1].axhline(churn_rate, ls="--", color="gray", label=f"Baseline ({churn_rate:.2%})")
+    axes[1].axhline(
+        churn_rate, ls="--", color="gray", label=f"Baseline ({churn_rate:.2%})"
+    )
     axes[1].set(title="Precision-Recall Curve", xlabel="Recall", ylabel="Precision")
     axes[1].legend()
 
@@ -220,6 +259,8 @@ if os.path.exists(MODEL_PATH):
     plt.show()
     print("✓ Model performance + SHAP plots saved")
 else:
-    print(f"⚠️  Model not found at {MODEL_PATH}. Run: python ml/models/churn_predictor.py --train")
+    print(
+        f"⚠️  Model not found at {MODEL_PATH}. Run: python ml/models/churn_predictor.py --train"
+    )
 
 print("\n✅ EDA complete. Check generated PNG files for visuals.")

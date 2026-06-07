@@ -128,7 +128,9 @@ class FeaturePipeline:
         rfm = RFMFeatureExtractor(self.snapshot_date).extract(self.engine)
         behavioral = BehavioralFeatureExtractor(self.snapshot_date).extract(self.engine)
         session = SessionFeatureExtractor().extract(self.engine)
-        features = rfm.merge(behavioral, on="customer_id", how="outer").merge(session, on="customer_id", how="outer")
+        features = rfm.merge(behavioral, on="customer_id", how="outer").merge(
+            session, on="customer_id", how="outer"
+        )
         numeric_cols = features.select_dtypes(include=[np.number]).columns
         features[numeric_cols] = features[numeric_cols].fillna(0)
         features["snapshot_date"] = self.snapshot_date.date()

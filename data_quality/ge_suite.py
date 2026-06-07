@@ -23,6 +23,7 @@ try:
         DataContextConfig,
         InMemoryStoreBackendDefaults,
     )
+
     GE_AVAILABLE = True
 except ImportError:
     GE_AVAILABLE = False
@@ -35,6 +36,7 @@ SUITE_FILE = Path(__file__).parent / "expectations" / "customer360_suite.json"
 # ─────────────────────────────────────────────────────────────────────────────
 # Expectation Suite Builder
 # ─────────────────────────────────────────────────────────────────────────────
+
 
 def build_expectation_suite() -> dict:
     """
@@ -85,9 +87,15 @@ def build_expectation_suite() -> dict:
                 "expectation_type": "expect_table_columns_to_match_set",
                 "kwargs": {
                     "column_set": [
-                        "event_id", "customer_id", "event_type",
-                        "event_timestamp", "session_id", "device",
-                        "region", "total_amount", "dq_passed",
+                        "event_id",
+                        "customer_id",
+                        "event_type",
+                        "event_timestamp",
+                        "session_id",
+                        "device",
+                        "region",
+                        "total_amount",
+                        "dq_passed",
                     ],
                     "exact_match": False,  # allow additional columns
                 },
@@ -105,9 +113,15 @@ def build_expectation_suite() -> dict:
                 "kwargs": {
                     "column": "event_type",
                     "value_set": [
-                        "LOGIN", "LOGOUT", "PRODUCT_VIEW", "SEARCH",
-                        "ADD_TO_CART", "PURCHASE", "REFUND",
-                        "SUBSCRIPTION", "PAYMENT_FAILURE",
+                        "LOGIN",
+                        "LOGOUT",
+                        "PRODUCT_VIEW",
+                        "SEARCH",
+                        "ADD_TO_CART",
+                        "PURCHASE",
+                        "REFUND",
+                        "SUBSCRIPTION",
+                        "PAYMENT_FAILURE",
                     ],
                 },
                 "meta": {"rule": "domain_check", "severity": "critical"},
@@ -157,6 +171,7 @@ def save_suite_to_file() -> None:
 # Pandas-based Validation (used inside Airflow without Spark)
 # ─────────────────────────────────────────────────────────────────────────────
 
+
 class GESuiteResult:
     """Lightweight result object returned by run_ge_validation."""
 
@@ -166,9 +181,7 @@ class GESuiteResult:
         self.validated_at = datetime.utcnow()
 
     def add(self, expectation: str, passed: bool, details: dict) -> None:
-        self.results.append(
-            {"expectation": expectation, "passed": passed, **details}
-        )
+        self.results.append({"expectation": expectation, "passed": passed, **details})
 
     @property
     def passed_count(self) -> int:
@@ -181,11 +194,7 @@ class GESuiteResult:
     @property
     def success(self) -> bool:
         """Suite passes if all *critical* expectations pass."""
-        return all(
-            r["passed"]
-            for r in self.results
-            if r.get("severity") == "critical"
-        )
+        return all(r["passed"] for r in self.results if r.get("severity") == "critical")
 
     def summary(self) -> dict:
         return {
@@ -194,19 +203,17 @@ class GESuiteResult:
             "passed": self.passed_count,
             "failed": self.failed_count,
             "pass_rate": (
-                self.passed_count / len(self.results)
-                if self.results
-                else 0.0
+                self.passed_count / len(self.results) if self.results else 0.0
             ),
             "success": self.success,
             "validated_at": self.validated_at.isoformat(),
         }
 
     def print_report(self) -> None:
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print("  Great Expectations Validation Report")
         print(f"  Suite: {self.suite_name}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
         for r in self.results:
             icon = "✓" if r["passed"] else "✗"
             sev = r.get("severity", "info")
@@ -214,12 +221,16 @@ class GESuiteResult:
             if not r["passed"] and r.get("detail"):
                 print(f"           → {r['detail']}")
         s = self.summary()
-        print(f"\n  Result: {s['passed']}/{s['total']} passed "
-              f"({s['pass_rate']:.1%}) | Suite {'PASSED ✓' if s['success'] else 'FAILED ✗'}")
-        print(f"{'='*60}\n")
+        print(
+            f"\n  Result: {s['passed']}/{s['total']} passed "
+            f"({s['pass_rate']:.1%}) | Suite {'PASSED ✓' if s['success'] else 'FAILED ✗'}"
+        )
+        print(f"{'=' * 60}\n")
 
 
-def run_ge_validation(df: pd.DataFrame, dataset_name: str = "silver_events") -> GESuiteResult:
+def run_ge_validation(
+    df: pd.DataFrame, dataset_name: str = "silver_events"
+) -> GESuiteResult:
     """
     Run the Customer360 GE suite against a pandas DataFrame.
 
@@ -280,12 +291,16 @@ def run_ge_validation(df: pd.DataFrame, dataset_name: str = "silver_events") -> 
                 if col in df.columns:
                     numeric = pd.to_numeric(df[col], errors="coerce").dropna()
                     violations = (
-                        (numeric < kwargs.get("min_value", float("-inf"))) |
-                        (numeric > kwargs.get("max_value", float("inf")))
+                        (numeric < kwargs.get("min_value", float("-inf")))
+                        | (numeric > kwargs.get("max_value", float("inf")))
                     ).sum()
-                    violation_rate = violations / len(numeric) if len(numeric) > 0 else 0
+                    violation_rate = (
+                        violations / len(numeric) if len(numeric) > 0 else 0
+                    )
                     passed = violation_rate <= (1 - mostly)
-                    detail = f"{violations:,} out-of-range values ({violation_rate:.2%})"
+                    detail = (
+                        f"{violations:,} out-of-range values ({violation_rate:.2%})"
+                    )
                 else:
                     passed = True  # column absent → skip range check
 
@@ -300,7 +315,11 @@ def run_ge_validation(df: pd.DataFrame, dataset_name: str = "silver_events") -> 
                 actual = set(df.columns)
                 missing = required - actual
                 passed = len(missing) == 0
-                detail = f"Missing columns: {missing}" if missing else "All required columns present"
+                detail = (
+                    f"Missing columns: {missing}"
+                    if missing
+                    else "All required columns present"
+                )
 
         except Exception as e:
             passed = False
@@ -323,19 +342,21 @@ if __name__ == "__main__":
     # Demo: validate a synthetic DataFrame
     import numpy as np
 
-    demo_df = pd.DataFrame({
-        "event_id": [f"E{i}" for i in range(1000)],
-        "customer_id": [f"C{i % 500}" for i in range(1000)],
-        "event_type": np.random.choice(
-            ["LOGIN", "PRODUCT_VIEW", "PURCHASE", "REFUND"], 1000
-        ),
-        "event_timestamp": pd.date_range("2026-01-01", periods=1000, freq="1min"),
-        "session_id": [f"S{i}" for i in range(1000)],
-        "device": np.random.choice(["Mobile", "Desktop", "Tablet"], 1000),
-        "region": np.random.choice(["Mumbai", "Delhi", "Bangalore"], 1000),
-        "total_amount": np.random.uniform(0, 10000, 1000),
-        "dq_passed": True,
-    })
+    demo_df = pd.DataFrame(
+        {
+            "event_id": [f"E{i}" for i in range(1000)],
+            "customer_id": [f"C{i % 500}" for i in range(1000)],
+            "event_type": np.random.choice(
+                ["LOGIN", "PRODUCT_VIEW", "PURCHASE", "REFUND"], 1000
+            ),
+            "event_timestamp": pd.date_range("2026-01-01", periods=1000, freq="1min"),
+            "session_id": [f"S{i}" for i in range(1000)],
+            "device": np.random.choice(["Mobile", "Desktop", "Tablet"], 1000),
+            "region": np.random.choice(["Mumbai", "Delhi", "Bangalore"], 1000),
+            "total_amount": np.random.uniform(0, 10000, 1000),
+            "dq_passed": True,
+        }
+    )
 
     result = run_ge_validation(demo_df, "demo_silver_events")
     print(f"\nFinal summary: {result.summary()}")
