@@ -408,5 +408,42 @@ def control_producer():
         return jsonify({"error": "Invalid action"}), 400
 
 
+# ============================================
+# LLM AI ASSISTANT (RAG & SQL)
+# ============================================
+
+@app.route("/api/chat", methods=["POST"])
+def chat():
+    """AI Assistant Chat Endpoint"""
+    try:
+        data = request.json
+        query = data.get("query")
+        if not query:
+            return jsonify({"error": "Query is required"}), 400
+
+        try:
+            from agent.graph import get_agent
+        except ImportError:
+            from admin_panel.agent.graph import get_agent
+
+        from langchain_core.messages import HumanMessage
+
+        agent = get_agent()
+        if not agent:
+            # Mock response if GOOGLE_API_KEY is not configured
+            return jsonify({
+                "response": "The AI assistant is currently in demo mode. "
+                            "Please configure GOOGLE_API_KEY in the environment to enable LangChain/LangGraph capabilities."
+            })
+
+        # Invoke the LangGraph agent
+        final_state = agent.invoke({"messages": [HumanMessage(content=query)]})
+        response_msg = final_state["messages"][-1].content
+        
+        return jsonify({"response": response_msg})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

@@ -1,0 +1,3502 @@
+[
+  {
+    "ticket_id": "TKT-3F9D1EBD",
+    "customer_id": "C0000973",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.064537"
+  },
+  {
+    "ticket_id": "TKT-9F17D47C",
+    "customer_id": "C0000891",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.064649"
+  },
+  {
+    "ticket_id": "TKT-B81DC1DF",
+    "customer_id": "C0000695",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-30T07:13:49.064713"
+  },
+  {
+    "ticket_id": "TKT-A5DA5D1D",
+    "customer_id": "C0000643",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-10T07:13:49.064773"
+  },
+  {
+    "ticket_id": "TKT-1DA70C2B",
+    "customer_id": "C0000383",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-06-04T07:13:49.064819"
+  },
+  {
+    "ticket_id": "TKT-60E671A9",
+    "customer_id": "C0000784",
+    "issue_text": "Why was my credit card charged twice for order ORD-6EB178B1?",
+    "status": "open",
+    "created_at": "2026-05-17T07:13:49.064867"
+  },
+  {
+    "ticket_id": "TKT-1966F0D9",
+    "customer_id": "C0000785",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.064911"
+  },
+  {
+    "ticket_id": "TKT-473CBE9C",
+    "customer_id": "C0000665",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.064968"
+  },
+  {
+    "ticket_id": "TKT-26951FDE",
+    "customer_id": "C0000475",
+    "issue_text": "Why was my credit card charged twice for order ORD-D7F1DF99?",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.065019"
+  },
+  {
+    "ticket_id": "TKT-0B0D4855",
+    "customer_id": "C0000264",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.065069"
+  },
+  {
+    "ticket_id": "TKT-96FF5106",
+    "customer_id": "C0000950",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-31T07:13:49.065111"
+  },
+  {
+    "ticket_id": "TKT-41E4F45E",
+    "customer_id": "C0000698",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.065151"
+  },
+  {
+    "ticket_id": "TKT-97E8FFA5",
+    "customer_id": "C0000921",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.065193"
+  },
+  {
+    "ticket_id": "TKT-DED42084",
+    "customer_id": "C0000109",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.065234"
+  },
+  {
+    "ticket_id": "TKT-57EBC26E",
+    "customer_id": "C0000715",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-18T07:13:49.065276"
+  },
+  {
+    "ticket_id": "TKT-6CAAFD9C",
+    "customer_id": "C0000379",
+    "issue_text": "The product P0004056 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.065317"
+  },
+  {
+    "ticket_id": "TKT-944AC5D7",
+    "customer_id": "C0000536",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-27T07:13:49.065422"
+  },
+  {
+    "ticket_id": "TKT-28E48CA9",
+    "customer_id": "C0000619",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.065471"
+  },
+  {
+    "ticket_id": "TKT-C652E621",
+    "customer_id": "C0000843",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.065518"
+  },
+  {
+    "ticket_id": "TKT-59B1FF01",
+    "customer_id": "C0000019",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.065561"
+  },
+  {
+    "ticket_id": "TKT-C970B1A5",
+    "customer_id": "C0000078",
+    "issue_text": "The product P0012962 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-18T07:13:49.065603"
+  },
+  {
+    "ticket_id": "TKT-195534B9",
+    "customer_id": "C0000517",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.065645"
+  },
+  {
+    "ticket_id": "TKT-3EF8C8D8",
+    "customer_id": "C0000329",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.065685"
+  },
+  {
+    "ticket_id": "TKT-476BDC45",
+    "customer_id": "C0000894",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.065726"
+  },
+  {
+    "ticket_id": "TKT-7230AB9B",
+    "customer_id": "C0000814",
+    "issue_text": "The product P0033738 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-31T07:13:49.065789"
+  },
+  {
+    "ticket_id": "TKT-1050E019",
+    "customer_id": "C0000289",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-27T07:13:49.065831"
+  },
+  {
+    "ticket_id": "TKT-20FFD4EB",
+    "customer_id": "C0000690",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-26T07:13:49.065871"
+  },
+  {
+    "ticket_id": "TKT-806E2336",
+    "customer_id": "C0000446",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.065912"
+  },
+  {
+    "ticket_id": "TKT-1CD5477F",
+    "customer_id": "C0000746",
+    "issue_text": "Why was my credit card charged twice for order ORD-8BEF6525?",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.065954"
+  },
+  {
+    "ticket_id": "TKT-37BD3305",
+    "customer_id": "C0000697",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-15T07:13:49.065995"
+  },
+  {
+    "ticket_id": "TKT-C59C1325",
+    "customer_id": "C0000354",
+    "issue_text": "Why was my credit card charged twice for order ORD-9F729037?",
+    "status": "in_progress",
+    "created_at": "2026-06-03T07:13:49.066039"
+  },
+  {
+    "ticket_id": "TKT-4C661FA1",
+    "customer_id": "C0000035",
+    "issue_text": "Why was my credit card charged twice for order ORD-7C46D142?",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.066087"
+  },
+  {
+    "ticket_id": "TKT-7B24C4C1",
+    "customer_id": "C0000194",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-19T07:13:49.066130"
+  },
+  {
+    "ticket_id": "TKT-2D91D0E0",
+    "customer_id": "C0000912",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.066172"
+  },
+  {
+    "ticket_id": "TKT-0B1245B3",
+    "customer_id": "C0000432",
+    "issue_text": "The product P0023848 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-21T07:13:49.066216"
+  },
+  {
+    "ticket_id": "TKT-05C6F1AD",
+    "customer_id": "C0000381",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.066258"
+  },
+  {
+    "ticket_id": "TKT-5C03CDCB",
+    "customer_id": "C0000415",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-25T07:13:49.066299"
+  },
+  {
+    "ticket_id": "TKT-417B3C65",
+    "customer_id": "C0000563",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.066340"
+  },
+  {
+    "ticket_id": "TKT-36CCFB71",
+    "customer_id": "C0000509",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-21T07:13:49.066381"
+  },
+  {
+    "ticket_id": "TKT-F8A3D2E9",
+    "customer_id": "C0000670",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-24T07:13:49.066451"
+  },
+  {
+    "ticket_id": "TKT-5DCD234F",
+    "customer_id": "C0000065",
+    "issue_text": "Why was my credit card charged twice for order ORD-72E71172?",
+    "status": "open",
+    "created_at": "2026-05-25T07:13:49.066557"
+  },
+  {
+    "ticket_id": "TKT-52F4DB59",
+    "customer_id": "C0000781",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-06-04T07:13:49.066602"
+  },
+  {
+    "ticket_id": "TKT-888AEEA7",
+    "customer_id": "C0000806",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.066645"
+  },
+  {
+    "ticket_id": "TKT-AFEEE1C6",
+    "customer_id": "C0000050",
+    "issue_text": "Why was my credit card charged twice for order ORD-3DC2A4B4?",
+    "status": "closed",
+    "created_at": "2026-05-20T07:13:49.066688"
+  },
+  {
+    "ticket_id": "TKT-02C13A3A",
+    "customer_id": "C0000382",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-10T07:13:49.066731"
+  },
+  {
+    "ticket_id": "TKT-D74EEA08",
+    "customer_id": "C0000604",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-18T07:13:49.066772"
+  },
+  {
+    "ticket_id": "TKT-3B80CF8C",
+    "customer_id": "C0000808",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-28T07:13:49.066813"
+  },
+  {
+    "ticket_id": "TKT-9204A73A",
+    "customer_id": "C0000005",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.066906"
+  },
+  {
+    "ticket_id": "TKT-347655D6",
+    "customer_id": "C0000403",
+    "issue_text": "The product P0048663 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-23T07:13:49.066951"
+  },
+  {
+    "ticket_id": "TKT-61DB86CE",
+    "customer_id": "C0000716",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.066992"
+  },
+  {
+    "ticket_id": "TKT-5ACBD3AE",
+    "customer_id": "C0000572",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-19T07:13:49.067060"
+  },
+  {
+    "ticket_id": "TKT-952649FD",
+    "customer_id": "C0000817",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-13T07:13:49.067108"
+  },
+  {
+    "ticket_id": "TKT-D8867FD2",
+    "customer_id": "C0000963",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-23T07:13:49.067151"
+  },
+  {
+    "ticket_id": "TKT-D187293B",
+    "customer_id": "C0000841",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.067194"
+  },
+  {
+    "ticket_id": "TKT-9F2651E9",
+    "customer_id": "C0000431",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.067235"
+  },
+  {
+    "ticket_id": "TKT-2444F20E",
+    "customer_id": "C0000526",
+    "issue_text": "The product P0014870 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.067276"
+  },
+  {
+    "ticket_id": "TKT-5A8E1096",
+    "customer_id": "C0000270",
+    "issue_text": "The product P0047760 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-15T07:13:49.067330"
+  },
+  {
+    "ticket_id": "TKT-FD9A9182",
+    "customer_id": "C0000665",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.067371"
+  },
+  {
+    "ticket_id": "TKT-85A57ECF",
+    "customer_id": "C0000001",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.067411"
+  },
+  {
+    "ticket_id": "TKT-28C0FDAA",
+    "customer_id": "C0000416",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.067451"
+  },
+  {
+    "ticket_id": "TKT-09F1D2E7",
+    "customer_id": "C0000964",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.067494"
+  },
+  {
+    "ticket_id": "TKT-24CBE796",
+    "customer_id": "C0000648",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-21T07:13:49.067539"
+  },
+  {
+    "ticket_id": "TKT-D6C62CC8",
+    "customer_id": "C0000585",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.067579"
+  },
+  {
+    "ticket_id": "TKT-31FB2823",
+    "customer_id": "C0000151",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-06-01T07:13:49.067620"
+  },
+  {
+    "ticket_id": "TKT-BCAEAFC9",
+    "customer_id": "C0000537",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.067661"
+  },
+  {
+    "ticket_id": "TKT-16184645",
+    "customer_id": "C0000128",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-10T07:13:49.067704"
+  },
+  {
+    "ticket_id": "TKT-44972E42",
+    "customer_id": "C0000844",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-31T07:13:49.067744"
+  },
+  {
+    "ticket_id": "TKT-8C68CF9A",
+    "customer_id": "C0000741",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-08T07:13:49.067783"
+  },
+  {
+    "ticket_id": "TKT-5683EB43",
+    "customer_id": "C0000011",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.067823"
+  },
+  {
+    "ticket_id": "TKT-BDF1C021",
+    "customer_id": "C0000486",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-06-07T07:13:49.067862"
+  },
+  {
+    "ticket_id": "TKT-3D37A49D",
+    "customer_id": "C0000021",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-20T07:13:49.067902"
+  },
+  {
+    "ticket_id": "TKT-91E1C89F",
+    "customer_id": "C0000639",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.067955"
+  },
+  {
+    "ticket_id": "TKT-E2C99A2C",
+    "customer_id": "C0000618",
+    "issue_text": "The product P0021569 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-29T07:13:49.067995"
+  },
+  {
+    "ticket_id": "TKT-5070482D",
+    "customer_id": "C0000084",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-26T07:13:49.068040"
+  },
+  {
+    "ticket_id": "TKT-4F807F78",
+    "customer_id": "C0000345",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-09T07:13:49.068083"
+  },
+  {
+    "ticket_id": "TKT-95F3E387",
+    "customer_id": "C0000809",
+    "issue_text": "The product P0015763 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-06-02T07:13:49.068123"
+  },
+  {
+    "ticket_id": "TKT-A2AB9CF6",
+    "customer_id": "C0000330",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.068163"
+  },
+  {
+    "ticket_id": "TKT-6FB94D4C",
+    "customer_id": "C0000769",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.068207"
+  },
+  {
+    "ticket_id": "TKT-E71AF466",
+    "customer_id": "C0000406",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.074968"
+  },
+  {
+    "ticket_id": "TKT-AD3E0676",
+    "customer_id": "C0000360",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.075360"
+  },
+  {
+    "ticket_id": "TKT-4B5BC5FC",
+    "customer_id": "C0000861",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-06-02T07:13:49.075441"
+  },
+  {
+    "ticket_id": "TKT-B91CB5A2",
+    "customer_id": "C0001000",
+    "issue_text": "Why was my credit card charged twice for order ORD-9B72C279?",
+    "status": "closed",
+    "created_at": "2026-05-16T07:13:49.075499"
+  },
+  {
+    "ticket_id": "TKT-6917A640",
+    "customer_id": "C0000028",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.075621"
+  },
+  {
+    "ticket_id": "TKT-17DFAA6B",
+    "customer_id": "C0000512",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-15T07:13:49.076729"
+  },
+  {
+    "ticket_id": "TKT-6CFE313A",
+    "customer_id": "C0000956",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-17T07:13:49.076821"
+  },
+  {
+    "ticket_id": "TKT-2C5FD0DF",
+    "customer_id": "C0000067",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.076881"
+  },
+  {
+    "ticket_id": "TKT-C2C6F248",
+    "customer_id": "C0000286",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.076938"
+  },
+  {
+    "ticket_id": "TKT-7EC53AFD",
+    "customer_id": "C0000696",
+    "issue_text": "Why was my credit card charged twice for order ORD-4088BE00?",
+    "status": "in_progress",
+    "created_at": "2026-05-18T07:13:49.076994"
+  },
+  {
+    "ticket_id": "TKT-1D184D0D",
+    "customer_id": "C0000275",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.077089"
+  },
+  {
+    "ticket_id": "TKT-BD93886D",
+    "customer_id": "C0000240",
+    "issue_text": "The product P0008625 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.077147"
+  },
+  {
+    "ticket_id": "TKT-701AC686",
+    "customer_id": "C0000041",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-21T07:13:49.077220"
+  },
+  {
+    "ticket_id": "TKT-61CA1418",
+    "customer_id": "C0000002",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.077275"
+  },
+  {
+    "ticket_id": "TKT-7570A4F9",
+    "customer_id": "C0000046",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-17T07:13:49.077328"
+  },
+  {
+    "ticket_id": "TKT-744D33BB",
+    "customer_id": "C0000757",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.077403"
+  },
+  {
+    "ticket_id": "TKT-709A049C",
+    "customer_id": "C0000328",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-17T07:13:49.077461"
+  },
+  {
+    "ticket_id": "TKT-A0F45346",
+    "customer_id": "C0000803",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-06-02T07:13:49.077534"
+  },
+  {
+    "ticket_id": "TKT-9DAFADC0",
+    "customer_id": "C0000782",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-22T07:13:49.077586"
+  },
+  {
+    "ticket_id": "TKT-5A517909",
+    "customer_id": "C0000267",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.077634"
+  },
+  {
+    "ticket_id": "TKT-81ED339C",
+    "customer_id": "C0000720",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.077681"
+  },
+  {
+    "ticket_id": "TKT-81969AAD",
+    "customer_id": "C0000491",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.077736"
+  },
+  {
+    "ticket_id": "TKT-69758FD8",
+    "customer_id": "C0000120",
+    "issue_text": "The product P0035126 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.077803"
+  },
+  {
+    "ticket_id": "TKT-DD65EFF5",
+    "customer_id": "C0000456",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-26T07:13:49.077862"
+  },
+  {
+    "ticket_id": "TKT-EA70D734",
+    "customer_id": "C0000582",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-09T07:13:49.078349"
+  },
+  {
+    "ticket_id": "TKT-06F86AC4",
+    "customer_id": "C0000569",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.078935"
+  },
+  {
+    "ticket_id": "TKT-824288A8",
+    "customer_id": "C0000647",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-12T07:13:49.079027"
+  },
+  {
+    "ticket_id": "TKT-F5233B41",
+    "customer_id": "C0000923",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-06-07T07:13:49.079084"
+  },
+  {
+    "ticket_id": "TKT-65CD2069",
+    "customer_id": "C0000040",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.079140"
+  },
+  {
+    "ticket_id": "TKT-307684AA",
+    "customer_id": "C0000094",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-31T07:13:49.079193"
+  },
+  {
+    "ticket_id": "TKT-2C2C1D50",
+    "customer_id": "C0000865",
+    "issue_text": "The product P0042597 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.079248"
+  },
+  {
+    "ticket_id": "TKT-D2BE9E82",
+    "customer_id": "C0000196",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-28T07:13:49.079306"
+  },
+  {
+    "ticket_id": "TKT-4A01F3B4",
+    "customer_id": "C0000349",
+    "issue_text": "The product P0010706 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-15T07:13:49.079359"
+  },
+  {
+    "ticket_id": "TKT-FB97F072",
+    "customer_id": "C0000990",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-23T07:13:49.079411"
+  },
+  {
+    "ticket_id": "TKT-8B3EDC4F",
+    "customer_id": "C0000977",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.079467"
+  },
+  {
+    "ticket_id": "TKT-C417F139",
+    "customer_id": "C0000903",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.079535"
+  },
+  {
+    "ticket_id": "TKT-8BECBF4E",
+    "customer_id": "C0000074",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-18T07:13:49.079607"
+  },
+  {
+    "ticket_id": "TKT-6BCBECEC",
+    "customer_id": "C0000037",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-31T07:13:49.079718"
+  },
+  {
+    "ticket_id": "TKT-635A675F",
+    "customer_id": "C0000230",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.079774"
+  },
+  {
+    "ticket_id": "TKT-A7C24BCF",
+    "customer_id": "C0000429",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-20T07:13:49.079826"
+  },
+  {
+    "ticket_id": "TKT-1D5759C1",
+    "customer_id": "C0000597",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-06-05T07:13:49.079874"
+  },
+  {
+    "ticket_id": "TKT-9490C992",
+    "customer_id": "C0000786",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.079929"
+  },
+  {
+    "ticket_id": "TKT-80BD64EE",
+    "customer_id": "C0000515",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.080009"
+  },
+  {
+    "ticket_id": "TKT-C70960A6",
+    "customer_id": "C0000494",
+    "issue_text": "The product P0011017 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.080069"
+  },
+  {
+    "ticket_id": "TKT-9CF35523",
+    "customer_id": "C0000883",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-16T07:13:49.080121"
+  },
+  {
+    "ticket_id": "TKT-55BDCDFC",
+    "customer_id": "C0000036",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.080176"
+  },
+  {
+    "ticket_id": "TKT-31C14AA9",
+    "customer_id": "C0000046",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-17T07:13:49.080231"
+  },
+  {
+    "ticket_id": "TKT-5B6B1D0C",
+    "customer_id": "C0000632",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-26T07:13:49.080288"
+  },
+  {
+    "ticket_id": "TKT-7E155EBB",
+    "customer_id": "C0000710",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.080343"
+  },
+  {
+    "ticket_id": "TKT-1D3863F4",
+    "customer_id": "C0000580",
+    "issue_text": "Why was my credit card charged twice for order ORD-09771C27?",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.080401"
+  },
+  {
+    "ticket_id": "TKT-358439EA",
+    "customer_id": "C0000142",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-28T07:13:49.080456"
+  },
+  {
+    "ticket_id": "TKT-A276E6D2",
+    "customer_id": "C0000297",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.080512"
+  },
+  {
+    "ticket_id": "TKT-B46702A8",
+    "customer_id": "C0000881",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-28T07:13:49.080609"
+  },
+  {
+    "ticket_id": "TKT-C79C0949",
+    "customer_id": "C0000146",
+    "issue_text": "Why was my credit card charged twice for order ORD-BD149D9B?",
+    "status": "open",
+    "created_at": "2026-05-21T07:13:49.080677"
+  },
+  {
+    "ticket_id": "TKT-B0CA0E0D",
+    "customer_id": "C0000787",
+    "issue_text": "Why was my credit card charged twice for order ORD-B1579D26?",
+    "status": "open",
+    "created_at": "2026-05-08T07:13:49.080767"
+  },
+  {
+    "ticket_id": "TKT-D64B68C5",
+    "customer_id": "C0000355",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-29T07:13:49.080825"
+  },
+  {
+    "ticket_id": "TKT-126C8093",
+    "customer_id": "C0000799",
+    "issue_text": "Why was my credit card charged twice for order ORD-5F426D18?",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.080876"
+  },
+  {
+    "ticket_id": "TKT-6F544443",
+    "customer_id": "C0000994",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-06-07T07:13:49.080953"
+  },
+  {
+    "ticket_id": "TKT-BBF6A7A8",
+    "customer_id": "C0000382",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.081010"
+  },
+  {
+    "ticket_id": "TKT-B5D0FDD1",
+    "customer_id": "C0000366",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.081063"
+  },
+  {
+    "ticket_id": "TKT-9D76A051",
+    "customer_id": "C0000099",
+    "issue_text": "The product P0011905 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-30T07:13:49.081116"
+  },
+  {
+    "ticket_id": "TKT-145209A1",
+    "customer_id": "C0000639",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.081172"
+  },
+  {
+    "ticket_id": "TKT-98225383",
+    "customer_id": "C0000450",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.081233"
+  },
+  {
+    "ticket_id": "TKT-DA1BE3AD",
+    "customer_id": "C0000281",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.081297"
+  },
+  {
+    "ticket_id": "TKT-43577D31",
+    "customer_id": "C0000048",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-08T07:13:49.081377"
+  },
+  {
+    "ticket_id": "TKT-5F04906E",
+    "customer_id": "C0000184",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-28T07:13:49.081434"
+  },
+  {
+    "ticket_id": "TKT-2F701157",
+    "customer_id": "C0000552",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-15T07:13:49.081485"
+  },
+  {
+    "ticket_id": "TKT-9A21CDB9",
+    "customer_id": "C0000363",
+    "issue_text": "The product P0044336 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-12T07:13:49.081542"
+  },
+  {
+    "ticket_id": "TKT-4C02562E",
+    "customer_id": "C0000026",
+    "issue_text": "The product P0025192 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-14T07:13:49.081605"
+  },
+  {
+    "ticket_id": "TKT-52F7824E",
+    "customer_id": "C0000184",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-21T07:13:49.081661"
+  },
+  {
+    "ticket_id": "TKT-46ED5391",
+    "customer_id": "C0000628",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.081710"
+  },
+  {
+    "ticket_id": "TKT-32E760AB",
+    "customer_id": "C0000073",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.081770"
+  },
+  {
+    "ticket_id": "TKT-89B3ED64",
+    "customer_id": "C0000248",
+    "issue_text": "The product P0005881 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-27T07:13:49.081825"
+  },
+  {
+    "ticket_id": "TKT-B0AE3274",
+    "customer_id": "C0000898",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.081895"
+  },
+  {
+    "ticket_id": "TKT-9F4758D7",
+    "customer_id": "C0000410",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-12T07:13:49.081948"
+  },
+  {
+    "ticket_id": "TKT-BAA4A04E",
+    "customer_id": "C0000806",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-06-05T07:13:49.082003"
+  },
+  {
+    "ticket_id": "TKT-F6FA8D3A",
+    "customer_id": "C0000509",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.082055"
+  },
+  {
+    "ticket_id": "TKT-299EDCCF",
+    "customer_id": "C0000357",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-17T07:13:49.082106"
+  },
+  {
+    "ticket_id": "TKT-5CFD951E",
+    "customer_id": "C0000595",
+    "issue_text": "Why was my credit card charged twice for order ORD-C7CDA2D7?",
+    "status": "in_progress",
+    "created_at": "2026-05-26T07:13:49.082175"
+  },
+  {
+    "ticket_id": "TKT-5EFE31BB",
+    "customer_id": "C0000712",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.082228"
+  },
+  {
+    "ticket_id": "TKT-EFD97109",
+    "customer_id": "C0000716",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-06-02T07:13:49.082277"
+  },
+  {
+    "ticket_id": "TKT-A5FE73CA",
+    "customer_id": "C0000294",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.082323"
+  },
+  {
+    "ticket_id": "TKT-E5DC1D38",
+    "customer_id": "C0000440",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-04T07:13:49.082368"
+  },
+  {
+    "ticket_id": "TKT-4281D142",
+    "customer_id": "C0000793",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-19T07:13:49.082418"
+  },
+  {
+    "ticket_id": "TKT-58F6A504",
+    "customer_id": "C0000863",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.082465"
+  },
+  {
+    "ticket_id": "TKT-73805131",
+    "customer_id": "C0000662",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-19T07:13:49.082514"
+  },
+  {
+    "ticket_id": "TKT-1B4A41B1",
+    "customer_id": "C0000575",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-28T07:13:49.082570"
+  },
+  {
+    "ticket_id": "TKT-30DD91BD",
+    "customer_id": "C0000585",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-30T07:13:49.082696"
+  },
+  {
+    "ticket_id": "TKT-1007CD37",
+    "customer_id": "C0000266",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-24T07:13:49.082760"
+  },
+  {
+    "ticket_id": "TKT-EB84F4C5",
+    "customer_id": "C0000964",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-26T07:13:49.082815"
+  },
+  {
+    "ticket_id": "TKT-1295B9AA",
+    "customer_id": "C0000895",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.082915"
+  },
+  {
+    "ticket_id": "TKT-FCCC849D",
+    "customer_id": "C0000426",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.082970"
+  },
+  {
+    "ticket_id": "TKT-B66382D6",
+    "customer_id": "C0000668",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-28T07:13:49.083021"
+  },
+  {
+    "ticket_id": "TKT-16C04FE7",
+    "customer_id": "C0000720",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.083075"
+  },
+  {
+    "ticket_id": "TKT-DAF35217",
+    "customer_id": "C0000486",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-06-03T07:13:49.083121"
+  },
+  {
+    "ticket_id": "TKT-386A8E02",
+    "customer_id": "C0000538",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.083174"
+  },
+  {
+    "ticket_id": "TKT-A21F1667",
+    "customer_id": "C0000058",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.083224"
+  },
+  {
+    "ticket_id": "TKT-1DBA9B71",
+    "customer_id": "C0000719",
+    "issue_text": "Why was my credit card charged twice for order ORD-34448FCA?",
+    "status": "closed",
+    "created_at": "2026-05-20T07:13:49.083280"
+  },
+  {
+    "ticket_id": "TKT-9112DED2",
+    "customer_id": "C0000066",
+    "issue_text": "Why was my credit card charged twice for order ORD-FC1C7C6E?",
+    "status": "in_progress",
+    "created_at": "2026-05-10T07:13:49.083339"
+  },
+  {
+    "ticket_id": "TKT-8924F4FB",
+    "customer_id": "C0000835",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-12T07:13:49.083390"
+  },
+  {
+    "ticket_id": "TKT-E82E1367",
+    "customer_id": "C0000360",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.083466"
+  },
+  {
+    "ticket_id": "TKT-0349A4B9",
+    "customer_id": "C0000671",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.083522"
+  },
+  {
+    "ticket_id": "TKT-147CA0EF",
+    "customer_id": "C0000536",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-27T07:13:49.083590"
+  },
+  {
+    "ticket_id": "TKT-873900ED",
+    "customer_id": "C0000029",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.083652"
+  },
+  {
+    "ticket_id": "TKT-89DE47FB",
+    "customer_id": "C0000536",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.083705"
+  },
+  {
+    "ticket_id": "TKT-D2511368",
+    "customer_id": "C0000169",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-24T07:13:49.083776"
+  },
+  {
+    "ticket_id": "TKT-823DEF26",
+    "customer_id": "C0000804",
+    "issue_text": "The product P0048884 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.083831"
+  },
+  {
+    "ticket_id": "TKT-3A3915D6",
+    "customer_id": "C0000770",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-14T07:13:49.083880"
+  },
+  {
+    "ticket_id": "TKT-D807B4B7",
+    "customer_id": "C0000126",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-06-04T07:13:49.083925"
+  },
+  {
+    "ticket_id": "TKT-C01AD1D0",
+    "customer_id": "C0000346",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.083967"
+  },
+  {
+    "ticket_id": "TKT-21857BCF",
+    "customer_id": "C0000186",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.084009"
+  },
+  {
+    "ticket_id": "TKT-AAB7E422",
+    "customer_id": "C0000585",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-06-06T07:13:49.084058"
+  },
+  {
+    "ticket_id": "TKT-3D6BEEEA",
+    "customer_id": "C0000902",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-25T07:13:49.084109"
+  },
+  {
+    "ticket_id": "TKT-F681E625",
+    "customer_id": "C0000846",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.084157"
+  },
+  {
+    "ticket_id": "TKT-085F3265",
+    "customer_id": "C0000819",
+    "issue_text": "Why was my credit card charged twice for order ORD-0AB370BA?",
+    "status": "closed",
+    "created_at": "2026-06-02T07:13:49.084232"
+  },
+  {
+    "ticket_id": "TKT-1B9D7B61",
+    "customer_id": "C0000258",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.084286"
+  },
+  {
+    "ticket_id": "TKT-7345CF3E",
+    "customer_id": "C0000827",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-10T07:13:49.084340"
+  },
+  {
+    "ticket_id": "TKT-5E80AC93",
+    "customer_id": "C0000859",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-27T07:13:49.084390"
+  },
+  {
+    "ticket_id": "TKT-70DA9EC4",
+    "customer_id": "C0000137",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-06-01T07:13:49.084443"
+  },
+  {
+    "ticket_id": "TKT-15D276F8",
+    "customer_id": "C0000851",
+    "issue_text": "Why was my credit card charged twice for order ORD-0EB36A4D?",
+    "status": "closed",
+    "created_at": "2026-05-30T07:13:49.084521"
+  },
+  {
+    "ticket_id": "TKT-AE6C3587",
+    "customer_id": "C0000441",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-15T07:13:49.084572"
+  },
+  {
+    "ticket_id": "TKT-872A1BA3",
+    "customer_id": "C0000419",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-09T07:13:49.084709"
+  },
+  {
+    "ticket_id": "TKT-9AEC5908",
+    "customer_id": "C0000405",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.084771"
+  },
+  {
+    "ticket_id": "TKT-3EDA63EC",
+    "customer_id": "C0000256",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.084823"
+  },
+  {
+    "ticket_id": "TKT-E3F4B64F",
+    "customer_id": "C0000839",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.084868"
+  },
+  {
+    "ticket_id": "TKT-D8078053",
+    "customer_id": "C0000837",
+    "issue_text": "The product P0028503 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-12T07:13:49.084918"
+  },
+  {
+    "ticket_id": "TKT-BA2C3C81",
+    "customer_id": "C0000522",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-10T07:13:49.084970"
+  },
+  {
+    "ticket_id": "TKT-2D915039",
+    "customer_id": "C0000873",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.085018"
+  },
+  {
+    "ticket_id": "TKT-4F8B3507",
+    "customer_id": "C0000035",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.085071"
+  },
+  {
+    "ticket_id": "TKT-64B1345B",
+    "customer_id": "C0000277",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-18T07:13:49.085126"
+  },
+  {
+    "ticket_id": "TKT-87D79919",
+    "customer_id": "C0000580",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-26T07:13:49.085177"
+  },
+  {
+    "ticket_id": "TKT-1205C358",
+    "customer_id": "C0000576",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-06-07T07:13:49.085228"
+  },
+  {
+    "ticket_id": "TKT-E4EA232E",
+    "customer_id": "C0000738",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.085282"
+  },
+  {
+    "ticket_id": "TKT-46EB7C46",
+    "customer_id": "C0000202",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.085335"
+  },
+  {
+    "ticket_id": "TKT-A421FF8A",
+    "customer_id": "C0000714",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-31T07:13:49.085391"
+  },
+  {
+    "ticket_id": "TKT-9FB05224",
+    "customer_id": "C0000777",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-06-01T07:13:49.085445"
+  },
+  {
+    "ticket_id": "TKT-FDA275C6",
+    "customer_id": "C0000710",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-05T07:13:49.085494"
+  },
+  {
+    "ticket_id": "TKT-0208C229",
+    "customer_id": "C0000605",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.085553"
+  },
+  {
+    "ticket_id": "TKT-19F3770D",
+    "customer_id": "C0000310",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.085610"
+  },
+  {
+    "ticket_id": "TKT-8C8C49A2",
+    "customer_id": "C0000876",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-22T07:13:49.085669"
+  },
+  {
+    "ticket_id": "TKT-4CDA9B13",
+    "customer_id": "C0000141",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-06-03T07:13:49.085716"
+  },
+  {
+    "ticket_id": "TKT-585A3D39",
+    "customer_id": "C0000802",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-17T07:13:49.085767"
+  },
+  {
+    "ticket_id": "TKT-FA98708B",
+    "customer_id": "C0000987",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.085844"
+  },
+  {
+    "ticket_id": "TKT-60D06043",
+    "customer_id": "C0000589",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.085890"
+  },
+  {
+    "ticket_id": "TKT-43B9F4A3",
+    "customer_id": "C0000710",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-30T07:13:49.085935"
+  },
+  {
+    "ticket_id": "TKT-FD264333",
+    "customer_id": "C0000171",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-25T07:13:49.085981"
+  },
+  {
+    "ticket_id": "TKT-29525A83",
+    "customer_id": "C0000843",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.086024"
+  },
+  {
+    "ticket_id": "TKT-812F5FE8",
+    "customer_id": "C0000058",
+    "issue_text": "The product P0028359 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-06-03T07:13:49.086070"
+  },
+  {
+    "ticket_id": "TKT-41ED4F91",
+    "customer_id": "C0000827",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-16T07:13:49.086113"
+  },
+  {
+    "ticket_id": "TKT-5E1AB579",
+    "customer_id": "C0000237",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.086156"
+  },
+  {
+    "ticket_id": "TKT-FF7A5218",
+    "customer_id": "C0000263",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-10T07:13:49.086199"
+  },
+  {
+    "ticket_id": "TKT-3E2D6C01",
+    "customer_id": "C0000459",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.086244"
+  },
+  {
+    "ticket_id": "TKT-13625864",
+    "customer_id": "C0000001",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-16T07:13:49.086289"
+  },
+  {
+    "ticket_id": "TKT-E5757DBB",
+    "customer_id": "C0000510",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-06-02T07:13:49.086336"
+  },
+  {
+    "ticket_id": "TKT-B95834A4",
+    "customer_id": "C0000114",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.086385"
+  },
+  {
+    "ticket_id": "TKT-017379EB",
+    "customer_id": "C0000917",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.086432"
+  },
+  {
+    "ticket_id": "TKT-2CC5C23F",
+    "customer_id": "C0000956",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-19T07:13:49.086477"
+  },
+  {
+    "ticket_id": "TKT-63EE6836",
+    "customer_id": "C0000911",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-06-04T07:13:49.086524"
+  },
+  {
+    "ticket_id": "TKT-25DAD9C3",
+    "customer_id": "C0000801",
+    "issue_text": "The product P0034371 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-20T07:13:49.086574"
+  },
+  {
+    "ticket_id": "TKT-FA7B3E62",
+    "customer_id": "C0000681",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.086628"
+  },
+  {
+    "ticket_id": "TKT-DBD82446",
+    "customer_id": "C0000818",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-10T07:13:49.086752"
+  },
+  {
+    "ticket_id": "TKT-F759B264",
+    "customer_id": "C0000812",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-06-02T07:13:49.086809"
+  },
+  {
+    "ticket_id": "TKT-8FED4B2B",
+    "customer_id": "C0000514",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.086960"
+  },
+  {
+    "ticket_id": "TKT-2A4965D1",
+    "customer_id": "C0000561",
+    "issue_text": "Why was my credit card charged twice for order ORD-465416D4?",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.087195"
+  },
+  {
+    "ticket_id": "TKT-48B2D29F",
+    "customer_id": "C0000117",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-20T07:13:49.087266"
+  },
+  {
+    "ticket_id": "TKT-C0813DA7",
+    "customer_id": "C0000735",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.087598"
+  },
+  {
+    "ticket_id": "TKT-CB64383C",
+    "customer_id": "C0000111",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.087894"
+  },
+  {
+    "ticket_id": "TKT-62C2D950",
+    "customer_id": "C0000512",
+    "issue_text": "The product P0008901 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-17T07:13:49.087975"
+  },
+  {
+    "ticket_id": "TKT-C349257F",
+    "customer_id": "C0000564",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.088029"
+  },
+  {
+    "ticket_id": "TKT-D657C28B",
+    "customer_id": "C0000830",
+    "issue_text": "Why was my credit card charged twice for order ORD-1A17604E?",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.088101"
+  },
+  {
+    "ticket_id": "TKT-236AFCAC",
+    "customer_id": "C0000300",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-09T07:13:49.088163"
+  },
+  {
+    "ticket_id": "TKT-86F4DDBE",
+    "customer_id": "C0000158",
+    "issue_text": "Why was my credit card charged twice for order ORD-43BB9DFB?",
+    "status": "open",
+    "created_at": "2026-06-04T07:13:49.088217"
+  },
+  {
+    "ticket_id": "TKT-FDA90CFE",
+    "customer_id": "C0000457",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-06-03T07:13:49.088270"
+  },
+  {
+    "ticket_id": "TKT-4853C68A",
+    "customer_id": "C0000595",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-06-01T07:13:49.088322"
+  },
+  {
+    "ticket_id": "TKT-4D7A8BAC",
+    "customer_id": "C0000063",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-10T07:13:49.088377"
+  },
+  {
+    "ticket_id": "TKT-2D2741AC",
+    "customer_id": "C0000343",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-06-05T07:13:49.088431"
+  },
+  {
+    "ticket_id": "TKT-8CFC45FE",
+    "customer_id": "C0000376",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-24T07:13:49.088483"
+  },
+  {
+    "ticket_id": "TKT-9C9A748D",
+    "customer_id": "C0000863",
+    "issue_text": "The product P0006726 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-27T07:13:49.088535"
+  },
+  {
+    "ticket_id": "TKT-06881CE7",
+    "customer_id": "C0000151",
+    "issue_text": "The product P0004536 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-22T07:13:49.088589"
+  },
+  {
+    "ticket_id": "TKT-A13392CB",
+    "customer_id": "C0000296",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.088641"
+  },
+  {
+    "ticket_id": "TKT-E6347DBD",
+    "customer_id": "C0000007",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.088692"
+  },
+  {
+    "ticket_id": "TKT-F1A9D2C9",
+    "customer_id": "C0000005",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-27T07:13:49.088758"
+  },
+  {
+    "ticket_id": "TKT-3BC5D04B",
+    "customer_id": "C0000978",
+    "issue_text": "The product P0012504 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-16T07:13:49.089077"
+  },
+  {
+    "ticket_id": "TKT-BCA2C24A",
+    "customer_id": "C0000818",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.089345"
+  },
+  {
+    "ticket_id": "TKT-217AA71E",
+    "customer_id": "C0000397",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.089417"
+  },
+  {
+    "ticket_id": "TKT-C788E038",
+    "customer_id": "C0000725",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-23T07:13:49.089495"
+  },
+  {
+    "ticket_id": "TKT-273AA582",
+    "customer_id": "C0000557",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.089552"
+  },
+  {
+    "ticket_id": "TKT-06715654",
+    "customer_id": "C0000817",
+    "issue_text": "The product P0014622 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.089600"
+  },
+  {
+    "ticket_id": "TKT-F20E6CAA",
+    "customer_id": "C0000383",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.089712"
+  },
+  {
+    "ticket_id": "TKT-72F4FC1C",
+    "customer_id": "C0000229",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.089770"
+  },
+  {
+    "ticket_id": "TKT-B58CE8E7",
+    "customer_id": "C0000849",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.089817"
+  },
+  {
+    "ticket_id": "TKT-D643DF74",
+    "customer_id": "C0000515",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-31T07:13:49.089871"
+  },
+  {
+    "ticket_id": "TKT-A136291A",
+    "customer_id": "C0000618",
+    "issue_text": "Why was my credit card charged twice for order ORD-8EE2035A?",
+    "status": "open",
+    "created_at": "2026-05-21T07:13:49.089926"
+  },
+  {
+    "ticket_id": "TKT-A11E314D",
+    "customer_id": "C0000795",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.089983"
+  },
+  {
+    "ticket_id": "TKT-60098A7E",
+    "customer_id": "C0000012",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.091379"
+  },
+  {
+    "ticket_id": "TKT-92F5D88D",
+    "customer_id": "C0000281",
+    "issue_text": "Why was my credit card charged twice for order ORD-B288C958?",
+    "status": "open",
+    "created_at": "2026-05-17T07:13:49.091462"
+  },
+  {
+    "ticket_id": "TKT-47574178",
+    "customer_id": "C0000353",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.091520"
+  },
+  {
+    "ticket_id": "TKT-E0306B01",
+    "customer_id": "C0000356",
+    "issue_text": "The product P0007699 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-19T07:13:49.091574"
+  },
+  {
+    "ticket_id": "TKT-F8ECA18A",
+    "customer_id": "C0000547",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.091627"
+  },
+  {
+    "ticket_id": "TKT-7FA47E68",
+    "customer_id": "C0000232",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.091696"
+  },
+  {
+    "ticket_id": "TKT-7BD3128D",
+    "customer_id": "C0000255",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.091853"
+  },
+  {
+    "ticket_id": "TKT-DE100050",
+    "customer_id": "C0000023",
+    "issue_text": "The product P0045018 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-28T07:13:49.091924"
+  },
+  {
+    "ticket_id": "TKT-6CC0A0A6",
+    "customer_id": "C0000004",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.091978"
+  },
+  {
+    "ticket_id": "TKT-A07F924E",
+    "customer_id": "C0000225",
+    "issue_text": "Why was my credit card charged twice for order ORD-0A73D1B6?",
+    "status": "open",
+    "created_at": "2026-06-07T07:13:49.092029"
+  },
+  {
+    "ticket_id": "TKT-636F4D40",
+    "customer_id": "C0000156",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.092092"
+  },
+  {
+    "ticket_id": "TKT-F770582A",
+    "customer_id": "C0000985",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.092155"
+  },
+  {
+    "ticket_id": "TKT-A7666C8E",
+    "customer_id": "C0000984",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-14T07:13:49.092232"
+  },
+  {
+    "ticket_id": "TKT-BDBC2742",
+    "customer_id": "C0000164",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-20T07:13:49.092296"
+  },
+  {
+    "ticket_id": "TKT-FB0E1239",
+    "customer_id": "C0000548",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.092355"
+  },
+  {
+    "ticket_id": "TKT-E291F86C",
+    "customer_id": "C0000063",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-16T07:13:49.092420"
+  },
+  {
+    "ticket_id": "TKT-96BBA20A",
+    "customer_id": "C0000425",
+    "issue_text": "Why was my credit card charged twice for order ORD-935CF742?",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.092615"
+  },
+  {
+    "ticket_id": "TKT-49987D49",
+    "customer_id": "C0000320",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.092692"
+  },
+  {
+    "ticket_id": "TKT-3E31802A",
+    "customer_id": "C0000517",
+    "issue_text": "The product P0000089 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.093289"
+  },
+  {
+    "ticket_id": "TKT-A3006048",
+    "customer_id": "C0000841",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-16T07:13:49.093399"
+  },
+  {
+    "ticket_id": "TKT-8AB2495D",
+    "customer_id": "C0000421",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.093466"
+  },
+  {
+    "ticket_id": "TKT-CB6C3732",
+    "customer_id": "C0000630",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-23T07:13:49.093533"
+  },
+  {
+    "ticket_id": "TKT-9B26E485",
+    "customer_id": "C0000746",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.093603"
+  },
+  {
+    "ticket_id": "TKT-0F11B908",
+    "customer_id": "C0000517",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-26T07:13:49.093675"
+  },
+  {
+    "ticket_id": "TKT-E8968E5E",
+    "customer_id": "C0000149",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-16T07:13:49.093748"
+  },
+  {
+    "ticket_id": "TKT-E10B9678",
+    "customer_id": "C0000873",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.093806"
+  },
+  {
+    "ticket_id": "TKT-5E2A658A",
+    "customer_id": "C0000506",
+    "issue_text": "Why was my credit card charged twice for order ORD-DA89864C?",
+    "status": "open",
+    "created_at": "2026-05-16T07:13:49.093871"
+  },
+  {
+    "ticket_id": "TKT-68063262",
+    "customer_id": "C0000726",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-25T07:13:49.093938"
+  },
+  {
+    "ticket_id": "TKT-EA42BB89",
+    "customer_id": "C0000414",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.094007"
+  },
+  {
+    "ticket_id": "TKT-7B1894F8",
+    "customer_id": "C0000958",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-17T07:13:49.094067"
+  },
+  {
+    "ticket_id": "TKT-C3AC9187",
+    "customer_id": "C0000888",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.094123"
+  },
+  {
+    "ticket_id": "TKT-E9FFA335",
+    "customer_id": "C0000992",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-17T07:13:49.094192"
+  },
+  {
+    "ticket_id": "TKT-1D14992D",
+    "customer_id": "C0000135",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-26T07:13:49.094251"
+  },
+  {
+    "ticket_id": "TKT-3A516147",
+    "customer_id": "C0000438",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.094374"
+  },
+  {
+    "ticket_id": "TKT-34F61ECF",
+    "customer_id": "C0000634",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-27T07:13:49.094446"
+  },
+  {
+    "ticket_id": "TKT-0B41A9B6",
+    "customer_id": "C0000825",
+    "issue_text": "The product P0014273 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.094506"
+  },
+  {
+    "ticket_id": "TKT-23F0B311",
+    "customer_id": "C0000875",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.094560"
+  },
+  {
+    "ticket_id": "TKT-1434B66F",
+    "customer_id": "C0000389",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.094621"
+  },
+  {
+    "ticket_id": "TKT-D009D203",
+    "customer_id": "C0000101",
+    "issue_text": "The product P0008736 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-06-02T07:13:49.094694"
+  },
+  {
+    "ticket_id": "TKT-B87ECA32",
+    "customer_id": "C0000452",
+    "issue_text": "The product P0030252 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.094741"
+  },
+  {
+    "ticket_id": "TKT-EE86E203",
+    "customer_id": "C0000861",
+    "issue_text": "The product P0007271 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.094903"
+  },
+  {
+    "ticket_id": "TKT-A87EC45F",
+    "customer_id": "C0000558",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-06-03T07:13:49.094975"
+  },
+  {
+    "ticket_id": "TKT-55289C92",
+    "customer_id": "C0000314",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.095040"
+  },
+  {
+    "ticket_id": "TKT-72DD9B51",
+    "customer_id": "C0000087",
+    "issue_text": "The product P0025847 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.095344"
+  },
+  {
+    "ticket_id": "TKT-E400F46D",
+    "customer_id": "C0000121",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-18T07:13:49.095408"
+  },
+  {
+    "ticket_id": "TKT-EB51EF57",
+    "customer_id": "C0000765",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-27T07:13:49.095461"
+  },
+  {
+    "ticket_id": "TKT-0E298F42",
+    "customer_id": "C0000806",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.095516"
+  },
+  {
+    "ticket_id": "TKT-182B8C41",
+    "customer_id": "C0000582",
+    "issue_text": "The product P0005105 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.095574"
+  },
+  {
+    "ticket_id": "TKT-19784157",
+    "customer_id": "C0000656",
+    "issue_text": "The product P0028748 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-06-04T07:13:49.095622"
+  },
+  {
+    "ticket_id": "TKT-E64C9E73",
+    "customer_id": "C0000793",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-06-05T07:13:49.095670"
+  },
+  {
+    "ticket_id": "TKT-3D75B319",
+    "customer_id": "C0000092",
+    "issue_text": "The product P0044423 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.095726"
+  },
+  {
+    "ticket_id": "TKT-5CCED1F2",
+    "customer_id": "C0000914",
+    "issue_text": "Why was my credit card charged twice for order ORD-AA3C99FF?",
+    "status": "in_progress",
+    "created_at": "2026-05-20T07:13:49.095804"
+  },
+  {
+    "ticket_id": "TKT-DDF5B85D",
+    "customer_id": "C0000380",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-14T07:13:49.095869"
+  },
+  {
+    "ticket_id": "TKT-30EA3137",
+    "customer_id": "C0000681",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-06-01T07:13:49.095923"
+  },
+  {
+    "ticket_id": "TKT-CA0D8F7D",
+    "customer_id": "C0000085",
+    "issue_text": "The product P0049172 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-16T07:13:49.096006"
+  },
+  {
+    "ticket_id": "TKT-3E7C9F85",
+    "customer_id": "C0000707",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.096062"
+  },
+  {
+    "ticket_id": "TKT-5ABD7C22",
+    "customer_id": "C0000727",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.096119"
+  },
+  {
+    "ticket_id": "TKT-E7DE832E",
+    "customer_id": "C0000313",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.096173"
+  },
+  {
+    "ticket_id": "TKT-00935455",
+    "customer_id": "C0000907",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-21T07:13:49.096230"
+  },
+  {
+    "ticket_id": "TKT-12AA323C",
+    "customer_id": "C0000947",
+    "issue_text": "Why was my credit card charged twice for order ORD-89973273?",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.096286"
+  },
+  {
+    "ticket_id": "TKT-8E1FA69B",
+    "customer_id": "C0000284",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.096340"
+  },
+  {
+    "ticket_id": "TKT-DAC1EC35",
+    "customer_id": "C0000798",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-13T07:13:49.096396"
+  },
+  {
+    "ticket_id": "TKT-9AFD250B",
+    "customer_id": "C0000729",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-06-04T07:13:49.096452"
+  },
+  {
+    "ticket_id": "TKT-D5A3EA2D",
+    "customer_id": "C0000182",
+    "issue_text": "Why was my credit card charged twice for order ORD-D9BE7603?",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.096504"
+  },
+  {
+    "ticket_id": "TKT-FF38F542",
+    "customer_id": "C0000080",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.096550"
+  },
+  {
+    "ticket_id": "TKT-197D38E8",
+    "customer_id": "C0000734",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.096600"
+  },
+  {
+    "ticket_id": "TKT-4B128DF5",
+    "customer_id": "C0000893",
+    "issue_text": "The product P0046829 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-17T07:13:49.096654"
+  },
+  {
+    "ticket_id": "TKT-8E21D7FD",
+    "customer_id": "C0000356",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-20T07:13:49.096710"
+  },
+  {
+    "ticket_id": "TKT-CB7FAC97",
+    "customer_id": "C0000887",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.096768"
+  },
+  {
+    "ticket_id": "TKT-8587C85B",
+    "customer_id": "C0000109",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-16T07:13:49.096895"
+  },
+  {
+    "ticket_id": "TKT-F2922B97",
+    "customer_id": "C0000680",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-27T07:13:49.096984"
+  },
+  {
+    "ticket_id": "TKT-6ADB94F7",
+    "customer_id": "C0000376",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-28T07:13:49.097040"
+  },
+  {
+    "ticket_id": "TKT-C55EA830",
+    "customer_id": "C0000330",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.097096"
+  },
+  {
+    "ticket_id": "TKT-A475795D",
+    "customer_id": "C0000746",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.097152"
+  },
+  {
+    "ticket_id": "TKT-B9CEEB7F",
+    "customer_id": "C0000758",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.097230"
+  },
+  {
+    "ticket_id": "TKT-3166DA26",
+    "customer_id": "C0000549",
+    "issue_text": "Why was my credit card charged twice for order ORD-D7A92540?",
+    "status": "open",
+    "created_at": "2026-06-03T07:13:49.097283"
+  },
+  {
+    "ticket_id": "TKT-9E49C3D7",
+    "customer_id": "C0000138",
+    "issue_text": "Why was my credit card charged twice for order ORD-C3C3390E?",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.097348"
+  },
+  {
+    "ticket_id": "TKT-6DF400AC",
+    "customer_id": "C0000382",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.097401"
+  },
+  {
+    "ticket_id": "TKT-18FBB7B9",
+    "customer_id": "C0000073",
+    "issue_text": "Why was my credit card charged twice for order ORD-8AE4387B?",
+    "status": "open",
+    "created_at": "2026-05-18T07:13:49.097460"
+  },
+  {
+    "ticket_id": "TKT-EB53207E",
+    "customer_id": "C0000168",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-29T07:13:49.097519"
+  },
+  {
+    "ticket_id": "TKT-5AF30145",
+    "customer_id": "C0000332",
+    "issue_text": "The product P0038583 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-24T07:13:49.097593"
+  },
+  {
+    "ticket_id": "TKT-5157F174",
+    "customer_id": "C0000980",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.097651"
+  },
+  {
+    "ticket_id": "TKT-9A5A50BF",
+    "customer_id": "C0000888",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.097706"
+  },
+  {
+    "ticket_id": "TKT-9DA386F9",
+    "customer_id": "C0000460",
+    "issue_text": "Why was my credit card charged twice for order ORD-F96CEE21?",
+    "status": "in_progress",
+    "created_at": "2026-06-07T07:13:49.097773"
+  },
+  {
+    "ticket_id": "TKT-6C894A6A",
+    "customer_id": "C0000272",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-22T07:13:49.097839"
+  },
+  {
+    "ticket_id": "TKT-5762713B",
+    "customer_id": "C0000359",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.097895"
+  },
+  {
+    "ticket_id": "TKT-FE1A9211",
+    "customer_id": "C0000799",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-06-04T07:13:49.097948"
+  },
+  {
+    "ticket_id": "TKT-6484E176",
+    "customer_id": "C0000653",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-31T07:13:49.098000"
+  },
+  {
+    "ticket_id": "TKT-81265480",
+    "customer_id": "C0000356",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-19T07:13:49.098058"
+  },
+  {
+    "ticket_id": "TKT-E97F0631",
+    "customer_id": "C0000778",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.098106"
+  },
+  {
+    "ticket_id": "TKT-DCF7C5B2",
+    "customer_id": "C0000034",
+    "issue_text": "Why was my credit card charged twice for order ORD-453B7B20?",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.098152"
+  },
+  {
+    "ticket_id": "TKT-3C3F0FB8",
+    "customer_id": "C0000972",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.098199"
+  },
+  {
+    "ticket_id": "TKT-EC0DC4BE",
+    "customer_id": "C0000972",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-27T07:13:49.098248"
+  },
+  {
+    "ticket_id": "TKT-14AB5856",
+    "customer_id": "C0000174",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.098570"
+  },
+  {
+    "ticket_id": "TKT-14757F64",
+    "customer_id": "C0000333",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-10T07:13:49.098645"
+  },
+  {
+    "ticket_id": "TKT-FE5842D3",
+    "customer_id": "C0000807",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-21T07:13:49.098705"
+  },
+  {
+    "ticket_id": "TKT-86C5D21F",
+    "customer_id": "C0000608",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-19T07:13:49.098760"
+  },
+  {
+    "ticket_id": "TKT-98F3BF4E",
+    "customer_id": "C0000926",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-06-01T07:13:49.098817"
+  },
+  {
+    "ticket_id": "TKT-B0B01427",
+    "customer_id": "C0000846",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.098996"
+  },
+  {
+    "ticket_id": "TKT-FD38B08B",
+    "customer_id": "C0000690",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.099059"
+  },
+  {
+    "ticket_id": "TKT-B4D53C12",
+    "customer_id": "C0000592",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.099111"
+  },
+  {
+    "ticket_id": "TKT-40F749CE",
+    "customer_id": "C0000153",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.099168"
+  },
+  {
+    "ticket_id": "TKT-019EAD96",
+    "customer_id": "C0000661",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.099229"
+  },
+  {
+    "ticket_id": "TKT-E8DA236B",
+    "customer_id": "C0000637",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.099283"
+  },
+  {
+    "ticket_id": "TKT-652AFE3D",
+    "customer_id": "C0000835",
+    "issue_text": "The product P0022140 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-24T07:13:49.099339"
+  },
+  {
+    "ticket_id": "TKT-FDB314CE",
+    "customer_id": "C0000583",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-25T07:13:49.099392"
+  },
+  {
+    "ticket_id": "TKT-07953A7D",
+    "customer_id": "C0000286",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.099450"
+  },
+  {
+    "ticket_id": "TKT-591A09B2",
+    "customer_id": "C0000258",
+    "issue_text": "Why was my credit card charged twice for order ORD-4FF9B569?",
+    "status": "open",
+    "created_at": "2026-06-05T07:13:49.099523"
+  },
+  {
+    "ticket_id": "TKT-AF0EEF96",
+    "customer_id": "C0000202",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-25T07:13:49.099586"
+  },
+  {
+    "ticket_id": "TKT-4623BFF8",
+    "customer_id": "C0000655",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-26T07:13:49.099642"
+  },
+  {
+    "ticket_id": "TKT-8A427197",
+    "customer_id": "C0000186",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.099696"
+  },
+  {
+    "ticket_id": "TKT-E9BC645D",
+    "customer_id": "C0000127",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.099748"
+  },
+  {
+    "ticket_id": "TKT-665EEDC4",
+    "customer_id": "C0000613",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-17T07:13:49.099846"
+  },
+  {
+    "ticket_id": "TKT-CB5086D3",
+    "customer_id": "C0000407",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-06-06T07:13:49.099905"
+  },
+  {
+    "ticket_id": "TKT-F901E937",
+    "customer_id": "C0000813",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.099952"
+  },
+  {
+    "ticket_id": "TKT-C7BFE2BA",
+    "customer_id": "C0000008",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.099998"
+  },
+  {
+    "ticket_id": "TKT-DBED0410",
+    "customer_id": "C0000055",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.100051"
+  },
+  {
+    "ticket_id": "TKT-EA46E8FB",
+    "customer_id": "C0000204",
+    "issue_text": "Why was my credit card charged twice for order ORD-24A950C1?",
+    "status": "closed",
+    "created_at": "2026-05-27T07:13:49.100103"
+  },
+  {
+    "ticket_id": "TKT-F0425582",
+    "customer_id": "C0000721",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-29T07:13:49.100152"
+  },
+  {
+    "ticket_id": "TKT-EC2B690D",
+    "customer_id": "C0000249",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-06-07T07:13:49.100209"
+  },
+  {
+    "ticket_id": "TKT-90E8EC7C",
+    "customer_id": "C0000527",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-06-01T07:13:49.100269"
+  },
+  {
+    "ticket_id": "TKT-FBF3BB39",
+    "customer_id": "C0000594",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.100323"
+  },
+  {
+    "ticket_id": "TKT-3AD8CCF7",
+    "customer_id": "C0000646",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-14T07:13:49.100375"
+  },
+  {
+    "ticket_id": "TKT-FCD53E02",
+    "customer_id": "C0000952",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.100431"
+  },
+  {
+    "ticket_id": "TKT-B4EE5C99",
+    "customer_id": "C0000481",
+    "issue_text": "Why was my credit card charged twice for order ORD-C681A430?",
+    "status": "closed",
+    "created_at": "2026-05-19T07:13:49.100491"
+  },
+  {
+    "ticket_id": "TKT-1C383E29",
+    "customer_id": "C0000720",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-05-09T07:13:49.100547"
+  },
+  {
+    "ticket_id": "TKT-322D958F",
+    "customer_id": "C0000053",
+    "issue_text": "The product P0044849 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-24T07:13:49.100599"
+  },
+  {
+    "ticket_id": "TKT-F5502C2D",
+    "customer_id": "C0000479",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-20T07:13:49.100655"
+  },
+  {
+    "ticket_id": "TKT-D55DB340",
+    "customer_id": "C0000252",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-06-01T07:13:49.100709"
+  },
+  {
+    "ticket_id": "TKT-0AE7EA4D",
+    "customer_id": "C0000273",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-06-05T07:13:49.100763"
+  },
+  {
+    "ticket_id": "TKT-B77257D8",
+    "customer_id": "C0000934",
+    "issue_text": "Why was my credit card charged twice for order ORD-F965F1A8?",
+    "status": "closed",
+    "created_at": "2026-06-07T07:13:49.100813"
+  },
+  {
+    "ticket_id": "TKT-51B2FDE4",
+    "customer_id": "C0000500",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-06-03T07:13:49.100867"
+  },
+  {
+    "ticket_id": "TKT-C0132406",
+    "customer_id": "C0000851",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-17T07:13:49.100988"
+  },
+  {
+    "ticket_id": "TKT-72BD7C59",
+    "customer_id": "C0000298",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.101044"
+  },
+  {
+    "ticket_id": "TKT-1810C44E",
+    "customer_id": "C0000459",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-20T07:13:49.101098"
+  },
+  {
+    "ticket_id": "TKT-75C51040",
+    "customer_id": "C0000051",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.101156"
+  },
+  {
+    "ticket_id": "TKT-1B13077C",
+    "customer_id": "C0000261",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-21T07:13:49.101217"
+  },
+  {
+    "ticket_id": "TKT-61C7333A",
+    "customer_id": "C0000906",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-06-02T07:13:49.101272"
+  },
+  {
+    "ticket_id": "TKT-66432EFB",
+    "customer_id": "C0000863",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-19T07:13:49.101324"
+  },
+  {
+    "ticket_id": "TKT-B9C1CF92",
+    "customer_id": "C0000968",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-08T07:13:49.101378"
+  },
+  {
+    "ticket_id": "TKT-2A01CAB7",
+    "customer_id": "C0000252",
+    "issue_text": "Why was my credit card charged twice for order ORD-4D7E865B?",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.101435"
+  },
+  {
+    "ticket_id": "TKT-777396BB",
+    "customer_id": "C0000737",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.101493"
+  },
+  {
+    "ticket_id": "TKT-FEF031C9",
+    "customer_id": "C0000293",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-10T07:13:49.101560"
+  },
+  {
+    "ticket_id": "TKT-43889DC1",
+    "customer_id": "C0000336",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.101619"
+  },
+  {
+    "ticket_id": "TKT-2D51255E",
+    "customer_id": "C0000009",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-11T07:13:49.101681"
+  },
+  {
+    "ticket_id": "TKT-E3735E4A",
+    "customer_id": "C0000068",
+    "issue_text": "Why was my credit card charged twice for order ORD-F9CC2B06?",
+    "status": "in_progress",
+    "created_at": "2026-06-07T07:13:49.101738"
+  },
+  {
+    "ticket_id": "TKT-9E57DCA0",
+    "customer_id": "C0000634",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.101793"
+  },
+  {
+    "ticket_id": "TKT-7488E072",
+    "customer_id": "C0000814",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.101863"
+  },
+  {
+    "ticket_id": "TKT-F54825FC",
+    "customer_id": "C0000589",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-06-04T07:13:49.101920"
+  },
+  {
+    "ticket_id": "TKT-5EBFC554",
+    "customer_id": "C0000373",
+    "issue_text": "Why was my credit card charged twice for order ORD-9DDB71D3?",
+    "status": "closed",
+    "created_at": "2026-05-25T07:13:49.101976"
+  },
+  {
+    "ticket_id": "TKT-4D698571",
+    "customer_id": "C0000332",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "open",
+    "created_at": "2026-05-31T07:13:49.102031"
+  },
+  {
+    "ticket_id": "TKT-BBFEAC74",
+    "customer_id": "C0000543",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.102081"
+  },
+  {
+    "ticket_id": "TKT-CC7C1F96",
+    "customer_id": "C0000025",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-21T07:13:49.102130"
+  },
+  {
+    "ticket_id": "TKT-A035F6F5",
+    "customer_id": "C0000173",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-15T07:13:49.102178"
+  },
+  {
+    "ticket_id": "TKT-08C0347E",
+    "customer_id": "C0000801",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-06-06T07:13:49.102231"
+  },
+  {
+    "ticket_id": "TKT-F9893AE6",
+    "customer_id": "C0000350",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.102285"
+  },
+  {
+    "ticket_id": "TKT-727D33D5",
+    "customer_id": "C0000353",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-13T07:13:49.102381"
+  },
+  {
+    "ticket_id": "TKT-A344EEAD",
+    "customer_id": "C0000253",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.102442"
+  },
+  {
+    "ticket_id": "TKT-371FA99C",
+    "customer_id": "C0000817",
+    "issue_text": "The product P0012823 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-15T07:13:49.102516"
+  },
+  {
+    "ticket_id": "TKT-9655BA3D",
+    "customer_id": "C0000291",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-30T07:13:49.102573"
+  },
+  {
+    "ticket_id": "TKT-A0904CC1",
+    "customer_id": "C0000271",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-29T07:13:49.102631"
+  },
+  {
+    "ticket_id": "TKT-6BF67BDB",
+    "customer_id": "C0000185",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-06-01T07:13:49.102685"
+  },
+  {
+    "ticket_id": "TKT-D39AFA26",
+    "customer_id": "C0000432",
+    "issue_text": "The product P0031600 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.102740"
+  },
+  {
+    "ticket_id": "TKT-E4835FF7",
+    "customer_id": "C0000734",
+    "issue_text": "The product P0009249 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-30T07:13:49.102794"
+  },
+  {
+    "ticket_id": "TKT-2049E745",
+    "customer_id": "C0000670",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.102891"
+  },
+  {
+    "ticket_id": "TKT-0F50F71D",
+    "customer_id": "C0000475",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.103016"
+  },
+  {
+    "ticket_id": "TKT-FE169DB5",
+    "customer_id": "C0000801",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-06-01T07:13:49.103071"
+  },
+  {
+    "ticket_id": "TKT-F7A391D6",
+    "customer_id": "C0000047",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-21T07:13:49.103119"
+  },
+  {
+    "ticket_id": "TKT-6D3287DE",
+    "customer_id": "C0000932",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-06-01T07:13:49.103171"
+  },
+  {
+    "ticket_id": "TKT-404AB8CD",
+    "customer_id": "C0000172",
+    "issue_text": "Why was my credit card charged twice for order ORD-4681D0FA?",
+    "status": "closed",
+    "created_at": "2026-06-06T07:13:49.103223"
+  },
+  {
+    "ticket_id": "TKT-77687FAF",
+    "customer_id": "C0000629",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-25T07:13:49.103273"
+  },
+  {
+    "ticket_id": "TKT-127CC319",
+    "customer_id": "C0000969",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-06-05T07:13:49.103331"
+  },
+  {
+    "ticket_id": "TKT-DD2D44F2",
+    "customer_id": "C0000859",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "closed",
+    "created_at": "2026-05-20T07:13:49.103387"
+  },
+  {
+    "ticket_id": "TKT-37152255",
+    "customer_id": "C0000208",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-23T07:13:49.103441"
+  },
+  {
+    "ticket_id": "TKT-C42E3252",
+    "customer_id": "C0000970",
+    "issue_text": "The product P0034543 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.103494"
+  },
+  {
+    "ticket_id": "TKT-663E09A1",
+    "customer_id": "C0000308",
+    "issue_text": "The product P0024464 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-05-19T07:13:49.103551"
+  },
+  {
+    "ticket_id": "TKT-1940F485",
+    "customer_id": "C0000800",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.103610"
+  },
+  {
+    "ticket_id": "TKT-9BB7C64A",
+    "customer_id": "C0000456",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-17T07:13:49.103669"
+  },
+  {
+    "ticket_id": "TKT-D684466F",
+    "customer_id": "C0000130",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-09T07:13:49.103723"
+  },
+  {
+    "ticket_id": "TKT-769B3567",
+    "customer_id": "C0000402",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.103779"
+  },
+  {
+    "ticket_id": "TKT-7B79AC16",
+    "customer_id": "C0000877",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.103836"
+  },
+  {
+    "ticket_id": "TKT-F5A8EC9C",
+    "customer_id": "C0000036",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-28T07:13:49.103905"
+  },
+  {
+    "ticket_id": "TKT-731D7DF3",
+    "customer_id": "C0000357",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.103957"
+  },
+  {
+    "ticket_id": "TKT-EFB80865",
+    "customer_id": "C0000235",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.104004"
+  },
+  {
+    "ticket_id": "TKT-36732D09",
+    "customer_id": "C0000330",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-16T07:13:49.104058"
+  },
+  {
+    "ticket_id": "TKT-5DC3A153",
+    "customer_id": "C0000369",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-05-29T07:13:49.104114"
+  },
+  {
+    "ticket_id": "TKT-621B9966",
+    "customer_id": "C0000227",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "closed",
+    "created_at": "2026-05-18T07:13:49.104165"
+  },
+  {
+    "ticket_id": "TKT-5A01CA26",
+    "customer_id": "C0000552",
+    "issue_text": "Why was my credit card charged twice for order ORD-1A6ADE9F?",
+    "status": "open",
+    "created_at": "2026-06-01T07:13:49.104225"
+  },
+  {
+    "ticket_id": "TKT-B0085E02",
+    "customer_id": "C0000906",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "open",
+    "created_at": "2026-06-05T07:13:49.104279"
+  },
+  {
+    "ticket_id": "TKT-8FEB8829",
+    "customer_id": "C0000592",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-20T07:13:49.104333"
+  },
+  {
+    "ticket_id": "TKT-3453A633",
+    "customer_id": "C0000591",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-12T07:13:49.104408"
+  },
+  {
+    "ticket_id": "TKT-17E010E1",
+    "customer_id": "C0000328",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-05-22T07:13:49.104469"
+  },
+  {
+    "ticket_id": "TKT-4B942B6A",
+    "customer_id": "C0000715",
+    "issue_text": "Why was my credit card charged twice for order ORD-45CC58B5?",
+    "status": "open",
+    "created_at": "2026-05-12T07:13:49.104527"
+  },
+  {
+    "ticket_id": "TKT-883505FE",
+    "customer_id": "C0000200",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-28T07:13:49.104577"
+  },
+  {
+    "ticket_id": "TKT-65221E5F",
+    "customer_id": "C0000456",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-06-03T07:13:49.104631"
+  },
+  {
+    "ticket_id": "TKT-5A1123C7",
+    "customer_id": "C0000256",
+    "issue_text": "Why was my credit card charged twice for order ORD-7BB4B43B?",
+    "status": "open",
+    "created_at": "2026-06-06T07:13:49.104700"
+  },
+  {
+    "ticket_id": "TKT-5C8D3896",
+    "customer_id": "C0000821",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-27T07:13:49.104861"
+  },
+  {
+    "ticket_id": "TKT-782EA6A7",
+    "customer_id": "C0000993",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "open",
+    "created_at": "2026-05-25T07:13:49.105823"
+  },
+  {
+    "ticket_id": "TKT-9DE873CC",
+    "customer_id": "C0000936",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.115511"
+  },
+  {
+    "ticket_id": "TKT-62C40D94",
+    "customer_id": "C0000771",
+    "issue_text": "Why was my credit card charged twice for order ORD-69D9FE03?",
+    "status": "open",
+    "created_at": "2026-06-07T07:13:49.115863"
+  },
+  {
+    "ticket_id": "TKT-6858FAC0",
+    "customer_id": "C0000082",
+    "issue_text": "The product P0042277 arrived damaged. The screen is cracked.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.115954"
+  },
+  {
+    "ticket_id": "TKT-E5585539",
+    "customer_id": "C0000100",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.116061"
+  },
+  {
+    "ticket_id": "TKT-E1004A93",
+    "customer_id": "C0000823",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "closed",
+    "created_at": "2026-05-26T07:13:49.116145"
+  },
+  {
+    "ticket_id": "TKT-B05108B7",
+    "customer_id": "C0000101",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "open",
+    "created_at": "2026-05-26T07:13:49.116217"
+  },
+  {
+    "ticket_id": "TKT-E270F605",
+    "customer_id": "C0000460",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-05-12T07:13:49.116291"
+  },
+  {
+    "ticket_id": "TKT-46B2A541",
+    "customer_id": "C0000335",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.116355"
+  },
+  {
+    "ticket_id": "TKT-93EF4233",
+    "customer_id": "C0000745",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.116430"
+  },
+  {
+    "ticket_id": "TKT-0570DDB5",
+    "customer_id": "C0000822",
+    "issue_text": "How do I apply coupon code SAVE20?",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.116497"
+  },
+  {
+    "ticket_id": "TKT-E1420604",
+    "customer_id": "C0000178",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-24T07:13:49.116571"
+  },
+  {
+    "ticket_id": "TKT-4E5CAFE4",
+    "customer_id": "C0000778",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "in_progress",
+    "created_at": "2026-05-10T07:13:49.116658"
+  },
+  {
+    "ticket_id": "TKT-1488A5CA",
+    "customer_id": "C0000161",
+    "issue_text": "My delivery is delayed by 3 days. Can I get a refund for shipping?",
+    "status": "closed",
+    "created_at": "2026-05-23T07:13:49.116729"
+  },
+  {
+    "ticket_id": "TKT-6A743B22",
+    "customer_id": "C0000606",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-14T07:13:49.116795"
+  },
+  {
+    "ticket_id": "TKT-F2021B4C",
+    "customer_id": "C0000038",
+    "issue_text": "The product P0046374 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-13T07:13:49.116864"
+  },
+  {
+    "ticket_id": "TKT-5291443D",
+    "customer_id": "C0000228",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "open",
+    "created_at": "2026-05-23T07:13:49.116920"
+  },
+  {
+    "ticket_id": "TKT-4DB43560",
+    "customer_id": "C0000060",
+    "issue_text": "I want to return the running shoes, they don't fit well.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.116976"
+  },
+  {
+    "ticket_id": "TKT-4CF2799B",
+    "customer_id": "C0000356",
+    "issue_text": "The product P0015248 arrived damaged. The screen is cracked.",
+    "status": "open",
+    "created_at": "2026-05-21T07:13:49.117035"
+  },
+  {
+    "ticket_id": "TKT-D14F6A36",
+    "customer_id": "C0000795",
+    "issue_text": "Why was my credit card charged twice for order ORD-E3081C65?",
+    "status": "closed",
+    "created_at": "2026-05-22T07:13:49.117096"
+  },
+  {
+    "ticket_id": "TKT-19AACC80",
+    "customer_id": "C0000133",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "in_progress",
+    "created_at": "2026-05-11T07:13:49.117152"
+  },
+  {
+    "ticket_id": "TKT-4FF81E93",
+    "customer_id": "C0000180",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-08T07:13:49.117223"
+  },
+  {
+    "ticket_id": "TKT-5B960958",
+    "customer_id": "C0000497",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "open",
+    "created_at": "2026-05-16T07:13:49.117289"
+  },
+  {
+    "ticket_id": "TKT-F3B6F615",
+    "customer_id": "C0000758",
+    "issue_text": "The product P0033254 arrived damaged. The screen is cracked.",
+    "status": "in_progress",
+    "created_at": "2026-06-06T07:13:49.117476"
+  },
+  {
+    "ticket_id": "TKT-D15D2A86",
+    "customer_id": "C0000647",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "in_progress",
+    "created_at": "2026-05-22T07:13:49.117542"
+  },
+  {
+    "ticket_id": "TKT-FC78D956",
+    "customer_id": "C0000236",
+    "issue_text": "I did not receive the OTP for login.",
+    "status": "in_progress",
+    "created_at": "2026-06-07T07:13:49.117628"
+  },
+  {
+    "ticket_id": "TKT-A95EA288",
+    "customer_id": "C0000222",
+    "issue_text": "Can you suggest a good laptop under $1000?",
+    "status": "open",
+    "created_at": "2026-06-02T07:13:49.117690"
+  },
+  {
+    "ticket_id": "TKT-D913FBE3",
+    "customer_id": "C0000031",
+    "issue_text": "I want to cancel my pro subscription.",
+    "status": "closed",
+    "created_at": "2026-05-29T07:13:49.117746"
+  },
+  {
+    "ticket_id": "TKT-AAF88967",
+    "customer_id": "C0000698",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "in_progress",
+    "created_at": "2026-05-08T07:13:49.117801"
+  },
+  {
+    "ticket_id": "TKT-D9750990",
+    "customer_id": "C0000886",
+    "issue_text": "I cannot login to my account. It says wrong password but I just reset it.",
+    "status": "in_progress",
+    "created_at": "2026-06-02T07:13:49.117870"
+  },
+  {
+    "ticket_id": "TKT-0462150C",
+    "customer_id": "C0000840",
+    "issue_text": "The color of the t-shirt is different from what was shown on the website.",
+    "status": "closed",
+    "created_at": "2026-06-05T07:13:49.117937"
+  }
+]

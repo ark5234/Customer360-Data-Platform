@@ -325,14 +325,28 @@ services:
       - ./requirements.txt:/app/requirements.txt
       - ./data:/app/data
       - ./producer:/app/producer
+      - ./llm:/app/llm
     working_dir: /app/admin_panel
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_USER: customer360
       POSTGRES_PASSWORD: customer360secret
       POSTGRES_DB: customer360_warehouse
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      QDRANT_URL: http://qdrant:6333
     command: >
       /bin/sh -c "
-      pip install --no-cache-dir flask==3.0.0 flask-cors==4.0.0 psycopg2-binary==2.9.9 python-dotenv==1.0.1 && 
+      pip install --no-cache-dir -r /app/requirements.txt && 
       flask run --host=0.0.0.0 --port=5000
       "
+
+  # ─── Vector Database ─────────────────────────────────────────
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    networks: [customer360]
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - ./data/qdrant_data:/qdrant/storage

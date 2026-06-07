@@ -23,7 +23,8 @@ data/synthetic/*.json
 *.csv
 
 # Secrets
-.env.local
+.env
+.env.*
 *.pem
 *.key
 secrets/
