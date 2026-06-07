@@ -27,12 +27,6 @@ models:
     marts:
       +materialized: table
       +schema: marts
-      revenue:
-        +materialized: table
-      customers:
-        +materialized: table
-      products:
-        +materialized: table
 
 vars:
   start_date: '2025-01-01'
