@@ -68,6 +68,9 @@ class RFMFeatureExtractor:
 
 
 class BehavioralFeatureExtractor:
+    def __init__(self, snapshot_date=None):
+        self.snapshot_date = snapshot_date or datetime.utcnow()
+
     def extract(self, engine):
         print("Extracting behavioral features...")
         query = """
@@ -76,7 +79,8 @@ class BehavioralFeatureExtractor:
                    COUNT(*) FILTER (WHERE event_type = 'SEARCH') AS search_count,
                    COUNT(*) FILTER (WHERE event_type = 'ADD_TO_CART') AS cart_add_count,
                    COUNT(*) FILTER (WHERE event_type = 'PURCHASE') AS purchase_count,
-                   COUNT(*) FILTER (WHERE event_type = 'LOGIN') AS login_count
+                   COUNT(*) FILTER (WHERE event_type = 'LOGIN') AS login_count,
+                   MAX(event_timestamp) FILTER (WHERE event_type = 'LOGIN') AS last_login_date
             FROM raw_events GROUP BY customer_id
         """
         df = pd.read_sql(query, engine)
@@ -89,7 +93,26 @@ class BehavioralFeatureExtractor:
             .clip(0, 1)
             .round(4)
         )
+        df["last_login_date"] = pd.to_datetime(df["last_login_date"])
+        df["days_since_last_login"] = (
+            (pd.to_datetime(self.snapshot_date) - df["last_login_date"])
+            .dt.days.fillna(9999)
+            .astype(int)
+        )
         print(f"✓ Behavioral features: {len(df):,} customers")
+        return df
+
+
+class SessionFeatureExtractor:
+    def extract(self, engine):
+        print("Extracting session features...")
+        query = """
+            SELECT customer_id,
+                   AVG(session_duration_s) AS avg_session_duration
+            FROM fact_sessions GROUP BY customer_id
+        """
+        df = pd.read_sql(query, engine)
+        print(f"✓ Session features: {len(df):,} customers")
         return df
 
 
@@ -103,8 +126,9 @@ class FeaturePipeline:
         print("  Customer360 — Feature Engineering Pipeline")
         print("=" * 60)
         rfm = RFMFeatureExtractor(self.snapshot_date).extract(self.engine)
-        behavioral = BehavioralFeatureExtractor().extract(self.engine)
-        features = rfm.merge(behavioral, on="customer_id", how="outer")
+        behavioral = BehavioralFeatureExtractor(self.snapshot_date).extract(self.engine)
+        session = SessionFeatureExtractor().extract(self.engine)
+        features = rfm.merge(behavioral, on="customer_id", how="outer").merge(session, on="customer_id", how="outer")
         numeric_cols = features.select_dtypes(include=[np.number]).columns
         features[numeric_cols] = features[numeric_cols].fillna(0)
         features["snapshot_date"] = self.snapshot_date.date()
@@ -123,8 +147,9 @@ class FeaturePipeline:
                 """
                 INSERT INTO feature_store (customer_id, snapshot_date, feature_set, recency_days, frequency, monetary,
                     avg_purchase_value, max_purchase_value, min_purchase_value, product_view_count, search_count,
-                    cart_add_count, purchase_count, login_count, cart_abandonment_rate, monthly_orders, created_at)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW())
+                    cart_add_count, purchase_count, login_count, cart_abandonment_rate, monthly_orders,
+                    days_since_last_login, avg_session_duration, created_at)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW())
                 ON CONFLICT (customer_id, snapshot_date, feature_set) DO UPDATE SET
                     recency_days = EXCLUDED.recency_days, frequency = EXCLUDED.frequency, monetary = EXCLUDED.monetary, updated_at = NOW()
             """,
@@ -145,6 +170,8 @@ class FeaturePipeline:
                     int(row.get("login_count", 0)),
                     float(row.get("cart_abandonment_rate", 0)),
                     float(row.get("monthly_orders", 0)),
+                    int(row.get("days_since_last_login", 9999)),
+                    float(row.get("avg_session_duration", 0)),
                 ),
             )
             written += 1

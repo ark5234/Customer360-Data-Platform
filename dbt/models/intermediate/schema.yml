@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: int_customer_orders
+    description: >
+      Per-customer order aggregation intermediate model.
+      Computes volume, recency, frequency, and time-windowed spend metrics.
+      Used as the primary building block for LTV, retention, and revenue mart models.
+    columns:
+      - name: customer_id
+        description: Unique customer identifier
+        tests:
+          - not_null
+          - unique
+      - name: total_orders
+        description: Lifetime order count
+        tests:
+          - not_null
+      - name: total_spend
+        description: Lifetime total spend (₹)
+      - name: avg_order_value
+        description: Average spend per order
+      - name: first_order_date
+        description: Date of first order
+      - name: last_order_date
+        description: Date of most recent order
+      - name: days_since_last_order
+        description: Days elapsed since last order (recency signal)
+      - name: orders_last_12m
+        description: Order count in the last 12 months
+      - name: spend_last_12m
+        description: Total spend in the last 12 months
+      - name: recency_segment
+        description: "Recency classification: active | at_risk | lapsed | churned"
+        tests:
+          - accepted_values:
+              values: ['active', 'at_risk', 'lapsed', 'churned']
+      - name: value_tier
+        description: "LTV tier: platinum | gold | silver | bronze"
+        tests:
+          - accepted_values:
+              values: ['platinum', 'gold', 'silver', 'bronze']
+
+  - name: int_customer_events
+    description: >
+      Per-customer event behaviour aggregation.
+      Counts event types, computes abandonment rates, browse-to-buy ratios,
+      and engagement scores. Feeds the ML feature store and product analytics.
+    columns:
+      - name: customer_id
+        description: Unique customer identifier
+        tests:
+          - not_null
+          - unique
+      - name: total_events
+        description: Lifetime event count across all types
+      - name: active_days
+        description: Number of distinct days the customer was active
+      - name: login_count
+        description: Total login events
+      - name: product_view_count
+        description: Total product view events
+      - name: purchase_count
+        description: Total purchase events
+      - name: cart_add_count
+        description: Total add-to-cart events
+      - name: cart_abandonment_rate
+        description: "Fraction of cart-add sessions that did NOT result in purchase (0–1)"
+      - name: browse_to_buy_ratio
+        description: "Fraction of product views that resulted in a purchase (0–1)"
+      - name: daily_engagement_score
+        description: Weighted engagement score normalised by active days

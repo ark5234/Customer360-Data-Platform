@@ -12,6 +12,7 @@ import click
 import joblib
 import pandas as pd
 import psycopg2
+import sqlalchemy
 import xgboost as xgb
 from sklearn.metrics import (
     average_precision_score,
@@ -28,34 +29,41 @@ FEATURE_COLUMNS = [
     "monetary",
     "avg_purchase_value",
     "max_purchase_value",
+    "min_purchase_value",
     "cart_abandonment_rate",
     "product_view_count",
     "search_count",
     "cart_add_count",
+    "purchase_count",
     "login_count",
     "monthly_orders",
+    "days_since_last_login",
+    "avg_session_duration",
 ]
 TARGET_COLUMN = "is_churned"
 
 
 def load_features():
-    conn = psycopg2.connect(
-        host=os.getenv("POSTGRES_HOST", "localhost"),
-        port=int(os.getenv("POSTGRES_PORT", 5432)),
-        dbname=os.getenv("POSTGRES_DB", "customer360_warehouse"),
-        user=os.getenv("POSTGRES_USER", "customer360"),
-        password=os.getenv("POSTGRES_PASSWORD", "customer360secret"),
+    host = os.getenv("POSTGRES_HOST", "localhost")
+    port = os.getenv("POSTGRES_PORT", "5432")
+    dbname = os.getenv("POSTGRES_DB", "customer360_warehouse")
+    user = os.getenv("POSTGRES_USER", "customer360")
+    password = os.getenv("POSTGRES_PASSWORD", "customer360secret")
+    engine = sqlalchemy.create_engine(
+        f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
     )
     df = pd.read_sql(
         """SELECT customer_id, MAX(recency_days) AS recency_days, MAX(frequency) AS frequency,
         MAX(monetary) AS monetary, MAX(avg_purchase_value) AS avg_purchase_value, MAX(max_purchase_value) AS max_purchase_value,
-        MAX(cart_abandonment_rate) AS cart_abandonment_rate, MAX(product_view_count) AS product_view_count,
-        MAX(search_count) AS search_count, MAX(cart_add_count) AS cart_add_count, MAX(login_count) AS login_count,
-        MAX(monthly_orders) AS monthly_orders FROM feature_store
+        MAX(min_purchase_value) AS min_purchase_value, MAX(cart_abandonment_rate) AS cart_abandonment_rate, 
+        MAX(product_view_count) AS product_view_count, MAX(search_count) AS search_count, MAX(cart_add_count) AS cart_add_count, 
+        MAX(purchase_count) AS purchase_count, MAX(login_count) AS login_count, MAX(monthly_orders) AS monthly_orders,
+        MAX(days_since_last_login) AS days_since_last_login, MAX(avg_session_duration) AS avg_session_duration
+        FROM feature_store
         WHERE snapshot_date = (SELECT MAX(snapshot_date) FROM feature_store) GROUP BY customer_id""",
-        conn,
+        engine,
     )
-    conn.close()
+    engine.dispose()
     print(f"Loaded {len(df):,} customer feature records")
     return df
 
