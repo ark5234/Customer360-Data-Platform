@@ -7,7 +7,7 @@ def get_agent():
     api_key = os.getenv("GOOGLE_API_KEY", "")
     if api_key:
         from langchain_google_genai import ChatGoogleGenerativeAI
-        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
+        llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash", temperature=0)
         # Create the ReAct agent graph with the LLM and the Tools
         agent = create_react_agent(llm, tools=TOOLS)
         return agent

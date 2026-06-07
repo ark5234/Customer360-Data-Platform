@@ -5,21 +5,21 @@ from langchain_community.utilities.sql_database import SQLDatabase
 @tool
 def search_customer_tickets(query: str, k: int = 3) -> str:
     """Search for unstructured customer interactions, reviews, or support tickets matching the query."""
-    from langchain_community.vectorstores import Qdrant
-    
+    from langchain_qdrant import QdrantVectorStore
+
     api_key = os.getenv("GOOGLE_API_KEY", "")
     if api_key:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
     else:
-        from langchain_community.embeddings import HuggingFaceEmbeddings
+        from langchain_huggingface import HuggingFaceEmbeddings
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
     qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
     try:
         from qdrant_client import QdrantClient
         client = QdrantClient(url=qdrant_url)
-        qdrant = Qdrant(client=client, collection_name="support_tickets", embeddings=embeddings)
+        qdrant = QdrantVectorStore(client=client, collection_name="support_tickets", embedding=embeddings)
         docs = qdrant.similarity_search(query, k=k)
         if not docs:
             return "No matching support tickets found."

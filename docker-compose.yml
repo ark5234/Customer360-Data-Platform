@@ -22,7 +22,7 @@ services:
     ports:
       - "2181:2181"
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "2181"]
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/commands/ruok | grep -q ruok || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 10
