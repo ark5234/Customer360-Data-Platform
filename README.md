@@ -208,7 +208,7 @@ Navigate to http://localhost:8081 and enable:
 - `dag_gold_to_warehouse`
 - `dag_feature_engineering`
 - `dag_model_retraining`
-- `dag_llm_ingestion` *(ingests warehouse data into Qdrant for RAG)*
+- `llm_vectordb_ingestion` *(re-ingests support tickets into Qdrant VectorDB daily)*
 
 ### 7. Run dbt Transformations
 
@@ -258,15 +258,17 @@ fact_transactions
 ### LLM / RAG Pipeline
 
 ```
-PostgreSQL Warehouse
-    ↓  (ingest_to_vectordb.py / Airflow DAG)
-Qdrant VectorDB (customer docs, metrics, KPIs)
+Support Tickets (data/tickets.json)
+    ↓  (llm/ingest_to_vectordb.py / Airflow llm_vectordb_ingestion DAG)
+Qdrant VectorDB (support_tickets collection)
+    ↓
+HuggingFace all-MiniLM-L6-v2 (local embeddings, free)
     ↓
 LangChain Retriever
     ↓
-Google Gemini Flash LLM
+Google Gemini 3.5-Flash LLM (→ 2.5-Flash fallback on rate limit)
     ↓
-LangGraph ReAct Agent (tools: SQL query, Qdrant search, metrics)
+LangGraph ReAct Agent (tools: query_warehouse SQL, search_customer_tickets RAG)
     ↓
 Admin Panel Chat UI (http://localhost:5000)
 ```

@@ -6,155 +6,329 @@
     <title>Customer360 - Admin Control Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { 
-            background: #f4f7f6; 
-            font-family: 'Inter', sans-serif;
-            color: #333;
+        :root {
+            --bg-dark: #09090b;
+            --card-bg: rgba(24, 24, 27, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
+
+        body { 
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+        }
+
         /* Navbar */
         .navbar {
-            background: linear-gradient(135deg, #1e293b 0%, #293846 100%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 1rem 1.5rem;
+            background: rgba(9, 9, 11, 0.8) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .navbar-brand { font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; }
+        .navbar-brand { 
+            font-weight: 700; 
+            font-size: 1.5rem; 
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px; 
+        }
 
+        /* Glassmorphism Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        
         /* Stat Cards */
-        .stat-card { 
-            border: none;
-            border-radius: 12px;
-            border-left: 6px solid; 
-            transition: all 0.3s ease; 
-            background: #ffffff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        .stat-card {
+            position: relative;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         .stat-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12); 
+            transform: translateY(-5px); 
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); 
+            border-color: rgba(255, 255, 255, 0.15);
         }
-        .stat-card .card-body { padding: 1.5rem; }
-        .stat-card.revenue { border-color: #10b981; }
-        .stat-card.orders { border-color: #3b82f6; }
-        .stat-card.customers { border-color: #06b6d4; }
-        .stat-card.churn { border-color: #ef4444; }
-        .stat-card h6 { font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
-        .stat-card h3 { font-weight: 700; font-size: 1.8rem; color: #1e293b; }
+        .stat-card:hover::before { opacity: 1; }
+        
+        .stat-card .card-body { padding: 1.75rem; }
+        
+        /* Custom Stat Colors */
+        .stat-card.revenue .icon-box { color: var(--success); text-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+        .stat-card.orders .icon-box { color: var(--primary); text-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+        .stat-card.customers .icon-box { color: var(--accent); text-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
+        .stat-card.churn .icon-box { color: var(--danger); text-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+        
+        .stat-card h6 { 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 1px; 
+            color: var(--text-muted);
+        }
+        .stat-card h3 { 
+            font-weight: 700; 
+            font-size: 2.2rem; 
+            margin-top: 0.5rem;
+            color: #fff;
+        }
 
         /* General Card Layouts */
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-            overflow: hidden;
-            margin-bottom: 25px;
-        }
         .card-header {
             font-weight: 600;
             padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-bottom: 1px solid var(--card-border);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            color: #fff !important;
         }
-        .card-header.bg-primary { background: linear-gradient(135deg, #3b82f6, #2563eb) !important; }
-        .card-header.bg-info { background: linear-gradient(135deg, #0ea5e9, #0891b2) !important; }
-        .card-header.bg-success { background: linear-gradient(135deg, #10b981, #059669) !important; }
-        .card-header.bg-warning { background: linear-gradient(135deg, #f59e0b, #d97706) !important; color: white !important;}
-        .card-header.bg-secondary { background: linear-gradient(135deg, #64748b, #475569) !important; }
-        .card-header.bg-dark { background: linear-gradient(135deg, #334155, #1e293b) !important; }
+        
+        /* Header Gradients for Icons */
+        .card-header i {
+            font-size: 1.2rem;
+        }
+        .text-gradient-primary { background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-success { background: linear-gradient(135deg, #10b981, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-warning { background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-info { background: linear-gradient(135deg, #0ea5e9, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .card-body { padding: 1.5rem; }
         
-        .section-title { border-bottom: 3px solid #3b82f6; padding-bottom: 10px; margin-bottom: 20px; font-weight: 700;}
-        
         /* Badges & Tables */
-        .badge { padding: 0.5em 0.75em; font-weight: 600; border-radius: 6px; }
-        .badge-active { background-color: #10b981; }
-        .badge-stopped { background-color: #ef4444; }
+        .badge { 
+            padding: 0.5em 0.8em; 
+            font-weight: 500; 
+            border-radius: 8px; 
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        }
+        .bg-info { background-color: rgba(6, 182, 212, 0.15) !important; color: #22d3ee !important; border: 1px solid rgba(6, 182, 212, 0.3); }
+        .bg-success { background-color: rgba(16, 185, 129, 0.15) !important; color: #34d399 !important; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .bg-danger { background-color: rgba(239, 68, 68, 0.15) !important; color: #f87171 !important; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .bg-warning { background-color: rgba(245, 158, 11, 0.15) !important; color: #fbbf24 !important; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .bg-secondary { background-color: rgba(148, 163, 184, 0.15) !important; color: #cbd5e1 !important; border: 1px solid rgba(148, 163, 184, 0.3); }
         
-        .table { margin-bottom: 0; }
-        .table th { border-bottom-width: 2px; font-weight: 600; color: #64748b; font-size: 0.85rem; text-transform: uppercase; }
-        .table td { vertical-align: middle; padding: 0.75rem; color: #334155; }
-        .table-hover tbody tr:hover { background-color: #f1f5f9; }
+        .table { margin-bottom: 0; color: var(--text-main); }
+        .table th { 
+            border-bottom: 1px solid var(--card-border); 
+            font-weight: 600; 
+            color: var(--text-muted); 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            background: transparent;
+        }
+        .table td { 
+            vertical-align: middle; 
+            padding: 1rem 0.75rem; 
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            background: transparent;
+            color: #e2e8f0;
+        }
+        .table-hover tbody tr:hover td { background-color: rgba(255, 255, 255, 0.03); }
+        code { color: #a78bfa; background: rgba(167, 139, 250, 0.1); padding: 0.2rem 0.4rem; border-radius: 4px; }
 
         /* Buttons */
-        .btn { font-weight: 500; border-radius: 6px; padding: 0.5rem 1rem; transition: all 0.2s; }
-        .btn-success { background-color: #10b981; border-color: #10b981; }
-        .btn-success:hover { background-color: #059669; border-color: #059669; }
-        .btn-danger { background-color: #ef4444; border-color: #ef4444; }
-        .btn-danger:hover { background-color: #dc2626; border-color: #dc2626; }
-        .btn-primary { background-color: #3b82f6; border-color: #3b82f6; }
-        .btn-primary:hover { background-color: #2563eb; border-color: #2563eb; }
+        .btn { 
+            font-weight: 500; 
+            border-radius: 8px; 
+            padding: 0.6rem 1.2rem; 
+            transition: all 0.2s ease; 
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+        .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: #fff; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4); color:#fff; }
+        .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2); }
+        .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4); color:#fff; }
+        .btn-primary { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4); color:#fff; }
+        .btn-outline-primary { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .btn-outline-primary:hover { background: rgba(99, 102, 241, 0.1); border-color: var(--primary-hover); color: var(--primary-hover); }
 
         /* Inputs */
-        .form-control { border-radius: 6px; border: 1px solid #cbd5e1; padding: 0.6rem 1rem; }
-        .form-control:focus { box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); border-color: #3b82f6; }
+        .form-control { 
+            background: rgba(0, 0, 0, 0.2); 
+            border: 1px solid var(--card-border); 
+            color: #fff;
+            border-radius: 8px; 
+            padding: 0.75rem 1.25rem; 
+            transition: all 0.3s ease;
+        }
+        .form-control:focus { 
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); 
+            border-color: var(--primary); 
+            color: #fff;
+        }
+        .form-control::placeholder { color: var(--text-muted); }
+        
+        .input-group .btn { border-radius: 0 8px 8px 0; }
+        .input-group .form-control { border-radius: 8px 0 0 8px; }
+
+        /* Custom Scrollbar for Chat */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+        /* Chat UI */
+        .chat-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+        .chat-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            max-width: 85%;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+            animation: fadeIn 0.3s ease forwards;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .chat-ai { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.05); color: #e2e8f0; border-bottom-left-radius: 2px; }
+        .chat-user { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; border-bottom-right-radius: 2px; margin-left: auto; }
+        
+        /* List Group (DAGs) */
+        .list-group { border-radius: 12px; overflow: hidden; }
+        .list-group-item {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem 0;
+            color: var(--text-main);
+        }
+        .list-group-item:last-child { border-bottom: none; }
+        .dag-name { font-family: 'Outfit', sans-serif; font-weight: 500; font-size: 1.05rem; }
+        
+        .pulse-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">
-                <i class="fas fa-database"></i> Customer360 Admin Control Panel
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid px-4">
+            <span class="navbar-brand mb-0 h1 d-flex align-items-center gap-2">
+                <i class="fas fa-layer-group text-primary"></i> 
+                Customer360 Data Platform
             </span>
-            <span class="text-white"><i class="fas fa-circle text-success"></i> All Systems Operational</span>
+            <span class="text-white d-flex align-items-center gap-2" style="font-size: 0.9rem; font-weight: 500; background: rgba(255,255,255,0.05); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid var(--card-border);">
+                <span class="pulse-indicator"></span> Core Systems Operational
+            </span>
         </div>
     </nav>
 
-    <div class="container-fluid mt-4">
+    <div class="container-fluid mt-4 px-4">
         <!-- Quick Stats Cards -->
         <div class="row mb-4">
             <div class="col-md-3">
-                <div class="card stat-card revenue">
+                <div class="card stat-card revenue h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h6 class="text-muted">Total Revenue</h6>
+                                <h6>Total Revenue</h6>
                                 <h3 id="total-revenue" class="mb-0">₹0</h3>
                             </div>
-                            <i class="fas fa-rupee-sign fa-3x text-success opacity-50"></i>
+                            <div class="icon-box"><i class="fas fa-chart-line fa-2x"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card stat-card orders">
+                <div class="card stat-card orders h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h6 class="text-muted">Total Orders</h6>
+                                <h6>Total Orders</h6>
                                 <h3 id="total-orders" class="mb-0">0</h3>
                             </div>
-                            <i class="fas fa-shopping-cart fa-3x text-primary opacity-50"></i>
+                            <div class="icon-box"><i class="fas fa-shopping-bag fa-2x"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card stat-card customers">
+                <div class="card stat-card customers h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h6 class="text-muted">Active Customers (30d)</h6>
+                                <h6>Active Customers (30d)</h6>
                                 <h3 id="active-customers" class="mb-0">0</h3>
                             </div>
-                            <i class="fas fa-users fa-3x text-info opacity-50"></i>
+                            <div class="icon-box"><i class="fas fa-users fa-2x"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card stat-card churn">
+                <div class="card stat-card churn h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h6 class="text-muted">High-Risk Churn</h6>
+                                <h6>High-Risk Churn</h6>
                                 <h3 id="high-risk-churn" class="mb-0">0</h3>
                             </div>
-                            <i class="fas fa-exclamation-triangle fa-3x text-danger opacity-50"></i>
+                            <div class="icon-box"><i class="fas fa-exclamation-circle fa-2x"></i></div>
                         </div>
                     </div>
                 </div>
@@ -166,20 +340,23 @@
             <div class="col-md-6">
                 <!-- Pipeline Controls -->
                 <div class="card mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="fas fa-play-circle"></i> Pipeline Controls</h5>
+                    <div class="card-header">
+                        <i class="fas fa-server text-gradient-primary"></i> <h5 class="mb-0">Pipeline Controls</h5>
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
-                            <label class="fw-bold">Kafka Producer Status:</label>
-                            <span id="producer-status" class="badge bg-secondary ms-2">Unknown</span>
+                        <div class="d-flex justify-content-between align-items-center bg-dark p-3 rounded mb-3" style="border: 1px solid var(--card-border);">
+                            <div>
+                                <span class="fw-bold d-block mb-1">Kafka Event Generator</span>
+                                <span class="text-muted small">Streams synthetic customer behavior into Bronze Lake</span>
+                            </div>
+                            <span id="producer-status" class="badge bg-secondary px-3 py-2">Unknown</span>
                         </div>
-                        <div class="btn-group" role="group">
-                            <button class="btn btn-success" onclick="controlProducer('start')">
-                                <i class="fas fa-play"></i> Start Producer
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-success flex-grow-1" onclick="controlProducer('start')">
+                                <i class="fas fa-play me-2"></i> Start Stream
                             </button>
-                            <button class="btn btn-danger" onclick="controlProducer('stop')">
-                                <i class="fas fa-stop"></i> Stop Producer
+                            <button class="btn btn-danger flex-grow-1" onclick="controlProducer('stop')">
+                                <i class="fas fa-stop me-2"></i> Stop Stream
                             </button>
                         </div>
                     </div>
@@ -187,86 +364,100 @@
 
                 <!-- Kafka Metrics -->
                 <div class="card mb-4">
-                    <div class="card-header bg-info text-white">
-                        <h5 class="mb-0"><i class="fas fa-stream"></i> Kafka Metrics</h5>
+                    <div class="card-header">
+                        <i class="fas fa-stream text-gradient-info"></i> <h5 class="mb-0">Kafka Telemetry</h5>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Topic</th>
-                                    <th>Messages</th>
-                                    <th>Lag</th>
-                                </tr>
-                            </thead>
-                            <tbody id="kafka-metrics">
-                                <tr><td colspan="3" class="text-center">Loading...</td></tr>
-                            </tbody>
-                        </table>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 px-3">
+                                <thead style="background: rgba(0,0,0,0.2);">
+                                    <tr>
+                                        <th class="ps-4">Topic</th>
+                                        <th>Messages Processed</th>
+                                        <th class="pe-4">Consumer Lag</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="kafka-metrics">
+                                    <tr><td colspan="3" class="text-center py-4 text-muted"><i class="fas fa-circle-notch fa-spin me-2"></i> Fetching telemetry...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Warehouse Tables -->
                 <div class="card mb-4">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0"><i class="fas fa-database"></i> Warehouse Tables</h5>
+                    <div class="card-header">
+                        <i class="fas fa-database text-gradient-success"></i> <h5 class="mb-0">PostgreSQL Warehouse</h5>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Table</th>
-                                    <th>Row Count</th>
-                                </tr>
-                            </thead>
-                            <tbody id="warehouse-tables">
-                                <tr><td colspan="2" class="text-center">Loading...</td></tr>
-                            </tbody>
-                        </table>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead style="background: rgba(0,0,0,0.2);">
+                                    <tr>
+                                        <th class="ps-4">Entity Table</th>
+                                        <th class="pe-4 text-end">Record Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="warehouse-tables">
+                                    <tr><td colspan="2" class="text-center py-4 text-muted"><i class="fas fa-circle-notch fa-spin me-2"></i> Querying warehouse...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Right Column -->
             <div class="col-md-6">
+                <!-- AI Assistant Chat -->
+                <div class="card mb-4" style="border-color: rgba(99, 102, 241, 0.3); box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);">
+                    <div class="card-header" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.1)) !important; border-bottom: 1px solid rgba(99, 102, 241, 0.2);">
+                        <i class="fas fa-sparkles text-gradient-primary"></i> <h5 class="mb-0">Platform AI Copilot</h5>
+                    </div>
+                    <div class="card-body d-flex flex-column" style="height: 400px; padding: 1.25rem;">
+                        <div id="chat-history" class="chat-container flex-grow-1 overflow-auto mb-3 d-flex flex-column gap-1">
+                            <div class="chat-bubble chat-ai">
+                                <strong><i class="fas fa-robot text-primary me-1"></i> Copilot:</strong><br>
+                                Hello! I'm your RAG-powered agent connected to the Qdrant VectorDB and PostgreSQL. Ask me to pull specific metrics, analyze pipeline health, or search for customers!
+                            </div>
+                        </div>
+                        <div class="input-group mt-auto">
+                            <input type="text" id="chat-input" class="form-control border-end-0" placeholder="Ask a question about your data..." onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                            <button class="btn btn-primary" onclick="sendChatMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Customer Search -->
                 <div class="card mb-4">
-                    <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0"><i class="fas fa-search"></i> Customer 360° Search</h5>
+                    <div class="card-header">
+                        <i class="fas fa-search text-gradient-warning"></i> <h5 class="mb-0">Customer 360° Explorer</h5>
                     </div>
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <input type="text" id="customer-search" class="form-control" placeholder="Enter Customer ID (e.g., C0000001)">
-                            <button class="btn btn-primary" onclick="searchCustomer()">
-                                <i class="fas fa-search"></i> Search
+                            <input type="text" id="customer-search" class="form-control border-end-0" placeholder="Enter Customer ID (e.g., C0000001)">
+                            <button class="btn btn-outline-primary" style="border-left: none; border-radius: 0 8px 8px 0;" onclick="searchCustomer()">
+                                <i class="fas fa-search"></i>
                             </button>
                         </div>
-                        <div id="customer-result" class="mt-3"></div>
+                        <div id="customer-result"></div>
                     </div>
                 </div>
 
                 <!-- Airflow DAGs -->
                 <div class="card mb-4">
-                    <div class="card-header bg-secondary text-white">
-                        <h5 class="mb-0"><i class="fas fa-sitemap"></i> Airflow DAGs</h5>
-                    </div>
-                    <div class="card-body">
-                        <div id="airflow-dags">Loading...</div>
-                    </div>
-                </div>
-
-                <!-- ML Model Info -->
-                <div class="card mb-4">
-                    <div class="card-header bg-dark text-white">
-                        <h5 class="mb-0"><i class="fas fa-brain"></i> ML Model Management</h5>
-                    </div>
-                    <div class="card-body">
-                        <div id="ml-model-info">
-                            <p class="text-muted">Model not trained yet</p>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-project-diagram" style="color: #0ea5e9;"></i> <h5 class="mb-0">Airflow Orchestration</h5>
                         </div>
-                        <button class="btn btn-primary btn-sm" onclick="triggerModelTraining()">
-                            <i class="fas fa-cogs"></i> Trigger Model Retraining
-                        </button>
+                    </div>
+                    <div class="card-body py-2">
+                        <div id="airflow-dags" class="list-group">
+                            <div class="text-center py-4 text-muted"><i class="fas fa-circle-notch fa-spin me-2"></i> Syncing with Airflow...</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -295,10 +486,11 @@
                 .then(data => {
                     let html = '';
                     data.topics.forEach(topic => {
+                        let lagBadge = topic.lag > 1000 ? 'bg-danger' : (topic.lag > 500 ? 'bg-warning' : 'bg-success');
                         html += `<tr>
-                            <td><span class="badge bg-info">${topic.name}</span></td>
-                            <td>${topic.messages.toLocaleString()}</td>
-                            <td><span class="badge ${topic.lag > 1000 ? 'bg-danger' : 'bg-success'}">${topic.lag}</span></td>
+                            <td class="ps-4"><span class="badge bg-secondary border-0"><i class="fas fa-tag me-1"></i> ${topic.name}</span></td>
+                            <td class="fw-medium">${topic.messages.toLocaleString()}</td>
+                            <td class="pe-4"><span class="badge ${lagBadge} border-0">${topic.lag}</span></td>
                         </tr>`;
                     });
                     document.getElementById('kafka-metrics').innerHTML = html;
@@ -314,8 +506,8 @@
                     let html = '';
                     data.forEach(table => {
                         html += `<tr>
-                            <td><code>${table.table}</code></td>
-                            <td>${table.rows.toLocaleString()}</td>
+                            <td class="ps-4"><code>${table.table}</code></td>
+                            <td class="pe-4 text-end fw-medium">${table.rows.toLocaleString()}</td>
                         </tr>`;
                     });
                     document.getElementById('warehouse-tables').innerHTML = html;
@@ -328,37 +520,66 @@
             const customerId = document.getElementById('customer-search').value;
             if (!customerId) return;
 
+            const resultDiv = document.getElementById('customer-result');
+            resultDiv.innerHTML = `<div class="text-center py-3 text-muted"><i class="fas fa-circle-notch fa-spin me-2"></i> Querying 360 profile...</div>`;
+
             fetch(`/api/customer/${customerId}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.error) {
-                        document.getElementById('customer-result').innerHTML = `
-                            <div class="alert alert-danger">${data.error}</div>`;
+                        resultDiv.innerHTML = `<div class="alert alert-danger border-0 bg-danger text-white mt-3" style="background: rgba(239, 68, 68, 0.2) !important;"><i class="fas fa-exclamation-circle me-2"></i> ${data.error}</div>`;
                         return;
                     }
 
-                    let html = `
-                        <div class="alert alert-success">
-                            <h6>Customer Profile</h6>
-                            <p><strong>ID:</strong> ${data.customer.customer_id}<br>
-                            <strong>Region:</strong> ${data.customer.region}<br>
-                            <strong>Total Spend:</strong> ₹${data.customer.total_spend.toLocaleString('en-IN')}<br>
-                            <strong>Total Purchases:</strong> ${data.customer.total_purchases}</p>
-                            ${data.churn ? `
-                                <div class="mt-2">
-                                    <strong>Churn Risk:</strong>
-                                    <span class="badge ${data.churn.segment === 'high_risk' ? 'bg-danger' : data.churn.segment === 'medium_risk' ? 'bg-warning' : 'bg-success'}">
-                                        ${data.churn.segment.toUpperCase()} (${(data.churn.probability * 100).toFixed(1)}%)
-                                    </span>
+                    let churnRiskHtml = '';
+                    if (data.churn) {
+                        const riskColor = data.churn.segment === 'high_risk' ? 'danger' : data.churn.segment === 'medium_risk' ? 'warning' : 'success';
+                        churnRiskHtml = `
+                            <div class="mt-3 p-3 rounded" style="background: rgba(0,0,0,0.2); border: 1px solid var(--card-border);">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-muted small text-uppercase fw-bold">ML Churn Prediction</span>
+                                    <span class="badge bg-${riskColor}">${data.churn.segment.replace('_', ' ').toUpperCase()}</span>
                                 </div>
-                            ` : ''}
+                                <div class="progress mt-2" style="height: 6px; background: rgba(255,255,255,0.1);">
+                                    <div class="progress-bar bg-${riskColor}" role="progressbar" style="width: ${(data.churn.probability * 100)}%"></div>
+                                </div>
+                                <div class="text-end mt-1 small text-muted">${(data.churn.probability * 100).toFixed(1)}% Probability</div>
+                            </div>
+                        `;
+                    }
+
+                    resultDiv.innerHTML = `
+                        <div class="mt-3 p-3 rounded" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;">
+                                    <i class="fas fa-user text-white"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0 font-outfit text-white">${data.customer.customer_id}</h5>
+                                    <span class="badge bg-secondary border-0"><i class="fas fa-map-marker-alt me-1"></i> ${data.customer.region}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="p-2 rounded text-center" style="background: rgba(0,0,0,0.2);">
+                                        <div class="small text-muted mb-1">Total Spend</div>
+                                        <div class="fw-bold text-success">₹${data.customer.total_spend.toLocaleString('en-IN')}</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-2 rounded text-center" style="background: rgba(0,0,0,0.2);">
+                                        <div class="small text-muted mb-1">Purchases</div>
+                                        <div class="fw-bold text-primary">${data.customer.total_purchases}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            ${churnRiskHtml}
                         </div>
                     `;
-                    document.getElementById('customer-result').innerHTML = html;
                 })
                 .catch(err => {
-                    document.getElementById('customer-result').innerHTML = `
-                        <div class="alert alert-danger">Error: ${err.message}</div>`;
+                    resultDiv.innerHTML = `<div class="alert alert-danger border-0 mt-3" style="background: rgba(239, 68, 68, 0.2) !important; color: #f87171;"><i class="fas fa-times-circle me-2"></i> ${err.message}</div>`;
                 });
         }
 
@@ -367,22 +588,21 @@
             fetch('/api/airflow/dags')
                 .then(res => res.json())
                 .then(dags => {
-                    let html = '<div class="list-group">';
+                    let html = '';
                     dags.forEach(dag => {
                         html += `
-                            <div class="list-group-item">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-0">${dag.dag_id}</h6>
-                                        <small class="text-muted">${dag.schedule}</small>
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="dag-name text-white">${dag.dag_id}</div>
+                                    <div class="small text-muted d-flex align-items-center gap-2 mt-1">
+                                        <i class="far fa-clock"></i> <code>${dag.schedule}</code>
                                     </div>
-                                    <button class="btn btn-sm btn-primary" onclick="triggerDAG('${dag.dag_id}')">
-                                        <i class="fas fa-play"></i> Trigger
-                                    </button>
                                 </div>
+                                <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="triggerDAG('${dag.dag_id}')">
+                                    <i class="fas fa-play me-1"></i> Trigger
+                                </button>
                             </div>`;
                     });
-                    html += '</div>';
                     document.getElementById('airflow-dags').innerHTML = html;
                 })
                 .catch(err => console.error('Error fetching DAGs:', err));
@@ -393,7 +613,19 @@
             fetch(`/api/airflow/trigger/${dagId}`, {method: 'POST'})
                 .then(res => res.json())
                 .then(data => {
-                    alert(data.message);
+                    if(data.error) {
+                        alert('Error: ' + data.error);
+                    } else {
+                        // Show a temporary success toast/alert instead of native alert for better UX
+                        const btn = event.currentTarget;
+                        const originalHTML = btn.innerHTML;
+                        btn.innerHTML = `<i class="fas fa-check"></i> Triggered!`;
+                        btn.classList.replace('btn-outline-primary', 'btn-success');
+                        setTimeout(() => {
+                            btn.innerHTML = originalHTML;
+                            btn.classList.replace('btn-success', 'btn-outline-primary');
+                        }, 3000);
+                    }
                 })
                 .catch(err => alert('Error: ' + err.message));
         }
@@ -406,31 +638,72 @@
                 body: JSON.stringify({action: action})
             })
                 .then(res => res.json())
-                .then(data => alert(data.message))
-                .catch(err => alert('Error: ' + err.message));
-        }
-
-        // Trigger model training
-        function triggerModelTraining() {
-            fetch('/api/ml/train', {method: 'POST'})
-                .then(res => res.json())
-                .then(data => alert(data.message))
-                .catch(err => alert('Error: ' + err.message));
-        }
-
-        // Fetch ML model info
-        function fetchModelInfo() {
-            fetch('/api/ml/model-info')
-                .then(res => res.json())
                 .then(data => {
-                    if (data.error) return;
-                    document.getElementById('ml-model-info').innerHTML = `
-                        <p><strong>AUC-ROC:</strong> ${data.auc_roc.toFixed(4)}<br>
-                        <strong>Avg Precision:</strong> ${data.avg_precision.toFixed(4)}<br>
-                        <strong>Trained:</strong> ${new Date(data.trained_at).toLocaleString()}</p>
-                    `;
+                    const statusBadge = document.getElementById('producer-status');
+                    if (action === 'start') {
+                        statusBadge.className = 'badge bg-success px-3 py-2';
+                        statusBadge.innerHTML = '<i class="fas fa-broadcast-tower me-1"></i> Streaming';
+                    } else {
+                        statusBadge.className = 'badge bg-danger px-3 py-2';
+                        statusBadge.innerHTML = '<i class="fas fa-stop-circle me-1"></i> Stopped';
+                    }
                 })
-                .catch(err => console.error('Error fetching model info:', err));
+                .catch(err => alert('Error: ' + err.message));
+        }
+
+        // Chat Assistant
+        function sendChatMessage() {
+            const inputElement = document.getElementById('chat-input');
+            const message = inputElement.value.trim();
+            if (!message) return;
+            
+            const chatHistory = document.getElementById('chat-history');
+            // User message
+            chatHistory.innerHTML += `
+                <div class="chat-bubble chat-user">
+                    ${message}
+                </div>`;
+            inputElement.value = '';
+            
+            const loadingId = 'loading-' + Date.now();
+            chatHistory.innerHTML += `
+                <div id="${loadingId}" class="chat-bubble chat-ai opacity-75">
+                    <i class="fas fa-circle-notch fa-spin text-primary me-2"></i> <em>Analyzing...</em>
+                </div>`;
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({query: message})
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById(loadingId).remove();
+                if (data.error) {
+                    chatHistory.innerHTML += `
+                        <div class="chat-bubble chat-ai text-danger border-danger">
+                            <i class="fas fa-exclamation-triangle me-1"></i> ${data.error}
+                        </div>`;
+                } else {
+                    let respText = data.response || 'No text response generated.';
+                    let text = respText.replace(/\n/g, '<br>');
+                    chatHistory.innerHTML += `
+                        <div class="chat-bubble chat-ai">
+                            <strong><i class="fas fa-robot text-primary me-1"></i> Copilot:</strong><br>
+                            ${text}
+                        </div>`;
+                }
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            })
+            .catch(err => {
+                document.getElementById(loadingId).remove();
+                chatHistory.innerHTML += `
+                    <div class="chat-bubble chat-ai text-danger border-danger">
+                        <i class="fas fa-times-circle me-1"></i> Network Error: ${err.message}
+                    </div>`;
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            });
         }
 
         // Initialize dashboard
@@ -438,7 +711,6 @@
         fetchKafkaMetrics();
         fetchWarehouseTables();
         fetchAirflowDAGs();
-        fetchModelInfo();
 
         // Auto-refresh every 30 seconds
         setInterval(() => {

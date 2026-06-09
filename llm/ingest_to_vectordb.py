@@ -6,10 +6,16 @@ Embeds and ingests support tickets into Qdrant for RAG.
 import json
 import os
 
+from pathlib import Path
+from dotenv import load_dotenv
+
 from langchain_core.documents import Document
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
+
+# Load .env file from project root
+load_dotenv(Path(__file__).parent.parent / ".env", override=True)
 
 
 def ingest_tickets(file_path: str = "data/tickets.json"):
@@ -37,8 +43,9 @@ def ingest_tickets(file_path: str = "data/tickets.json"):
 
     api_key = os.getenv("GOOGLE_API_KEY", "")
 
+    api_key = "" # Force fallback
     if api_key:
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     else:
         print("GOOGLE_API_KEY not found. Using HuggingFace embeddings as fallback.")
         from langchain_huggingface import HuggingFaceEmbeddings

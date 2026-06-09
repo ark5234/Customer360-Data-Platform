@@ -158,7 +158,7 @@ services:
       _AIRFLOW_WWW_USER_CREATE: "true"
       _AIRFLOW_WWW_USER_USERNAME: admin
       _AIRFLOW_WWW_USER_PASSWORD: admin
-      _PIP_ADDITIONAL_REQUIREMENTS: "confluent-kafka==2.3.0 minio==7.2.5 pandas pyarrow psycopg2-binary==2.9.9 sqlalchemy==2.0.28 xgboost==2.0.3 joblib scikit-learn prometheus-client==0.20.0 python-dotenv==1.0.1"
+      _PIP_ADDITIONAL_REQUIREMENTS: "confluent-kafka==2.3.0 minio==7.2.5 pandas pyarrow psycopg2-binary==2.9.9 xgboost==2.0.3 joblib scikit-learn prometheus-client==0.20.0 python-dotenv==1.0.1"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/plugins:/opt/airflow/plugins
@@ -170,6 +170,7 @@ services:
     image: apache/airflow:2.8.0
     container_name: airflow-webserver
     networks: [customer360]
+    restart: always
     depends_on:
       - airflow-init
       - postgres
@@ -181,7 +182,12 @@ services:
       AIRFLOW__CORE__FERNET_KEY: ""
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      _PIP_ADDITIONAL_REQUIREMENTS: "confluent-kafka==2.3.0 minio==7.2.5 pandas pyarrow psycopg2-binary==2.9.9 sqlalchemy==2.0.28 xgboost==2.0.3 joblib scikit-learn prometheus-client==0.20.0 python-dotenv==1.0.1"
+      AIRFLOW__WEBSERVER__WEB_SERVER_WORKER_TIMEOUT: "600"
+      AIRFLOW__WEBSERVER__WEB_SERVER_MASTER_TIMEOUT: "600"
+      AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: "600"
+      AIRFLOW__CORE__DAG_FILE_PROCESSOR_TIMEOUT: "600"
+      AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session"
+      _PIP_ADDITIONAL_REQUIREMENTS: "confluent-kafka==2.3.0 minio==7.2.5 pandas pyarrow psycopg2-binary==2.9.9 xgboost==2.0.3 joblib scikit-learn prometheus-client==0.20.0 python-dotenv==1.0.1"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/plugins:/opt/airflow/plugins
@@ -207,7 +213,10 @@ services:
       AIRFLOW__CORE__FERNET_KEY: ""
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      _PIP_ADDITIONAL_REQUIREMENTS: "confluent-kafka==2.3.0 minio==7.2.5 pandas pyarrow psycopg2-binary==2.9.9 sqlalchemy==2.0.28 xgboost==2.0.3 joblib scikit-learn prometheus-client==0.20.0 python-dotenv==1.0.1"
+      AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: "600"
+      AIRFLOW__CORE__DAG_FILE_PROCESSOR_TIMEOUT: "600"
+      AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session"
+      _PIP_ADDITIONAL_REQUIREMENTS: "confluent-kafka==2.3.0 minio==7.2.5 pandas pyarrow psycopg2-binary==2.9.9 xgboost==2.0.3 joblib scikit-learn prometheus-client==0.20.0 python-dotenv==1.0.1"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/plugins:/opt/airflow/plugins
@@ -307,7 +316,7 @@ services:
       superset db upgrade &&
       superset fab create-admin --username admin --firstname Admin --lastname User --email admin@superset.com --password admin &&
       superset init &&
-      superset run -p 8088 --with-threads --reload --debugger
+      superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger
       "
 
   # ─── Admin Control Panel ─────────────────────────────────────

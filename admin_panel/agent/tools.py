@@ -1,7 +1,12 @@
 import os
+from pathlib import Path
 
-from langchain_community.utilities.sql_database import SQLDatabase
+from dotenv import load_dotenv
 from langchain_core.tools import tool
+
+# Load .env from project root
+_env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(_env_path, override=True)
 
 
 @tool
@@ -10,16 +15,17 @@ def search_customer_tickets(query: str, k: int = 3) -> str:
     from langchain_qdrant import QdrantVectorStore
 
     api_key = os.getenv("GOOGLE_API_KEY", "")
+    api_key = "" # Force fallback
     if api_key:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     else:
         from langchain_huggingface import HuggingFaceEmbeddings
 
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
-    qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
+    qdrant_url = os.getenv("QDRANT_URL", "http://127.0.0.1:6333").replace("localhost", "127.0.0.1")
     try:
         from qdrant_client import QdrantClient
 
@@ -45,8 +51,14 @@ def search_customer_tickets(query: str, k: int = 3) -> str:
 def query_warehouse(sql_query: str) -> str:
     """Execute a raw SQL query on the PostgreSQL data warehouse and return the result.
     Useful for getting metrics like LTV, churn, average order value.
-    Fact tables: fact_orders
-    Dimension tables: dim_customer, dim_product
+    Available Tables:
+    - fact_orders
+    - fact_transactions
+    - dim_customer
+    - dim_product
+    - revenue_metrics
+    - customer_churn_scores (columns: customer_id, churn_probability, churn_segment, scored_at)
+    - feature_store
     """
     try:
         user = os.getenv("POSTGRES_USER", "customer360")
@@ -54,12 +66,17 @@ def query_warehouse(sql_query: str) -> str:
         host = os.getenv("POSTGRES_HOST", "postgres")
         # Ensure we can run it locally as well as in docker
         if host == "localhost" or not os.getenv("POSTGRES_HOST"):
-            host = "localhost"
+            host = "127.0.0.1"
         db = os.getenv("POSTGRES_DB", "customer360_warehouse")
         uri = f"postgresql+psycopg2://{user}:{password}@{host}:5432/{db}"
-        db_engine = SQLDatabase.from_uri(uri)
-        result = db_engine.run(sql_query)
-        return result
+        import psycopg2
+        conn = psycopg2.connect(host=host, port=5432, dbname=db, user=user, password=password)
+        cursor = conn.cursor()
+        cursor.execute(sql_query)
+        result = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return str(result)
     except Exception as e:
         return f"Error executing query: {str(e)}"
 

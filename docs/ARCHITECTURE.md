@@ -52,7 +52,16 @@ The Customer360 Data Platform is a production-grade, real-time customer intellig
 │                   ┌──────────┐ ┌──────────┐ ┌──────────────┐           │
 │                   │   dbt    │ │ Superset │ │ Prometheus   │           │
 │                   │ Models   │ │Dashboard │ │  + DataHub   │           │
-│                   └──────────┘ └──────────┘ └──────────────┘           │
+│                   └────┬─────┘ └──────────┘ └──────────────┘           │
+│                        │                                                 │
+│                        ▼                                                 │
+│              ┌────────────────────────────────────────────────────┐     │
+│              │              LLM / RAG Layer                        │     │
+│              │  gemini-3.5-flash (→ 2.5-flash fallback)           │     │
+│              │  LangChain + LangGraph ReAct Agent                 │     │
+│              │  Qdrant VectorDB (support_tickets collection)      │     │
+│              │  Admin AI Control Panel (Flask, port 5000)         │     │
+│              └────────────────────────────────────────────────────┘     │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -277,29 +286,32 @@ dag_kafka_to_bronze → dag_bronze_to_silver → dag_silver_to_gold → dag_gold
 ### 10. LLM / RAG Layer
 
 #### Google Gemini Flash (LLM)
-- **Model**: `gemini-2.0-flash` via Google AI Studio API
+- **Primary Model**: `gemini-3.5-flash` via Google AI Studio API
+- **Fallback Model**: `gemini-2.5-flash` (auto-switches on rate limit via LangChain `with_fallbacks`)
 - **Integration**: LangChain `ChatGoogleGenerativeAI`
-- **Purpose**: Natural-language question answering over warehouse data
+- **Purpose**: Natural-language question answering over warehouse data and support tickets
 
 #### Qdrant Vector Database
 - **Endpoint**: `http://localhost:6333`
-- **Collection**: `customer360` (customer profiles, metrics, KPIs)
-- **Embeddings**: Google `text-embedding-004` model
-- **Ingestion**: `llm/ingest_to_vectordb.py` + Airflow `dag_llm_ingestion`
+- **Collection**: `support_tickets` (500 synthetic customer support tickets, subsampled to 80 for ingestion)
+- **Embeddings**: HuggingFace `sentence-transformers/all-MiniLM-L6-v2` (runs locally, free tier)
+- **Ingestion**: `llm/ingest_to_vectordb.py` + Airflow `llm_vectordb_ingestion` DAG (daily at 06:00)
 
 #### LangGraph ReAct Agent
-- **Framework**: LangGraph (stateful agent graph)
+- **Framework**: LangGraph (stateful agent graph via `create_react_agent`)
 - **Tools**:
-  - `query_postgres` — executes SQL against the warehouse
-  - `search_qdrant` — semantic search over customer vectors
-  - `get_pipeline_metrics` — Airflow DAG status, Kafka lag
+  - `query_warehouse` — executes raw SQL against the PostgreSQL warehouse (fact_orders, dim_customer, customer_churn_scores, revenue_metrics, feature_store, etc.)
+  - `search_customer_tickets` — semantic similarity search over Qdrant `support_tickets` collection
 - **Reasoning**: ReAct loop (Reason → Act → Observe → Respond)
 
 #### Admin Control Panel (Flask)
 - **URL**: http://localhost:5000
 - **Interface**: Chat UI for natural-language data queries
-- **Backend**: Flask + LangGraph agent
-- **Use Cases**: "Show top 10 customers by LTV", "What is the churn rate this month?"
+- **Backend**: Flask (`admin_panel/app.py`) + LangGraph agent (`admin_panel/agent/`)
+- **Example Queries**:
+  - "What are the top 10 customers at highest risk of churn?"
+  - "What is our total net revenue for the last 3 months?"
+  - "Search for customers complaining about late deliveries"
 
 ---
 

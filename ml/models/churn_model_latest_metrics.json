@@ -1,0 +1,27 @@
+{
+  "auc_roc": 1.0,
+  "avg_precision": 1.0,
+  "cv_auc_mean": 1.0,
+  "cv_auc_std": 0.0,
+  "training_samples": 800,
+  "test_samples": 200,
+  "features": [
+    "recency_days",
+    "frequency",
+    "monetary",
+    "avg_purchase_value",
+    "max_purchase_value",
+    "min_purchase_value",
+    "cart_abandonment_rate",
+    "product_view_count",
+    "search_count",
+    "cart_add_count",
+    "purchase_count",
+    "login_count",
+    "monthly_orders",
+    "days_since_last_login",
+    "avg_session_duration"
+  ],
+  "churn_threshold_days": 90,
+  "trained_at": "2026-06-09T16:33:57.861914"
+}

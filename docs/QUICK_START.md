@@ -7,6 +7,7 @@ Get the platform running in 30 minutes.
 - Docker Desktop (16GB RAM)
 - Python 3.11+
 - Git
+- Google AI Studio API Key *(free at [aistudio.google.com](https://aistudio.google.com/apikey) — needed for the AI Copilot chat)*
 
 ## 5-Step Setup
 
@@ -79,12 +80,16 @@ docker exec spark-master spark-submit \
 
 ## Next Steps
 
-1. Enable Airflow DAGs in the UI (including `dag_llm_ingestion`)
-2. Run dbt transformations: `cd dbt && dbt run`
-3. Ingest warehouse data into Qdrant: `python llm/ingest_to_vectordb.py`
+1. Enable Airflow DAGs in the UI (navigate to http://localhost:8081):
+   - `dag_kafka_to_bronze`, `dag_bronze_to_silver`, `dag_silver_to_gold`, `dag_gold_to_warehouse`
+   - `dag_feature_engineering`, `dag_model_retraining`
+   - `llm_vectordb_ingestion` *(daily VectorDB refresh)*
+2. Run dbt transformations: `cd dbt && dbt run` *(Windows: `.\dbt run`)*
+3. Ingest support tickets into Qdrant: `python llm/ingest_to_vectordb.py`
 4. Launch the AI Admin Panel: `python admin_panel/app.py`
-5. Train ML model: `python ml/models/churn_predictor.py --train`
-6. View Grafana dashboards at http://localhost:3000
+5. Train the ML churn model: `python ml/models/churn_predictor.py --train`
+6. Score all customers: `python ml/models/churn_predictor.py --predict`
+7. View Grafana dashboards at http://localhost:3000
 
 ## Troubleshooting
 
@@ -105,6 +110,9 @@ docker logs postgres
 docker-compose down
 docker-compose up -d
 ```
+
+**AI Copilot hitting rate limits?**
+The Copilot uses `gemini-3.5-flash` (20 requests/day free tier) with automatic fallback to `gemini-2.5-flash` (higher quota). If you see `RESOURCE_EXHAUSTED`, wait a minute and retry — the quota resets periodically.
 
 ## Full Documentation
 

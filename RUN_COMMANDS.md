@@ -100,6 +100,7 @@ Access Airflow UI: http://localhost:8081 (admin / admin)
 - `dag_gold_to_warehouse`
 - `dag_feature_engineering`
 - `dag_model_retraining`
+- `llm_vectordb_ingestion` *(re-ingests support tickets into Qdrant daily at 06:00)*
 
 **Trigger DAGs manually (CLI):**
 ```bash
@@ -121,9 +122,11 @@ docker exec airflow-webserver airflow dags list-runs
 cd dbt
 
 # Install dbt dependencies
+# On Windows, use: .\dbt deps
 dbt deps
 
 # Run all models (staging → marts)
+# On Windows, use: .\dbt run
 dbt run
 
 # Run specific model
@@ -171,22 +174,22 @@ python lineage/publish_lineage.py --dry-run
 ## ML Pipeline
 
 ```bash
+# From project root: customer360-data-platform/
+
 # Feature engineering
-cd ml/features
-python feature_engineering.py
+python ml/features/feature_engineering.py
 
 # Train churn model
-cd ../models
-python churn_predictor.py --train
+python ml/models/churn_predictor.py --train
 
-# Score all customers
-python churn_predictor.py --predict
+# Score all customers (writes churn_probability to customer_churn_scores table)
+python ml/models/churn_predictor.py --predict
 
-# Evaluate model
-python churn_predictor.py --evaluate
+# Evaluate model performance
+python ml/models/churn_predictor.py --evaluate
 
-# Train with specific version
-python churn_predictor.py --train --version v1.0
+# Train with specific version tag
+python ml/models/churn_predictor.py --train --version v1.0
 ```
 
 ---
@@ -194,11 +197,13 @@ python churn_predictor.py --train --version v1.0
 ## LLM / RAG Pipeline
 
 ```bash
-# Ingest warehouse data into Qdrant vector store
+# Ingest support tickets into Qdrant vector store
+# (Uses HuggingFace all-MiniLM-L6-v2 embeddings locally — no API key needed)
 python llm/ingest_to_vectordb.py
 
-# Check Qdrant collection status
-curl http://localhost:6333/collections/customer360
+# Check Qdrant health and collection status
+curl http://localhost:6333
+curl http://localhost:6333/collections/support_tickets
 
 # Launch AI Admin Control Panel
 python admin_panel/app.py
@@ -207,9 +212,9 @@ python admin_panel/app.py
 
 The Admin Panel provides a chat interface powered by a LangGraph ReAct agent.
 You can ask natural-language questions like:
-- "Show me the top 10 customers by lifetime value"
-- "What is the current pipeline health?"
-- "How many high-risk churn customers are there this week?"
+- "What are the top 10 customers at highest risk of churn?"
+- "What is our total net revenue for the last 3 months?"
+- "Search for customers complaining about late deliveries or billing issues"
 
 ---
 
