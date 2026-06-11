@@ -22,7 +22,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Check docker-compose config
-        run: docker-compose config > /dev/null
+        run: docker compose config > /dev/null
 
       # In a real environment we might build custom images here
       # For now, we just validate the compose file structure

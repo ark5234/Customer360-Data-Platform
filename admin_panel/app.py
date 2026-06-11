@@ -7,10 +7,10 @@ import json
 import os
 import subprocess
 from datetime import UTC, datetime
-from dotenv import load_dotenv
 
-import requests
 import psycopg2
+import requests
+from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
 
 # Load environment variables from .env file in the project root

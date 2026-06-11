@@ -5,10 +5,9 @@ Embeds and ingests support tickets into Qdrant for RAG.
 
 import json
 import os
-
 from pathlib import Path
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from langchain_core.documents import Document
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
