@@ -42,7 +42,7 @@ def ingest_tickets(file_path: str = "data/tickets.json"):
 
     api_key = os.getenv("GOOGLE_API_KEY", "")
 
-    api_key = "" # Force fallback
+    api_key = ""  # Force fallback
     if api_key:
         embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     else:

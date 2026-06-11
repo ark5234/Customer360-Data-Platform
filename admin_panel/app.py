@@ -14,7 +14,9 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
 
 # Load environment variables from .env file in the project root
-env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env')
+env_path = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"
+)
 load_dotenv(env_path)
 
 app = Flask(__name__)
@@ -369,7 +371,7 @@ def trigger_dag(dag_id):
             f"http://localhost:8081/api/v1/dags/{dag_id}/dagRuns",
             auth=("admin", "admin"),
             json={},
-            timeout=5
+            timeout=5,
         )
         if response.status_code == 200:
             return jsonify(
@@ -446,7 +448,9 @@ def chat():
             try:
                 from admin_panel.agent.graph import get_agent
             except ImportError as e2:
-                return jsonify({"error": f"ImportError 1: {str(e)} | ImportError 2: {str(e2)}"}), 500
+                return jsonify(
+                    {"error": f"ImportError 1: {str(e)} | ImportError 2: {str(e2)}"}
+                ), 500
 
         from langchain_core.messages import HumanMessage
 
@@ -467,7 +471,11 @@ def chat():
 
         if isinstance(response_msg, list):
             # Extract text from list of dicts if Gemini returns structured content
-            texts = [item.get("text", "") for item in response_msg if isinstance(item, dict) and "text" in item]
+            texts = [
+                item.get("text", "")
+                for item in response_msg
+                if isinstance(item, dict) and "text" in item
+            ]
             if texts:
                 response_msg = " ".join(texts)
             else:

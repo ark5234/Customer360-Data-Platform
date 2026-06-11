@@ -15,7 +15,7 @@ def search_customer_tickets(query: str, k: int = 3) -> str:
     from langchain_qdrant import QdrantVectorStore
 
     api_key = os.getenv("GOOGLE_API_KEY", "")
-    api_key = "" # Force fallback
+    api_key = ""  # Force fallback
     if api_key:
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
@@ -25,7 +25,9 @@ def search_customer_tickets(query: str, k: int = 3) -> str:
 
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
-    qdrant_url = os.getenv("QDRANT_URL", "http://127.0.0.1:6333").replace("localhost", "127.0.0.1")
+    qdrant_url = os.getenv("QDRANT_URL", "http://127.0.0.1:6333").replace(
+        "localhost", "127.0.0.1"
+    )
     try:
         from qdrant_client import QdrantClient
 
@@ -69,7 +71,10 @@ def query_warehouse(sql_query: str) -> str:
             host = "127.0.0.1"
         db = os.getenv("POSTGRES_DB", "customer360_warehouse")
         import psycopg2
-        conn = psycopg2.connect(host=host, port=5432, dbname=db, user=user, password=password)
+
+        conn = psycopg2.connect(
+            host=host, port=5432, dbname=db, user=user, password=password
+        )
         cursor = conn.cursor()
         cursor.execute(sql_query)
         result = cursor.fetchall()

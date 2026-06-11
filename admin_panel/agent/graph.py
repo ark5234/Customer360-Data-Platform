@@ -27,4 +27,3 @@ def get_agent():
         return agent
     else:
         return None
-
