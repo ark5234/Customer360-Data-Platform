@@ -68,7 +68,6 @@ def query_warehouse(sql_query: str) -> str:
         if host == "localhost" or not os.getenv("POSTGRES_HOST"):
             host = "127.0.0.1"
         db = os.getenv("POSTGRES_DB", "customer360_warehouse")
-        uri = f"postgresql+psycopg2://{user}:{password}@{host}:5432/{db}"
         import psycopg2
         conn = psycopg2.connect(host=host, port=5432, dbname=db, user=user, password=password)
         cursor = conn.cursor()
